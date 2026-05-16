@@ -1,0 +1,12 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv("phase_map.csv")
+
+plt.scatter(df["omega"], df["A"], c=df["Phi2"], s=20)
+plt.colorbar(label="Phi2")
+
+plt.xlabel("omega")
+plt.ylabel("A")
+
+plt.show()
