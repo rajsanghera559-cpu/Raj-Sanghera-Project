@@ -1,7 +1,20 @@
 __pycache__/
 *.pyc
+
+# Raw/generated simulation output folders.
 outputs/
-.env/
+outputs_*/
+snapshots/
+
+# Python environments and local editor state.
+.venv/
 venv/
+.env
+.env/
 .vscode/
 .idea/
+
+# Generated logs and temporary runtime files.
+*.log
+*.tmp
+*.bak
