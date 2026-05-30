@@ -18,3 +18,6 @@ venv/
 *.log
 *.tmp
 *.bak
+
+# Local downloaded literature archive.
+kolmogorov_bifurcations_archive.gz/
