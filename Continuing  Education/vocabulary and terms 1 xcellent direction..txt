@@ -1,0 +1,526 @@
+Excellent direction. You are asking for something closer to a **concept map + vocabulary compression layer** for Layer 1.
+
+I’ll treat this like building the mathematical language used repeatedly in CFD, turbulence, spectral methods, and computational physics.
+
+![Image](https://images.openai.com/static-rsc-4/MOqV9vl5xfnG6-_USIud5HUzfAv-atgaGxSJ5TVc5UV9IMUrLPxBoIcr4GaPnGQzUIbHhQHwgsi_RuUBahcbeXbHKNBU9hkHDU0E3HV_hLh0Aqlxq3cF74gxrMvleRWmse41QtTCZgFvKKymVDenqxJQMVXOwhAfAezWvCSXBIcHFvaJsC4D_7RysJOEpGfs?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/KVQHakAga_OunXQTEI9qxliiuDGS_PdEF5n0Mtr2yixCT_5TH-0u35XeMni0lxzdaDz0xCKbvdSZg5JEPixvoxZh9-uxqZvWbkeNifpRXBkKIfSQHhUymgO_atdOttGdl56e9Fh-fRgvJcX0qLdbbkzsNQ7TlxM3QE4S9o7fmZV0VPiabcKMmG8U9ppADi6U?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/81Bh9pR8NHAkdhSgB-iQ5hoMvjFimQuNFQ7dRechowBApSc-MDHGAj6gPXHeI_4mCJkGB2r6rdR9WGlr2X8ZT__wSQFNFLsW4R314ToalkDxqGphnyb4eRBp-MQyvaUQUEY6TULHrsoOVL_Azu2_Ac4FAKGJe3kRSxINocMZIzbW-5XAUxyJhnCXxiqJXCXF?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/zjhMxLY91xYwY5Faz-JWnxcet4xfT_v1kDnSKH0-JBkTCFKnP1fTRZJZ0F7QDcu9V5NVWX72M_CN9bCbRt3yVPIxc_eIsComKa1XW6GWJOrxwAQPjnfiDXoYzaqYVckqaMAp4oLwhpCfGnIUdpih_XMMg56l3xncnLUTHAIw1AS6rF8DoD4dcSA09VANU5ow?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/4fZKEzytN3wD6hq_ePAGjiCS9BARZRxEbFQJ_d1g2yHHSd2OSqCVqqSog931WPdf-DxJKNutrxng5I67AlhIhfLYc_-751jAxrWOVZfEVAJO0SjHvPYbFOPWDWJGZLTxcQavLB2cTRqTufD4FCotys0_lRrL5RrHR1XX6PhSNust6xLLqmHZHD4twFVRZ0ir?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/Lt2313yI2plOzi1xfKrFPUDoM7FVeIxRJFecRPitbBeHL04Icf-L2qmjh64LcnZgGPbZVAUdd6qL2FPanD5TRRDrxZb8dEu8GB8-ububIBAjh7-dj5T0_Ww2FPRZ85n9We83YFrsjiaf-vALngqtGY71ezrJYCgd2HcDSGeKbk_GEw91fjhbuAP9tEgQq9o4?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/Bu2tNFd-9ZDh_2mOD4rE7grQGH78dq0bHrbJH1aUTplX0eAjVbssWD4m9zThJWnn4qwaqEsPolG8Ml_5g01jj-Qw8Q9uvtzZyzFpXdiuCmLp8pKiLt7u5YTqPtI9845tNPWvCwSNJsTQnAgM9Y71blhdPJQi6d_LlOn26JD3nJxxRpkEMoudt9sbu_pql0Bq?purpose=fullsize)
+
+# Layer 1 — Mathematical Language
+
+The goal is not memorization.
+
+The goal is:
+
+> recognize the small set of concepts that appear repeatedly.
+
+Across CFD / turbulence / numerical simulation, a surprisingly small vocabulary dominates.
+
+---
+
+# 1. Function
+
+### Frequency
+
+★★★★★ (appears everywhere)
+
+### Definition
+
+A rule that maps:
+
+[
+x \rightarrow f(x)
+]
+
+Input → output.
+
+Examples:
+
+[
+f(x)=x^2
+]
+
+Input:
+
+[
+2
+]
+
+Output:
+
+[
+4
+]
+
+Fluid example:
+
+[
+u(x,y,t)
+]
+
+velocity depends on:
+
+* x position
+* y position
+* time
+
+---
+
+# 2. Field
+
+### Frequency
+
+★★★★★
+
+### Definition
+
+A quantity assigned everywhere in space.
+
+Examples:
+
+Scalar field:
+
+[
+T(x,y)
+]
+
+temperature.
+
+Vector field:
+
+[
+u(x,y)
+]
+
+velocity.
+
+In your simulation:
+
+[
+\omega(x,y)
+]
+
+vorticity field.
+
+Visual:
+
+```text
+→ → →
+↗ ↑ ↖
+← ← ←
+```
+
+Each point stores information.
+
+---
+
+# 3. Vector
+
+### Frequency
+
+★★★★★
+
+### Definition
+
+Magnitude + direction.
+
+Notation:
+
+[
+\mathbf{u}=(u,v)
+]
+
+Example:
+
+velocity.
+
+Magnitude:
+
+[
+|\mathbf{u}|=\sqrt{u^2+v^2}
+]
+
+---
+
+# 4. Derivative
+
+### Frequency
+
+★★★★★
+
+### Definition
+
+Rate of change.
+
+[
+\frac{df}{dx}
+]
+
+Meaning:
+
+> how quickly something changes.
+
+Example:
+
+Position:
+
+[
+x(t)
+]
+
+Velocity:
+
+[
+v=\frac{dx}{dt}
+]
+
+Acceleration:
+
+[
+a=\frac{d^2x}{dt^2}
+]
+
+---
+
+# 5. Gradient
+
+### Frequency
+
+★★★★★
+
+### Definition
+
+Direction of fastest increase.
+
+Symbol:
+
+[
+\nabla f
+]
+
+Example:
+
+[
+\nabla T
+]
+
+temperature increases fastest here.
+
+Visual:
+
+```text
+cold → warm → hot
+```
+
+Pressure force:
+
+[
+-\nabla p
+]
+
+---
+
+# 6. Divergence
+
+### Frequency
+
+★★★★★
+
+### Definition
+
+Measures expansion/compression.
+
+Symbol:
+
+[
+\nabla\cdot u
+]
+
+Interpretation:
+
+Positive:
+
+```text
+↖ ↑ ↗
+← • →
+↙ ↓ ↘
+```
+
+Negative:
+
+everything converges inward.
+
+In incompressible flow:
+
+[
+\nabla\cdot u=0
+]
+
+No volume creation.
+
+---
+
+# 7. Curl
+
+### Frequency
+
+★★★★★
+
+### Definition
+
+Measures rotation.
+
+Symbol:
+
+[
+\nabla\times u
+]
+
+2D:
+
+[
+\omega=
+\frac{\partial v}{\partial x}
+-----------------------------
+
+\frac{\partial u}{\partial y}
+]
+
+This is YOUR project.
+
+Visual:
+
+```text
+↺
+```
+
+---
+
+# 8. Laplacian
+
+### Frequency
+
+★★★★★
+
+### Definition
+
+Measures local spreading/smoothing.
+
+Symbol:
+
+[
+\nabla^2
+]
+
+Formula:
+
+[
+\nabla^2f
+=========
+
+\frac{\partial^2f}{\partial x^2}
++
+\frac{\partial^2f}{\partial y^2}
+]
+
+In your solver:
+
+[
+\nu\nabla^2\omega
+]
+
+Diffusion.
+
+---
+
+# 9. Fourier Transform
+
+### Frequency
+
+★★★★★
+
+### Definition
+
+Convert:
+
+Space → frequencies
+
+[
+f(x)
+\rightarrow
+F(k)
+]
+
+Interpretation:
+
+Every pattern becomes waves.
+
+Visual:
+
+```text
+signal
+↓
+
+frequency components
+```
+
+Your spectrum:
+
+[
+E(k)
+]
+
+energy by scale.
+
+---
+
+# 10. Eigenvalue
+
+### Frequency
+
+★★★★☆
+
+### Definition
+
+Special scaling direction.
+
+[
+Av=\lambda v
+]
+
+Interpretation:
+
+transform changes size but not direction.
+
+Applications:
+
+* stability
+* turbulence
+* PCA
+* quantum mechanics
+
+---
+
+# 11. Partial Differential Equation (PDE)
+
+### Frequency
+
+★★★★★
+
+### Definition
+
+Equation involving change in multiple variables.
+
+Example:
+
+[
+\frac{\partial u}{\partial t}
+=============================
+
+\nu\nabla^2u
+]
+
+Heat equation.
+
+Navier–Stokes:
+
+[
+\frac{\partial u}{\partial t}
++
+(u\cdot\nabla)u
+===============
+
+-\nabla p
++
+\nu\nabla^2u
+]
+
+---
+
+# 12. Convolution
+
+### Frequency
+
+★★★★☆
+
+### Definition
+
+Interaction across neighborhoods.
+
+Symbol:
+
+[
+f*g
+]
+
+Spectral insight:
+
+Convolution in space
+
+↓
+
+Multiplication in Fourier space.
+
+---
+
+# Vocabulary Frequency Ranking (CFD + Turbulence)
+
+| Rank | Word       |
+| ---- | ---------- |
+| 1    | field      |
+| 2    | derivative |
+| 3    | gradient   |
+| 4    | spectrum   |
+| 5    | velocity   |
+| 6    | vorticity  |
+| 7    | Fourier    |
+| 8    | divergence |
+| 9    | Laplacian  |
+| 10   | energy     |
+| 11   | eigenvalue |
+| 12   | flux       |
+| 13   | PDE        |
+| 14   | cascade    |
+| 15   | stability  |
+
+---
+
+# Predictive heuristic
+
+If a future paper repeatedly uses:
+
+* spectrum
+* transfer
+* flux
+* scaling
+* inertial
+
+→ turbulence.
+
+If:
+
+* eigenvalues
+* operator
+* decomposition
+
+→ numerical analysis.
+
+If:
+
+* manifold
+* geometry
+* topology
+
+→ theoretical modeling.
+
+This Layer 1 vocabulary becomes the foundation for everything that follows.

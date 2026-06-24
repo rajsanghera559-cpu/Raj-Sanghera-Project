@@ -1,0 +1,644 @@
+Excellent. Layer 2 is where simulations stop being pictures and become measurements.
+
+This layer answers the question:
+
+> **“Is my output showing physics—or numerical artifacts?”**
+
+![Image](https://images.openai.com/static-rsc-4/rNL1JoP52-_ER06LBckObI-7gbTkZGlgt1AydD9eQKLfdsViAdVm3KQZRZ4efif_kaBssMS3ptuENtAmUepsb5HHM_JGOPmoUr3o9_pxMUuVbcAInndnItiZa38ATN7NklCu8gd9Reax_snTxpO3UmXV697acZW2eLgOpLLO4_U5cEJiWDbn8FL5eesllSuA?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/iJiB0TALyxgO1_55VhLwRwDXSHIy5CxWGpXmCXmLf2d-7n-UVqheX5M2ZQCs_dWl1sbsfEaJje2f8uihTClEfzPrgVFBReet0gJ8c9who6W6VBdIr-XhksSozXYn_fNZXgpw51jP8m9GhJaa7iy3C9xg-3DbNpAV8LdS07InjsUIAWR8N51rMg84fVFPzYwK?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/0etKQOfXuG0CKcX7uPg2_zf4s5ZOD93ebFhRpl8RrVaEdiSQwd5aIIa1slr3zat_PpVN8ESJKj5PFq7sFmG78vLUt65iK8Hz0Of2j1TNhW2QNo_TEEDyOaLQEDyiOWu5h_Ff-J7AFThalh6CkaI8xAqzEOmWbhj2s5PaEAtOrcYyzFCBnriangyAHI0YDgy0?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/lOgfkI3mquU4pXVgDQMc6Yqhw655nuiYesylKFeEzneQVODX4X98VOShnGcHs9RiJPdxEKWv8dK5AomYu7ndffHf58byC8njcsWNqCwoRNw3DNThdoUJwb3H6Rdoem_NAuziwtiSVS31ax5SdFwpI5kxTcgd3Iu-adoaZwN0GLPmYOu5k7okkndE7BSO301Q?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/oY2gaQO2AGWHtW8ry2_pbb4uSerq0YdrF2UgnMXxa-C_H8bWtogVJblDwXU6AAeLuAic7yvLRDtBNolXb7Du-OcFePQzDBk89si7wirbKrZTgA2SojHsTRZGDLtu8AKjww_QUNHsJ88Aj2e2XeVzIyt117foD6dbHu7ux20x5LGv2e3npX01yNq-91RrjwnG?purpose=fullsize)
+
+![Image](https://images.openai.com/static-rsc-4/yXHnNLSrgHfB7Fj7ewXDbWzfUfM4W3TYZ1Vk5U-1VUw8r8cTnXiXip1TWJYBLV2c7tJBw8ZCGboKbQbZQwnDEgpToGGM2FB1y0D8kWNkuCww8PyykCNsVX70AgFrloC2BPvAuZtp3bRMbdloF_bt6TD-eoZEyNc9cHfzIMPd9jqUyTDHIMel7q4CMY8hVqEN?purpose=fullsize)
+
+# Layer 2 — Numerical Methods
+
+## Central Question
+
+When your simulation produces:
+
+```text id="g1mb20"
+slope = -0.614
+```
+
+you must ask:
+
+Did nature do that?
+
+OR
+
+Did my algorithm do that?
+
+---
+
+# 1. Discretization
+
+### Frequency
+
+★★★★★
+
+### Definition
+
+Convert continuous equations into finite computations.
+
+Continuous:
+
+[
+\frac{du}{dt}
+]
+
+Discrete:
+
+[
+\frac{u^{n+1}-u^n}{\Delta t}
+]
+
+Meaning:
+
+Reality:
+
+```text id="mx65n2"
+continuous
+```
+
+Computer:
+
+```text id="b3n9zv"
+samples
+```
+
+---
+
+## Vocabulary
+
+| Term       | Meaning                 |
+| ---------- | ----------------------- |
+| grid       | computational space     |
+| timestep   | temporal resolution     |
+| stencil    | neighboring points used |
+| resolution | detail level            |
+
+---
+
+# 2. Finite Difference (FD)
+
+### Frequency
+
+★★★★★
+
+### Definition
+
+Approximate derivatives using nearby points.
+
+Derivative:
+
+[
+f'(x)
+]
+
+Approximation:
+
+[
+\frac{f(x+h)-f(x)}{h}
+]
+
+Visual:
+
+```text id="4hpfgt"
+●──●──●
+```
+
+Estimate slope.
+
+Used for:
+
+* PDEs
+* heat
+* wave equations
+
+Pros:
+
+* simple
+
+Cons:
+
+* can introduce artifacts
+
+Your Jacobian approximations are FD-like.
+
+---
+
+# 3. Finite Volume (FV)
+
+### Frequency
+
+★★★★★
+
+### Definition
+
+Conserve quantities inside cells.
+
+Visual:
+
+```text id="q8yfj5"
+┌───┐
+│cell
+└───┘
+```
+
+Equation:
+
+[
+\frac{d}{dt}
+\int_V q,dV
+===========
+
+flux
+]
+
+Tracks:
+
+* mass
+* energy
+* momentum
+
+Very common in engineering CFD.
+
+Pros:
+
+* conservation
+
+Cons:
+
+* more bookkeeping
+
+---
+
+# 4. Spectral Methods ★
+
+### Frequency
+
+★★★★★
+
+Your project lives here.
+
+### Definition
+
+Represent fields as waves.
+
+Space:
+
+[
+u(x)
+]
+
+Frequency:
+
+[
+\hat u(k)
+]
+
+Transform:
+
+[
+u(x)
+====
+
+\sum \hat u_k e^{ikx}
+]
+
+Visual:
+
+```text id="w2u3z5"
+field
+↓
+
+waves
+```
+
+Pros:
+
+* high accuracy
+* excellent for smooth flow
+
+Cons:
+
+* aliasing
+* periodic assumptions
+
+Your:
+
+```text id="szn5ye"
+FFT
+E(k)
+dealiasing
+```
+
+all come from this.
+
+---
+
+# 5. Time Integration
+
+Solve:
+
+[
+\frac{du}{dt}=F(u)
+]
+
+---
+
+## Euler
+
+### Frequency
+
+★★★★★
+
+### Definition
+
+Small forward step.
+
+[
+u_{n+1}
+=======
+
+u_n+\Delta tF(u_n)
+]
+
+Pros:
+
+* simple
+
+Cons:
+
+* unstable
+
+---
+
+## RK2 (YOUR CURRENT METHOD)
+
+### Frequency
+
+★★★★★
+
+Two-stage estimate.
+
+Stage 1:
+
+[
+k_1=F(u)
+]
+
+Stage 2:
+
+[
+k_2=F(u+\Delta tk_1)
+]
+
+Update:
+
+[
+u_{n+1}
+=======
+
+u_n+\frac12(k_1+k_2)
+]
+
+Pros:
+
+* better accuracy
+* moderate cost
+
+---
+
+## RK4
+
+### Frequency
+
+★★★★★
+
+Four evaluations.
+
+Error:
+
+[
+O(\Delta t^4)
+]
+
+More accurate.
+
+More expensive.
+
+---
+
+## Implicit Methods
+
+### Frequency
+
+★★★★☆
+
+Solve future state simultaneously.
+
+[
+u_{n+1}
+=======
+
+u_n+\Delta tF(u_{n+1})
+]
+
+Pros:
+
+* stable
+
+Cons:
+
+* harder
+
+Used for:
+
+* stiff systems
+
+---
+
+# 6. Stability
+
+### Frequency
+
+★★★★★
+
+Definition:
+
+Small errors stay small.
+
+Bad:
+
+```text id="n2i3jl"
+1
+2
+4
+8
+16
+∞
+```
+
+Good:
+
+```text id="0x8yhl"
+1
+1.1
+1.2
+1.1
+```
+
+---
+
+# 7. CFL Condition ★
+
+### Frequency
+
+★★★★★
+
+One of the most important concepts.
+
+Equation:
+
+[
+CFL
+===
+
+\frac{u\Delta t}{\Delta x}
+]
+
+Meaning:
+
+Information cannot move too far in one timestep.
+
+Visual:
+
+```text id="04q0zm"
+wave
+↓
+
+next cell
+```
+
+Interpretation:
+
+| CFL  | Meaning  |
+| ---- | -------- |
+| <0.5 | safe     |
+| ~1   | caution  |
+| >1   | unstable |
+
+You already computed this.
+
+---
+
+# 8. Consistency
+
+### Frequency
+
+★★★★★
+
+Definition:
+
+Discrete equation approaches real equation.
+
+Equation:
+
+[
+error\to0
+]
+
+as
+
+[
+\Delta x,\Delta t\to0
+]
+
+Question:
+
+If I refine grid—
+
+do equations match?
+
+---
+
+# 9. Convergence ★
+
+### Frequency
+
+★★★★★
+
+Definition:
+
+Solution stops changing.
+
+Equation:
+
+[
+u_h\rightarrow u
+]
+
+Visual:
+
+```text id="uxlmvf"
+128
+↓
+
+256
+↓
+
+512
+↓
+
+same result
+```
+
+Your key question:
+
+How do I know simulation converges?
+
+Answer:
+
+Run:
+
+| Test  | Expect  |
+| ----- | ------- |
+| N=128 | slope   |
+| N=256 | similar |
+| N=512 | similar |
+
+If results stabilize:
+
+Converged.
+
+---
+
+# 10. Error Analysis
+
+---
+
+## Truncation Error
+
+Definition:
+
+Error from approximation.
+
+Example:
+
+Derivative approximation.
+
+Lower:
+
+[
+O(h^2)
+]
+
+Higher:
+
+[
+O(h^4)
+]
+
+---
+
+## Numerical Diffusion
+
+### Frequency
+
+★★★★★
+
+Fake smoothing.
+
+Visual:
+
+```text id="jxpd66"
+sharp
+↓
+
+blur
+```
+
+Looks physical.
+
+Actually algorithm.
+
+Symptoms:
+
+* vortices disappear
+* spectra flatten
+
+---
+
+## Conditioning
+
+Definition:
+
+Sensitivity to input.
+
+Equation:
+
+[
+\kappa(A)
+=========
+
+|A|
+|A^{-1}|
+]
+
+High:
+
+tiny input error
+
+↓
+
+huge output error
+
+---
+
+# Predictive vocabulary ranking
+
+Most common words in numerical papers:
+
+| Rank           | Word |
+| -------------- | ---- |
+| stability      |      |
+| convergence    |      |
+| grid           |      |
+| timestep       |      |
+| error          |      |
+| solver         |      |
+| discretization |      |
+| resolution     |      |
+| spectral       |      |
+| consistency    |      |
+| diffusion      |      |
+| CFL            |      |
+| conditioning   |      |
+| aliasing       |      |
+| accuracy       |      |
+
+---
+
+# Your future convergence checklist
+
+For YOUR turbulence project:
+
+```text id="i6c8o6"
+□ Energy stable
+□ CFL bounded
+□ No NaN
+□ Spectrum stabilizes
+□ Slope reproducible
+□ N refinement consistent
+□ ν sweep behaves smoothly
+□ Results survive rerun
+```
+
+That checklist is how computational scientists distinguish **physics from artifact**.

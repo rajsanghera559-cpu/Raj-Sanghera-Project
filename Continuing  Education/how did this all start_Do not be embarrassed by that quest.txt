@@ -1,0 +1,332 @@
+Do not be embarrassed by that question.
+
+That question is actually a sign of maturity in a project.
+
+People often remember:
+
+* the latest plots,
+* the latest optimization,
+* the latest excitement,
+
+and forget:
+
+> what invariant idea started the entire thing.
+
+That is normal.
+
+And for your project, I think there are actually **multiple foundations** layered together.
+
+---
+
+# Level 0 — The deepest numerical anchor
+
+The foundation is:
+
+> **state evolution under local update rules**
+
+This appears everywhere.
+
+General form:
+
+[
+u_{n+1}=u_n+\Delta t,F(u_n)
+]
+
+Meaning:
+
+Current state
+
+↓
+
+apply rule
+
+↓
+
+next state
+
+This is the numerical heartbeat of your project.
+
+You started with:
+
+```text id="sb2w03"
+field
+↓
+
+operator
+↓
+
+update
+↓
+
+repeat
+```
+
+That process has names.
+
+---
+
+# Level 1 — Dynamical System
+
+Formal name:
+
+> **Discrete Dynamical System**
+
+Equation:
+
+[
+x_{n+1}=T(x_n)
+]
+
+Interpretation:
+
+Take current configuration.
+
+Apply transformation.
+
+Observe evolution.
+
+Examples:
+
+* population growth
+* orbital systems
+* CFD
+* cellular automata
+* neural networks
+
+Your solver is fundamentally this.
+
+---
+
+# Level 2 — Time Marching
+
+Numerical name:
+
+> **Time Integration**
+
+General:
+
+[
+u(t+\Delta t)
+]
+
+computed from
+
+[
+u(t)
+]
+
+Methods:
+
+* Euler
+* RK2 (your current one)
+* RK4
+
+Your solver specifically became:
+
+```text id="4dyzk8"
+spectral
++
+RK2
++
+forced vorticity evolution
+```
+
+---
+
+# Level 3 — Iterative Fixed-Rule Computation
+
+Computer science name:
+
+> **Iterative Numerical Evolution**
+
+Structure:
+
+```text id="bc7rk0"
+initialize
+
+loop
+
+measure
+
+update
+
+save
+```
+
+That is literally your solver architecture.
+
+---
+
+# Level 4 — Continuous → Discrete translation
+
+This may be the conceptual anchor.
+
+Formal name:
+
+> **Discretization**
+
+Reality:
+
+[
+\frac{\partial u}{\partial t}
+]
+
+Computer:
+
+[
+\frac{u_{n+1}-u_n}{dt}
+]
+
+Meaning:
+
+Take infinite mathematics.
+
+Represent it finitely.
+
+---
+
+# Why this may feel familiar to you
+
+You mentioned:
+
+```text id="mxb7hy"
+mod 9
+digital root
+```
+
+That instinct is not random.
+
+Those are examples of:
+
+> repeated application of transformation rules.
+
+Digital root:
+
+[
+987
+\rightarrow
+24
+\rightarrow
+6
+]
+
+Same structure:
+
+state
+
+↓
+
+rule
+
+↓
+
+iterate
+
+CFD:
+
+[
+w_n
+\rightarrow
+w_{n+1}
+]
+
+same architecture.
+
+Different mathematics.
+
+---
+
+# Level 5 — Physics anchor
+
+For THIS project:
+
+The deepest physical object is:
+
+> **vorticity evolution**
+
+Equation:
+
+[
+\frac{\partial \omega}{\partial t}
++
+J(\psi,\omega)
+==============
+
+\nu\nabla^2\omega
++
+f
+]
+
+Meaning:
+
+Change in rotation
+
+=
+
+transport
+
+*
+
+diffusion
+
+*
+
+forcing
+
+That is the actual governing anchor.
+
+---
+
+# Level 6 — Scientific anchor
+
+This may be the one that matters most.
+
+Your process became:
+
+```text id="y6x4m8"
+observe
+
+simulate
+
+measure
+
+compare
+
+repeat
+```
+
+Formal name:
+
+> Computational Experimentation
+
+---
+
+So if you ask me:
+
+> What is the foundational numerical anchor of our project?
+
+My answer:
+
+```text id="h9qqm0"
+Discrete dynamical evolution
+implemented through numerical time integration
+of a continuous vorticity equation.
+```
+
+And if you ask:
+
+> What started all of this?
+
+From watching the progression of your questions:
+
+Not Navier–Stokes.
+
+Not turbulence.
+
+Not spectral methods.
+
+I think it started with something simpler:
+
+> curiosity about how patterns evolve under rules.
+
+That thread shows up repeatedly in your conversations.

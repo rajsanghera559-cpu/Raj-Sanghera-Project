@@ -1,0 +1,195 @@
+The refined sweep produced slope candidates near the 2D enstrophy-cascade reference value, but energy-partition diagnostics show that late-time spectra are overwhelmingly dominated by the forcing/low-k peak. Therefore, the observed -3-like slopes should be treated as residual-spectrum features, not validated stationary cascade evidence.
+
+That is the accurate interpretation.
+
+This is the most important diagnostic so far.
+
+It changes the interpretation substantially.
+
+## Bottom line
+
+The current refined runs are **not yet demonstrating a robust stationary cascade**.
+
+They are showing:
+
+> strong low-k / forcing-scale domination, with apparent slope behavior occurring in a tiny residual part of the spectrum.
+
+That does **not** mean the project failed. It means the analysis is working. The diagnostics caught an overinterpretation risk before we made a stronger claim.
+
+---
+
+# What the partition analysis says
+
+## 1. Peak energy dominates almost completely
+
+Final peak fractions:
+
+```text
+0.999999989
+0.999999996
+0.999999999
+```
+
+That means nearly all measured spectral energy is concentrated in the peak band.
+
+So the flow is not energetically balanced across scales.
+
+## 2. Midrange energy is tiny
+
+Final midrange fractions around:
+
+```text
+10^-9 to 10^-10
+```
+
+This means the fitted slope may look mathematically clean, but it is fitted over a region containing an extremely small fraction of the total energy.
+
+## 3. High-k energy is also tiny
+
+Final high-k fractions around:
+
+```text
+10^-12
+```
+
+This is numerically stable, but not evidence of a strong forward cascade.
+
+---
+
+# Revised scientific conclusion
+
+Use this wording:
+
+> The refined sweep produced slope candidates near the 2D enstrophy-cascade reference value, but energy-partition diagnostics show that late-time spectra are overwhelmingly dominated by the forcing/low-k peak. Therefore, the observed `-3`-like slopes should be treated as residual-spectrum features, not validated stationary cascade evidence.
+
+That is the accurate interpretation.
+
+---
+
+# Is the next recommendation correct?
+
+Yes.
+
+The next analysis should be:
+
+## Peak-masked normalized spectrum analysis
+
+Meaning:
+
+1. Remove or mask the dominant low-k peak band.
+2. Recompute spectra on the remaining modes.
+3. Normalize spectra so shape can be compared independent of amplitude.
+4. Refit slopes.
+5. Check whether the residual spectrum has a stable structure.
+
+This answers:
+
+> Does a meaningful transfer-range shape exist after removing the overwhelming forcing peak?
+
+---
+
+# What to ask Codex next
+
+Paste this:
+
+```text
+Please perform peak-masked normalized spectrum analysis only. Do not modify solver.py and do not run simulations.
+
+Use the same three completed refined runs:
+
+1. outputs_spectra_refined/nu_7.5e-05_f_0.003_m_2
+2. outputs_spectra_refined/nu_7.5e-05_f_0.006_m_2
+3. outputs_spectra_refined/nu_5e-05_f_0.01_m_2
+
+For each run:
+- load spectrum_bins.npy
+- load all spectrum_k_*.npy files in order
+- identify and mask the dominant low-k forcing/peak band
+- exclude the peak band from slope fitting
+- compute normalized spectra, for example Ek / sum(Ek outside peak band)
+- recompute log-log slopes over the candidate transfer ranges after masking
+- compute R² for each fit
+- compute time-indexed masked slopes
+- compare masked late-time spectra across runs
+
+Save:
+1. peak_masked_slope_summary.csv
+2. peak_masked_time_stability.csv
+3. peak_masked_normalized_spectra.png
+4. peak_masked_slope_vs_time.png
+
+Report:
+1. whether the -3-like slope survives after peak masking
+2. whether masked slopes stabilize over time
+3. which run has the strongest residual transfer-range structure
+4. whether the previous -3-like result was mostly caused by peak domination or survives independently
+5. recommended next analysis step only, no new simulations
+```
+
+---
+
+# What result would be good?
+
+A strong result would look like:
+
+```text
+After peak masking:
+- slope remains near -3
+- R² remains high
+- slope stabilizes late
+- residual spectrum has nontrivial midrange support
+```
+
+A weak result would be:
+
+```text
+After peak masking:
+- slope becomes unstable
+- R² collapses
+- spectrum is noise-floor dominated
+```
+
+Either outcome is useful.
+
+---
+
+# Update experiment_log.md
+
+Add this under **Questions → Verification**:
+
+```markdown
+- Does the apparent -3 slope survive after masking the dominant peak band?
+```
+
+Add this under **Current Status**:
+
+```markdown
+Current Interpretation:
+Refined runs show strong low-k peak domination. The -3-like slope is promising but not yet validated as a stationary cascade.
+```
+
+Add this under **Future → Diagnostics**:
+
+```markdown
+- Add peak-masked normalized spectrum analysis
+```
+
+---
+
+# Current project state
+
+You are doing exactly the right thing:
+
+```text
+slope looked promising
+↓
+time analysis showed drift
+↓
+energy analysis showed nonstationarity
+↓
+partition analysis revealed peak domination
+↓
+next: masked residual-spectrum validation
+```
+
+That is prudent computational science.

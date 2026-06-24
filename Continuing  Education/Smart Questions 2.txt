@@ -1,0 +1,248 @@
+This is a very good moment to ask that question.
+
+Because you are at a transition point.
+
+You have moved from:
+
+```text id="lh8iv8"
+Can I make it run?
+```
+
+to
+
+```text id="6kvy9u"
+Can I trust what it produced?
+```
+
+That changes the questions.
+
+Right now I would not push forward aggressively.
+
+I would enter a short phase of:
+
+> observe → organize → verify → then decide
+
+Here are the questions I would ask ourselves.
+
+---
+
+# 1. What exactly did we accomplish?
+
+Not:
+
+> We simulated turbulence.
+
+Instead:
+
+> What did we actually compute?
+
+Current answer:
+
+```text id="8m61mt"
+2D forced vorticity evolution
+with spectral diagnostics
+over 50000 timesteps
+```
+
+Question:
+
+* What quantities are measured?
+* Which are inferred?
+* Which are assumptions?
+
+---
+
+# 2. What evidence do we have?
+
+Ask:
+
+* What outputs exist?
+* What plots exist?
+* What can be reproduced?
+
+Current inventory:
+
+```text id="sddg4i"
+spectra
+slope fit
+comparison plots
+saved runs
+```
+
+Question:
+
+> If VS Code disappeared tomorrow, what survives?
+
+---
+
+# 3. What could fool us?
+
+This may be the highest-value question.
+
+Ask:
+
+* Is slope estimation biased?
+* Is forcing dominating?
+* Is averaging hiding dynamics?
+* Is N=256 enough?
+* Is dealiasing sufficient?
+
+Question:
+
+> What artifact would look convincing?
+
+---
+
+# 4. What should theory expect?
+
+Before touching code:
+
+Ask:
+
+* Should energy increase?
+* Should k=4 decay?
+* Should slope steepen?
+* Should dissipation move?
+
+Question:
+
+> If the output were correct, what would we expect to see?
+
+---
+
+# 5. Are we measuring the right thing?
+
+Ask:
+
+* Why E(k)?
+* Why slope?
+* Why average?
+
+Question:
+
+> If our hypothesis were wrong, would our diagnostics detect it?
+
+---
+
+# 6. What are the likely near-future obstacles?
+
+I would predict these.
+
+### Numerical
+
+```text id="2nbvqy"
+higher N
+longer runtime
+memory
+stability
+```
+
+Prepare:
+
+* logs
+* archives
+* checkpoints
+
+---
+
+### Scientific
+
+```text id="l8e0on"
+over-interpreting spectra
+false inertial ranges
+parameter chasing
+```
+
+Prepare:
+
+* baseline runs
+* controls
+
+---
+
+### Organizational
+
+```text id="7ud9ez"
+too many files
+unclear outputs
+forgetting settings
+```
+
+Prepare:
+
+* experiment logs
+* folders
+* naming
+
+---
+
+# 7. What do we deliberately NOT do?
+
+Ask:
+
+* What are we not claiming?
+
+Current answer:
+
+```text id="itqdxs"
+not solving Navier–Stokes
+not proving turbulence theory
+not replacing physics
+```
+
+That protects the project.
+
+---
+
+# 8. What should we watch quietly?
+
+This may actually be the right move now.
+
+Watch:
+
+* does slope stabilize?
+* does rerun agree?
+* does ν sweep behave smoothly?
+* do outputs organize naturally?
+
+No immediate intervention.
+
+---
+
+# 9. What question would impress a reviewer?
+
+Not:
+
+> Is this groundbreaking?
+
+Instead:
+
+> Under what conditions does this result stop being true?
+
+That question scales extremely well.
+
+---
+
+# 10. The question I would ask tonight
+
+Not technical.
+
+This:
+
+> If we reran this tomorrow from scratch, what would we expect to remain unchanged?
+
+If you can answer that confidently—
+
+you are transitioning from coding into computational science.
+
+For tonight, my advice is:
+
+```text id="9h6lnv"
+Observe
+Document
+Do not modify
+Sleep on it
+Return fresh
+```
+
+Watch and wait is completely acceptable here.

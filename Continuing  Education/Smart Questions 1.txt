@@ -1,0 +1,211 @@
+This is one of the highest-ROI habits you can build.
+
+Good researchers are not people who understand everything immediately.
+
+They ask **good questions when they do not understand.**
+
+A useful pattern:
+
+> Observe → Describe → Question → Test → Interpret
+
+Below are question templates organized by situation.
+
+---
+
+# 1. Clarification questions
+
+## (“I do not understand the concept”)
+
+Ask:
+
+* What does this term mean physically?
+* What quantity is actually being measured?
+* What problem was this method invented to solve?
+* What assumptions are hidden in this equation?
+* What does each variable represent?
+* What would happen if this term were removed?
+* What is the simplest interpretation?
+
+Example:
+
+Instead of:
+
+> What is Fourier?
+
+Ask:
+
+> What does Fourier transform preserve and what information does it discard?
+
+---
+
+# 2. Interpretation questions
+
+## (“I got a result but don’t know what it means”)
+
+Ask:
+
+* Is this signal or noise?
+* Is this expected?
+* What would theory predict?
+* What would surprise an expert?
+* Is this a physical effect or numerical artifact?
+* What competing explanations exist?
+
+Example:
+
+You did this already:
+
+> Slope = −0.614. Is this meaningful?
+
+Excellent question.
+
+---
+
+# 3. Validation questions
+
+## (“How do I know this is real?”)
+
+Ask:
+
+* How could this result be wrong?
+* What assumptions could break?
+* How would I falsify this?
+* What independent check exists?
+* Would rerunning reproduce this?
+* What would happen at higher resolution?
+
+Example:
+
+```text id="mpk77w"
+N=128
+↓
+
+N=256
+↓
+
+N=512
+```
+
+Does result stabilize?
+
+---
+
+# 4. Numerical method questions
+
+## (“Is my solver behaving?”)
+
+Ask:
+
+* Is energy conserved?
+* Is CFL bounded?
+* Does dt matter?
+* Is this converged?
+* Is aliasing appearing?
+* Does resolution change interpretation?
+
+---
+
+# 5. Mathematical questions
+
+## (“I understand symbols but not meaning”)
+
+Ask:
+
+* What does this operator do geometrically?
+* What stays invariant?
+* What is changing?
+* Why does this term have this sign?
+* What limit behavior should occur?
+
+Example:
+
+Instead of:
+
+> Why Laplacian?
+
+Ask:
+
+> Why does Laplacian smooth high-frequency modes?
+
+---
+
+# 6. Physics questions
+
+## (“What mechanism causes this?”)
+
+Ask:
+
+* What transfers energy?
+* Where does dissipation occur?
+* What quantity is conserved?
+* What instability could create this?
+* What dominates at large scales?
+* What dominates at small scales?
+
+---
+
+# 7. Spectral analysis questions
+
+## (very useful for your project)
+
+Ask:
+
+* Which k-range should be trusted?
+* Is forcing contaminating slope estimation?
+* Is there an inertial range?
+* Does averaging change exponent?
+* Is this transfer or accumulation?
+* What spectrum shape should appear?
+
+---
+
+# 8. Scientific humility questions
+
+## (extremely valuable)
+
+Ask:
+
+* What would change my mind?
+* What evidence would contradict this?
+* What am I assuming?
+* What am I not measuring?
+* Am I fitting theory to data?
+* What would an expert criticize?
+
+---
+
+# 9. Meta-learning questions
+
+## (“How should I think?”)
+
+Ask:
+
+* What vocabulary do I need first?
+* What prerequisite am I missing?
+* What are common beginner mistakes?
+* What questions do experts ask?
+* What becomes easier after learning this?
+
+---
+
+# 10. Your personal “research emergency questions”
+
+When completely stuck:
+
+Ask these five:
+
+```text id="57zc1e"
+1. What am I observing?
+
+2. What should theory predict?
+
+3. What assumptions am I making?
+
+4. How can I test this?
+
+5. What would prove me wrong?
+```
+
+That set alone can carry someone surprisingly far.
+
+One observation: you’ve already been naturally asking good scientific questions (“Is this converged?”, “Did we actually progress?”, “Could this be artifact?”). Those are exactly the right instincts to strengthen.
