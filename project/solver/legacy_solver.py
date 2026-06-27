@@ -143,17 +143,31 @@ for n in range(steps):
     W = np.fft.fft2(w_new)
     W *= deal
     w = np.fft.ifft2(W).real
+    
+    #============================================================
+    # ENSTROPHY + DIAGNOSTICS (CLEAN CONTROL BLOCK)
+    #============================================================
 
     # ----------------------------
-    # DIAGNOSTICS (TIER 2)
+    # ENSTROPHY (computed every step)
+    # ----------------------------
+    Z = 0.5 * np.mean(w * w)
+
+    # ----------------------------
+    # DIAGNOSTICS (printed every 500 steps)
     # ----------------------------
     if n % 500 == 0:
-        psi = streamfunction(w)
-        u, v = velocity(psi)
 
-        E = energy(u, v)
-        k_bins, Ek = energy_spectrum(w)
+    psi = streamfunction(w)
+    u, v = velocity(psi)
 
-        print(f"step={n}, E={E:.6e}, E(k=4)={Ek[4]:.3e}")
+    E = energy(u, v)
+    k_bins, Ek = energy_spectrum(w)
 
-print("Simulation complete.")
+    # safety check for spectrum length
+    if len(Ek) > 4:
+        Ek4 = Ek[4]
+    else:
+        Ek4 = np.nan
+
+    print(f"step={n}, E={E:.6e}, Z={Z:.6e}, E(k=4)={Ek4:.3e}")
