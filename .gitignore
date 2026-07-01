@@ -50,3 +50,6 @@ project/solver/legacy_solver.QUARANTINE*.py
 # Python cache
 __pycache__/
 *.pyc
+
+# Local scratch / broken experiments
+local_scratch/
