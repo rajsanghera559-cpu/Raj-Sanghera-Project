@@ -25,7 +25,7 @@ kolmogorov_bifurcations_archive.gz/
 # --- Raj-Sanghera emergency cleanup rules ---
 
 # Generated experiment outputs
-experiments/
+/experiments/
 tmp_smoke*/
 tmp_smoke_pkg*/
 tmp_smoke_final*/
