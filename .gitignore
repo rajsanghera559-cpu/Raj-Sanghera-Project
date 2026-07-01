@@ -21,3 +21,32 @@ venv/
 
 # Local downloaded literature archive.
 kolmogorov_bifurcations_archive.gz/
+
+# --- Raj-Sanghera emergency cleanup rules ---
+
+# Generated experiment outputs
+experiments/
+tmp_smoke*/
+tmp_smoke_pkg*/
+tmp_smoke_final*/
+
+# Local generated outputs
+spectrum.csv
+diagnostics.csv
+*.png
+
+# Recovery and broken-file artifacts
+ersUserDesktopRaj-Sanghera-Project
+recover_spectral_solver.py
+.py
+project/solver/spectral_solver_recovered.py
+project/solver/legacy_solver.BROKEN*.py
+project/solver/legacy_solver.MANUAL_REPAIR_BACKUP*.py
+project/solver/legacy_solver.QUARANTINE*.py
+
+# Accidental command-fragment files
+*olver.legacy_solver import SpectralSolver*
+
+# Python cache
+__pycache__/
+*.pyc
