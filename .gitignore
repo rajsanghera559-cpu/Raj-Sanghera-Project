@@ -53,3 +53,6 @@ __pycache__/
 
 # Local scratch / broken experiments
 local_scratch/
+
+# Generated output folders
+/outputs/
