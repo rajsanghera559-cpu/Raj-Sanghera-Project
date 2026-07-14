@@ -1,0 +1,794 @@
+\# Phase 11W N128 Longer Controlled Selectable Method Diagnostic Comparison Decision Gate
+
+
+
+\## Checkpoint
+
+
+
+\- Branch: phase4\_validation
+
+\- Current previous tag: v0.5.22-phase11V-N128-longer-controlled-selectable-method-diagnostic-comparison-audit
+
+\- Current previous commit: fec45c3
+
+\- Decision gate file: PHASE11W\_N128\_LONGER\_CONTROLLED\_SELECTABLE\_METHOD\_DIAGNOSTIC\_COMPARISON\_DECISION\_GATE.md
+
+
+
+\## Purpose
+
+
+
+Phase 11W is a documentation-only decision gate.
+
+
+
+The purpose is to summarize Phase 11V and decide whether the N=128 controlled selectable diagnostic comparison is ready to be integrated with the earlier N=64 controlled comparison.
+
+
+
+This phase does not modify source code.
+
+
+
+This phase does not run a simulation.
+
+
+
+This phase does not enable SelectableAdvectionSolver.run().
+
+
+
+This phase does not replace SpectralSolver.
+
+
+
+This phase does not prove turbulence.
+
+
+
+This phase does not prove k^-3 scaling.
+
+
+
+This phase does not prove convergence.
+
+
+
+This phase does not claim method superiority.
+
+
+
+\## Current Solver Status
+
+
+
+The validated baseline solver remains:
+
+
+
+project/solver/spectral\_solver.py
+
+
+
+The selectable diagnostic solver remains:
+
+
+
+project/solver/selectable\_advection\_solver.py
+
+
+
+The selectable solver currently supports:
+
+
+
+\- fd\_centered
+
+\- pseudo\_spectral
+
+\- arakawa
+
+
+
+The selectable solver currently includes:
+
+
+
+\- compute\_advection(w)
+
+\- compute\_rhs\_selectable(w)
+
+\- step\_once\_selectable(w)
+
+\- run\_selectable\_diagnostic(...)
+
+
+
+The selectable solver still has:
+
+
+
+run() intentionally disabled
+
+
+
+This remains correct.
+
+
+
+\## Phase 11V Summary
+
+
+
+Phase 11V ran an N=128 longer controlled selectable diagnostic comparison across:
+
+
+
+\- fd\_centered
+
+\- pseudo\_spectral
+
+\- arakawa
+
+
+
+Each method used:
+
+
+
+run\_selectable\_diagnostic(...)
+
+
+
+The audit did not call:
+
+
+
+SpectralSolver.run()
+
+
+
+The audit did not enable:
+
+
+
+SelectableAdvectionSolver.run()
+
+
+
+The audit used identical controlled conditions for all methods.
+
+
+
+\## Phase 11V Parameters
+
+
+
+| Parameter | Value |
+
+|---|---:|
+
+| N | 128 |
+
+| Re | 1000 |
+
+| dt | 0.001 |
+
+| steps | 1000 |
+
+| final time | 1.0 |
+
+| log\_every | 100 |
+
+| initial RMS | 0.01 |
+
+| methods | fd\_centered, pseudo\_spectral, arakawa |
+
+| forcing | inherited baseline deterministic forcing |
+
+
+
+\## Phase 11V Global Checks
+
+
+
+| Check | Result |
+
+|---|---:|
+
+| SpectralSolver import | PASS |
+
+| SelectableAdvectionSolver import | PASS |
+
+| Supported methods exact | PASS |
+
+| Default method fd\_centered | PASS |
+
+| compute\_rhs\_selectable exists | PASS |
+
+| step\_once\_selectable exists | PASS |
+
+| run\_selectable\_diagnostic exists | PASS |
+
+| SpectralSolver file has no git diff | PASS |
+
+| advection\_operators file has no git diff | PASS |
+
+| selectable\_advection\_solver file has no git diff | PASS |
+
+| All grid shapes same | PASS |
+
+| All dx same | PASS |
+
+| All dt same | PASS |
+
+| All nu same | PASS |
+
+| All dealias masks same | PASS |
+
+| All forcing fields same | PASS |
+
+| Global checks | PASS |
+
+
+
+\## Phase 11V Method Results
+
+
+
+| Method | Final RMS | Final Energy | Final Enstrophy | RMS Ratio | Energy Ratio | Enstrophy Ratio | Dominant Shell | Result |
+
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+
+| fd\_centered | 1.383832541415e-02 | 1.081609991096e-05 | 9.574962513398e-05 | 1.383832541415e+00 | 2.137703826166e+00 | 1.914992502680e+00 | 3.0 | PASS |
+
+| pseudo\_spectral | 1.383832514162e-02 | 1.081609974827e-05 | 9.574962136262e-05 | 1.383832514162e+00 | 2.137703794011e+00 | 1.914992427252e+00 | 3.0 | PASS |
+
+| arakawa | 1.383832513401e-02 | 1.081609972773e-05 | 9.574962125729e-05 | 1.383832513401e+00 | 2.137703789951e+00 | 1.914992425146e+00 | 3.0 | PASS |
+
+
+
+\## Phase 11V Spectrum Results
+
+
+
+| Method | Low-k Fraction k<=4 | High-k Fraction k>=10 | Spectrum Direct Relative Error | Result |
+
+|---|---:|---:|---:|---:|
+
+| fd\_centered | 9.999993822143e-01 | 4.811172943166e-14 | 6.264978720440e-16 | PASS |
+
+| pseudo\_spectral | 9.999993713576e-01 | 5.145804105620e-14 | 4.698734111008e-16 | PASS |
+
+| arakawa | 9.999993869243e-01 | 4.663544254778e-14 | 4.698734119932e-16 | PASS |
+
+
+
+\## Phase 11V Pairwise Comparisons
+
+
+
+| Pair | Field Relative L2 Difference | Energy Relative Difference | Enstrophy Relative Difference | RMS Relative Difference | Spectrum Relative L2 Difference | Spectrum Cosine Similarity | Dominant Shell Match | Result |
+
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+
+| pseudo\_spectral vs fd\_centered | 2.117135768632e-05 | 1.504188750238e-08 | 3.938765425646e-08 | 1.969382730585e-08 | 4.913982615903e-08 | 1.000000000000e+00 | PASS | PASS |
+
+| arakawa vs fd\_centered | 1.134297610978e-05 | 1.694119928233e-08 | 4.048776482117e-08 | 2.024388254876e-08 | 3.049532971221e-08 | 1.000000000000e+00 | PASS | PASS |
+
+| arakawa vs pseudo\_spectral | 2.414609989113e-05 | 1.899311808512e-09 | 1.100110608040e-09 | 5.500552537478e-10 | 4.385026889381e-08 | 1.000000000000e+00 | PASS | PASS |
+
+
+
+\## Phase 11V Final Checks
+
+
+
+| Check | Result |
+
+|---|---:|
+
+| Shared initial\_w unchanged across all runs | PASS |
+
+| All method audits pass | PASS |
+
+| All pairwise comparisons pass | PASS |
+
+| Overall Phase 11V audit | PASS |
+
+
+
+\## Main Finding
+
+
+
+Phase 11V passed.
+
+
+
+All three selectable diagnostic methods completed the N=128 longer controlled diagnostic run through final time 1.0.
+
+
+
+The methods produced finite, real, comparable outputs with valid metadata guardrails.
+
+
+
+All three methods agreed on dominant shell:
+
+
+
+k = 3.0
+
+
+
+Pairwise comparison metrics were finite and passed.
+
+
+
+\## N64 to N128 Context
+
+
+
+Phase 11S previously passed the same controlled comparison at:
+
+
+
+N = 64
+
+
+
+Phase 11V repeated the controlled comparison at:
+
+
+
+N = 128
+
+
+
+The broad diagnostic behavior remained consistent:
+
+
+
+\- finite final states
+
+\- real final states
+
+\- dominant shell k = 3.0
+
+\- low-k dominated spectra
+
+\- very small high-k energy fraction
+
+\- finite pairwise method differences
+
+\- metadata guardrails preserved
+
+\- SelectableAdvectionSolver.run() disabled
+
+\- SpectralSolver unchanged
+
+
+
+This is useful controlled evidence.
+
+
+
+This is not a convergence proof.
+
+
+
+A convergence claim would require a separately designed convergence-study phase.
+
+
+
+\## What Phase 11V Confirms
+
+
+
+Phase 11V confirms:
+
+
+
+1\. run\_selectable\_diagnostic(...) works for fd\_centered at N=128 through final time 1.0.
+
+
+
+2\. run\_selectable\_diagnostic(...) works for pseudo\_spectral at N=128 through final time 1.0.
+
+
+
+3\. run\_selectable\_diagnostic(...) works for arakawa at N=128 through final time 1.0.
+
+
+
+4\. All methods preserve metadata guardrails.
+
+
+
+5\. All methods produce finite final states.
+
+
+
+6\. All methods produce real final states.
+
+
+
+7\. All methods write diagnostic outputs.
+
+
+
+8\. All methods write spectrum outputs.
+
+
+
+9\. All method time-history diagnostics remain finite.
+
+
+
+10\. All pairwise comparison metrics are finite.
+
+
+
+11\. All methods agree on dominant shell k = 3.0.
+
+
+
+12\. SelectableAdvectionSolver.run() remains disabled.
+
+
+
+13\. SpectralSolver remains unchanged.
+
+
+
+14\. advection\_operators remains unchanged.
+
+
+
+15\. No turbulence claim is present.
+
+
+
+16\. No k\_minus\_3 claim is present.
+
+
+
+\## What Phase 11V Does Not Confirm
+
+
+
+Phase 11V does not confirm:
+
+
+
+1\. production readiness
+
+
+
+2\. turbulence
+
+
+
+3\. k^-3 scaling
+
+
+
+4\. inertial range behavior
+
+
+
+5\. Arakawa superiority
+
+
+
+6\. pseudo\_spectral superiority
+
+
+
+7\. statistical steady state behavior
+
+
+
+8\. physical cascade behavior
+
+
+
+9\. long-time asymptotic stability
+
+
+
+10\. validated production simulation behavior
+
+
+
+11\. convergence
+
+
+
+12\. resolved inertial-range spectrum
+
+
+
+\## Decision
+
+
+
+Decision:
+
+
+
+PASS
+
+
+
+The N=128 longer controlled selectable method diagnostic comparison passed.
+
+
+
+The controlled selectable diagnostic pathway is ready for an integrated N64/N128 summary phase.
+
+
+
+\## Advancement Approved
+
+
+
+Proceed to a documentation and summary phase comparing the already completed N=64 and N=128 controlled selectable diagnostic audits.
+
+
+
+The next phase should use already produced audit results.
+
+
+
+The next phase should not run new simulations.
+
+
+
+The next phase should not claim convergence.
+
+
+
+The next phase should not claim turbulence.
+
+
+
+The next phase should not claim k^-3 scaling.
+
+
+
+The next phase should not claim method superiority.
+
+
+
+\## Advancement Not Approved
+
+
+
+This decision gate does not approve:
+
+
+
+\- enabling SelectableAdvectionSolver.run()
+
+\- replacing SpectralSolver
+
+\- making Arakawa the default
+
+\- production simulations
+
+\- turbulence experiments
+
+\- k^-3 claims
+
+\- inertial-range claims
+
+\- slope fitting as evidence
+
+\- convergence claims
+
+\- method superiority claims
+
+
+
+\## Recommended Next Phase
+
+
+
+Phase 11X — N64/N128 Controlled Selectable Diagnostic Comparison Summary Design
+
+
+
+Purpose:
+
+
+
+Design a documentation-only summary comparing:
+
+
+
+\- Phase 11S N=64 longer controlled selectable diagnostic comparison
+
+\- Phase 11V N=128 longer controlled selectable diagnostic comparison
+
+
+
+The summary should integrate:
+
+
+
+\- method-level metrics
+
+\- pairwise metrics
+
+\- spectrum summaries
+
+\- low-k and high-k fractions
+
+\- dominant shell behavior
+
+\- metadata guardrails
+
+\- scientific boundaries
+
+
+
+The summary should not call the N64/N128 comparison a convergence study.
+
+
+
+The summary may recommend a future dedicated convergence-study design.
+
+
+
+\## Recommended Phase 11X Inputs
+
+
+
+Phase 11X should use:
+
+
+
+\- PHASE11S\_LONGER\_CONTROLLED\_SELECTABLE\_METHOD\_DIAGNOSTIC\_COMPARISON\_AUDIT.csv
+
+\- PHASE11S\_LONGER\_CONTROLLED\_SELECTABLE\_METHOD\_DIAGNOSTIC\_COMPARISON\_PAIRWISE.csv
+
+\- PHASE11S\_LONGER\_CONTROLLED\_SELECTABLE\_METHOD\_DIAGNOSTIC\_COMPARISON\_AUDIT\_REPORT.md
+
+\- PHASE11V\_N128\_LONGER\_CONTROLLED\_SELECTABLE\_METHOD\_DIAGNOSTIC\_COMPARISON\_AUDIT.csv
+
+\- PHASE11V\_N128\_LONGER\_CONTROLLED\_SELECTABLE\_METHOD\_DIAGNOSTIC\_COMPARISON\_PAIRWISE.csv
+
+\- PHASE11V\_N128\_LONGER\_CONTROLLED\_SELECTABLE\_METHOD\_DIAGNOSTIC\_COMPARISON\_AUDIT\_REPORT.md
+
+
+
+\## Recommended Phase 11X Outputs
+
+
+
+Phase 11X should create:
+
+
+
+\- PHASE11X\_N64\_N128\_CONTROLLED\_SELECTABLE\_DIAGNOSTIC\_COMPARISON\_SUMMARY\_DESIGN.md
+
+
+
+The phase should remain design-only.
+
+
+
+\## Recommended Future Phase
+
+
+
+After Phase 11X design, Phase 11Y may create the actual N64/N128 controlled summary report.
+
+
+
+Phase 11Y should still avoid convergence claims unless a separate convergence-study design is approved.
+
+
+
+\## Required Guardrails for Phase 11X
+
+
+
+Phase 11X must preserve:
+
+
+
+\- SpectralSolver unchanged
+
+\- advection\_operators unchanged
+
+\- SelectableAdvectionSolver.run() disabled
+
+\- fd\_centered default unchanged
+
+\- Arakawa not default
+
+\- no production simulation
+
+\- no turbulence claim
+
+\- no k^-3 claim
+
+\- no inertial-range claim
+
+\- no method superiority claim
+
+\- no convergence claim
+
+
+
+\## Scientific Boundary
+
+
+
+Correct statement after Phase 11W:
+
+
+
+The N=128 longer controlled selectable diagnostic comparison passed across fd\_centered, pseudo\_spectral, and arakawa.
+
+
+
+Incorrect statement:
+
+
+
+The project has proven turbulence, k^-3 scaling, inertial-range behavior, method superiority, or convergence.
+
+
+
+Those statements are not supported.
+
+
+
+\## Final Result
+
+
+
+Phase 11W decision gate:
+
+
+
+PASS
+
+
+
+Proceed to Phase 11X N64/N128 controlled selectable diagnostic comparison summary design.
+
+
+
+Do not replace SpectralSolver.
+
+
+
+Do not enable SelectableAdvectionSolver.run().
+
+
+
+Do not make Arakawa the default.
+
+
+
+Do not make turbulence claims.
+
+
+
+Do not make k^-3 claims.
+
+
+
+Do not make convergence claims.
+
+
+
+Do not make method superiority claims.
+
