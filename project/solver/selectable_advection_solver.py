@@ -15,7 +15,15 @@ Phase 10N addition:
 - Preserve run() as disabled.
 - Do not enable production time evolution.
 - Do not modify SpectralSolver.
+
+Phase 10P addition:
+- Add step_once_selectable(self, w).
+- Preserve run() as disabled.
+- Do not enable production time evolution.
+- Do not modify SpectralSolver.
 """
+
+import numpy as np
 
 from project.solver.spectral_solver import SpectralSolver
 from project.solver.advection_operators import (
@@ -180,6 +188,43 @@ class SelectableAdvectionSolver(SpectralSolver):
 
         return rhs.real
 
+    def step_once_selectable(self, w):
+        """
+        Compute one RK2-style selectable update without mutating solver state.
+
+        This mirrors the baseline SpectralSolver.run() one-step structure:
+
+            k1 = rhs(w)
+            w1 = w + dt * k1
+            k2 = rhs(w1)
+            w_new = w + 0.5 * dt * (k1 + k2)
+
+        Then it applies the same post-step 2/3 spectral dealiasing mask used
+        by SpectralSolver.run().
+
+        This method:
+        - validates shape through compute_rhs_selectable
+        - does not mutate input w
+        - does not mutate solver.w
+        - does not write diagnostics
+        - does not enable run()
+        """
+        arr = ensure_real_array(w)
+
+        if arr.shape != self.w.shape:
+            raise ValueError(f"Shape mismatch: w={arr.shape}, expected={self.w.shape}")
+
+        k1 = self.compute_rhs_selectable(arr)
+        w1 = arr + self.dt * k1
+
+        k2 = self.compute_rhs_selectable(w1)
+        w_new = arr + 0.5 * self.dt * (k1 + k2)
+
+        W = np.fft.fft2(w_new)
+        W *= self.deal
+
+        return np.fft.ifft2(W).real
+
     def selectable_advection_metadata(self):
         """
         Return metadata describing the selectable-advection scaffold.
@@ -195,6 +240,8 @@ class SelectableAdvectionSolver(SpectralSolver):
             "advection_operator_file": "project/solver/advection_operators.py",
             "rhs_method": "compute_rhs_selectable",
             "rhs_status": "diagnostic_scaffold",
+            "step_method": "step_once_selectable",
+            "step_status": "diagnostic_scaffold",
             "production_baseline_modified": False,
             "method_family": "mixed_spectral_selectable_advection",
             "streamfunction_method": "spectral",
@@ -213,7 +260,7 @@ class SelectableAdvectionSolver(SpectralSolver):
         """
         Return selectable-advection metadata.
 
-        This method is intentionally simple in Phase 10K/10N.
+        This method is intentionally simple in Phase 10K/10N/10P.
         It avoids assuming details of SpectralSolver's internal metadata format.
         """
         return self.selectable_advection_metadata()
@@ -231,7 +278,7 @@ class SelectableAdvectionSolver(SpectralSolver):
         raise NotImplementedError(
             "SelectableAdvectionSolver.run() is intentionally disabled. "
             "This scaffold only supports construction, metadata, "
-            "compute_advection diagnostics, and compute_rhs_selectable. "
-            "A selectable time-evolution loop must be implemented and audited "
-            "in a later phase."
+            "compute_advection diagnostics, compute_rhs_selectable, "
+            "and step_once_selectable. A selectable time-evolution loop "
+            "must be implemented and audited in a later phase."
         )
