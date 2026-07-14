@@ -1,0 +1,6 @@
+test_type,method,constructor_accepts_method,finite_output,real_output,input_w_unchanged,solver_w_unchanged,matches_direct_operator,selected_adv_l2,expected_adv_l2,diff_l2,diff_max_abs,cosine_similarity_vs_direct_operator,metadata_has_solver_variant,metadata_has_solver_class,metadata_has_baseline_class,metadata_has_method,metadata_baseline_unmodified,metadata_no_turbulence_claim,metadata_no_k_minus_3_claim,run_disabled,overall_result
+global_audit,global,N/A,N/A,N/A,N/A,N/A,N/A,,,,,,N/A,N/A,N/A,N/A,PASS,N/A,N/A,N/A,PASS
+method_audit,fd_centered,PASS,PASS,PASS,PASS,PASS,PASS,2.3579183883252408e-05,2.3579183883252408e-05,0.0,0.0,1.0,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+method_audit,pseudo_spectral,PASS,PASS,PASS,PASS,PASS,PASS,2.4422000796351023e-05,2.4422000796351023e-05,0.0,0.0,1.0000000000000002,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+method_audit,arakawa,PASS,PASS,PASS,PASS,PASS,PASS,2.3397985523488124e-05,2.3397985523488124e-05,0.0,0.0,1.0,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS,PASS
+invalid_method_audit,invalid_method,N/A,N/A,N/A,N/A,N/A,N/A,,,,,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,PASS
