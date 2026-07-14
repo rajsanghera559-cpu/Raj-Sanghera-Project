@@ -154,31 +154,120 @@ def advection_pseudo_spectral(solver, w, dealias_product=False):
 
 def jacobian_arakawa_periodic(psi, w, dx):
     """
-    Placeholder for a future Arakawa Jacobian implementation.
+    Compute the Arakawa Jacobian J(psi, w) on a periodic square grid.
 
-    Phase 10C intentionally does not implement Arakawa yet.
+    This function returns the standard Jacobian convention:
 
-    Reason:
-    - Arakawa sign convention must be handled carefully.
-    - The project currently uses adv = u*omega_x + v*omega_y.
-    - A standard Jacobian J(psi, omega) may have the opposite sign depending on convention.
-    - Implementation should be introduced in a dedicated audited phase.
+        J(psi, w) = psi_x * w_y - psi_y * w_x
+
+    Project sign convention reminder:
+
+        u = psi_y
+        v = -psi_x
+
+        adv = u * w_x + v * w_y
+            = psi_y * w_x - psi_x * w_y
+            = -J(psi, w)
+
+    Therefore advection_arakawa(solver, w) returns -J_arakawa.
+
+    Axis convention in this project:
+
+        axis 1 is x
+        axis 0 is y
+
+    This function is standalone. It does not mutate psi, w, or solver state.
     """
-    raise NotImplementedError(
-        "Arakawa Jacobian is intentionally not implemented in Phase 10C."
+    psi = ensure_real_array(psi)
+    w = ensure_real_array(w)
+
+    if psi.shape != w.shape:
+        raise ValueError(f"Shape mismatch: psi={psi.shape}, w={w.shape}")
+
+    if psi.ndim != 2:
+        raise ValueError(f"Expected 2D arrays, got psi.ndim={psi.ndim}")
+
+    if dx <= 0:
+        raise ValueError(f"dx must be positive, got dx={dx}")
+
+    # x-neighbors use axis=1.
+    psi_xp = np.roll(psi, -1, axis=1)
+    psi_xm = np.roll(psi, 1, axis=1)
+
+    # y-neighbors use axis=0.
+    psi_yp = np.roll(psi, -1, axis=0)
+    psi_ym = np.roll(psi, 1, axis=0)
+
+    # diagonal neighbors
+    psi_xp_yp = np.roll(psi_xp, -1, axis=0)
+    psi_xp_ym = np.roll(psi_xp, 1, axis=0)
+    psi_xm_yp = np.roll(psi_xm, -1, axis=0)
+    psi_xm_ym = np.roll(psi_xm, 1, axis=0)
+
+    w_xp = np.roll(w, -1, axis=1)
+    w_xm = np.roll(w, 1, axis=1)
+
+    w_yp = np.roll(w, -1, axis=0)
+    w_ym = np.roll(w, 1, axis=0)
+
+    w_xp_yp = np.roll(w_xp, -1, axis=0)
+    w_xp_ym = np.roll(w_xp, 1, axis=0)
+    w_xm_yp = np.roll(w_xm, -1, axis=0)
+    w_xm_ym = np.roll(w_xm, 1, axis=0)
+
+    inv_12dx2 = 1.0 / (12.0 * dx * dx)
+
+    # Arakawa's three-part averaged Jacobian.
+    #
+    # j1 approximates:
+    #     psi_x * w_y - psi_y * w_x
+    j1 = (
+        (psi_xp - psi_xm) * (w_yp - w_ym)
+        - (psi_yp - psi_ym) * (w_xp - w_xm)
     )
+
+    j2 = (
+        psi_xp * (w_xp_yp - w_xp_ym)
+        - psi_xm * (w_xm_yp - w_xm_ym)
+        - psi_yp * (w_xp_yp - w_xm_yp)
+        + psi_ym * (w_xp_ym - w_xm_ym)
+    )
+
+    j3 = (
+        w_yp * (psi_xp_yp - psi_xm_yp)
+        - w_ym * (psi_xp_ym - psi_xm_ym)
+        - w_xp * (psi_xp_yp - psi_xp_ym)
+        + w_xm * (psi_xm_yp - psi_xm_ym)
+    )
+
+    return inv_12dx2 * (j1 + j2 + j3)
 
 
 def advection_arakawa(solver, w):
     """
-    Placeholder for future Arakawa advection diagnostic.
+    Compute project-convention Arakawa advection:
 
-    This function intentionally raises NotImplementedError until an audited
-    Arakawa implementation phase is created.
+        adv = u * w_x + v * w_y
+
+    using the sign relation:
+
+        adv = -J(psi, w)
+
+    where jacobian_arakawa_periodic returns:
+
+        J(psi, w) = psi_x * w_y - psi_y * w_x
+
+    This function does not modify solver state.
     """
-    raise NotImplementedError(
-        "Arakawa advection is intentionally not implemented in Phase 10C."
-    )
+    arr = ensure_real_array(w)
+
+    if arr.shape != solver.w.shape:
+        raise ValueError(f"Shape mismatch: w={arr.shape}, expected={solver.w.shape}")
+
+    psi = solver.streamfunction(arr)
+    jacobian = jacobian_arakawa_periodic(psi, arr, solver.dx)
+
+    return (-jacobian).real
 
 
 def compare_advection_operators(solver, w, dealias_pseudo_spectral=False):
