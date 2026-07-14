@@ -10,16 +10,16 @@ Phase 10K purpose:
 - Do not run long simulations.
 - Do not claim turbulence or k^-3 scaling.
 
-Important:
-This scaffold intentionally does not replace SpectralSolver.
-
-The inherited SpectralSolver.run() method is disabled here because the
-selectable-advection time-evolution loop has not yet been audited.
-Future phases must implement and audit that separately.
+Phase 10N addition:
+- Add compute_rhs_selectable(self, w).
+- Preserve run() as disabled.
+- Do not enable production time evolution.
+- Do not modify SpectralSolver.
 """
 
 from project.solver.spectral_solver import SpectralSolver
 from project.solver.advection_operators import (
+    ensure_real_array,
     advection_fd_centered,
     advection_pseudo_spectral,
     advection_arakawa,
@@ -138,6 +138,48 @@ class SelectableAdvectionSolver(SpectralSolver):
             "This should not occur if validation succeeded."
         )
 
+    def compute_rhs_selectable(self, w):
+        """
+        Compute the selectable right-hand side for a vorticity field.
+
+        Project convention:
+
+            d omega / dt = -adv + diffusion + forcing
+
+        where every advection operator returns:
+
+            adv = u * omega_x + v * omega_y
+
+        This method:
+        - validates shape
+        - computes selected nonlinear advection
+        - computes spectral diffusion
+        - adds baseline forcing
+        - returns rhs
+        - does not mutate input w
+        - does not mutate solver.w
+        - does not advance time
+        - does not write files
+        - does not enable run()
+        """
+        arr = ensure_real_array(w)
+
+        if arr.shape != self.w.shape:
+            raise ValueError(f"Shape mismatch: w={arr.shape}, expected={self.w.shape}")
+
+        adv = self.compute_advection(arr)
+        diffusion = self.laplacian_spectral(arr)
+        force = self.forcing()
+
+        if force.shape != arr.shape:
+            raise ValueError(
+                f"Forcing shape mismatch: forcing={force.shape}, expected={arr.shape}"
+            )
+
+        rhs = -adv + diffusion + force
+
+        return rhs.real
+
     def selectable_advection_metadata(self):
         """
         Return metadata describing the selectable-advection scaffold.
@@ -151,13 +193,17 @@ class SelectableAdvectionSolver(SpectralSolver):
             "baseline_solver_class": "SpectralSolver",
             "advection_method": self.advection_method,
             "advection_operator_file": "project/solver/advection_operators.py",
+            "rhs_method": "compute_rhs_selectable",
+            "rhs_status": "diagnostic_scaffold",
             "production_baseline_modified": False,
             "method_family": "mixed_spectral_selectable_advection",
             "streamfunction_method": "spectral",
             "velocity_method": "spectral",
             "diffusion_method": "spectral",
+            "forcing_method": "baseline_low_wavenumber_forcing",
             "timestep_method": "RK2-style",
             "dealiasing_method": "post-step 2/3 spectral mask",
+            "run_enabled": False,
             "arakawa_status": "diagnostic_candidate",
             "turbulence_claim": False,
             "k_minus_3_claim": False,
@@ -167,7 +213,7 @@ class SelectableAdvectionSolver(SpectralSolver):
         """
         Return selectable-advection metadata.
 
-        This method is intentionally simple in Phase 10K.
+        This method is intentionally simple in Phase 10K/10N.
         It avoids assuming details of SpectralSolver's internal metadata format.
         """
         return self.selectable_advection_metadata()
@@ -183,8 +229,9 @@ class SelectableAdvectionSolver(SpectralSolver):
         time evolution before any production-style runs are allowed.
         """
         raise NotImplementedError(
-            "SelectableAdvectionSolver.run() is intentionally disabled in "
-            "Phase 10K. This scaffold only supports construction, metadata, "
-            "and compute_advection diagnostics. A selectable time-evolution "
-            "loop must be implemented and audited in a later phase."
+            "SelectableAdvectionSolver.run() is intentionally disabled. "
+            "This scaffold only supports construction, metadata, "
+            "compute_advection diagnostics, and compute_rhs_selectable. "
+            "A selectable time-evolution loop must be implemented and audited "
+            "in a later phase."
         )
