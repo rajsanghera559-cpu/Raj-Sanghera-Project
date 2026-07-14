@@ -1,0 +1,9 @@
+dealias_pseudo_spectral_product,field_name,classification,primary_evidence,N64_relative_error,N128_relative_error,N128_over_N64_error_ratio,improved_at_N128,approximately_second_order_window,comparison_result
+False,higher_smooth_multimode,higher_smooth_nonlinear,True,0.16568472830956393,0.042222951044083946,0.25483912412974447,PASS,PASS,PASS
+False,low_mode_pair,low_k_nonlinear,True,0.04522161377787814,0.011352896069005877,0.25105021958680246,PASS,PASS,PASS
+False,phase6d_like_multimode,phase6d_like_low_k_nonlinear,True,0.037961505695557576,0.009549903183481478,0.2515680821532601,PASS,PASS,PASS
+False,single_mode_k2_2,near_null_reference,False,0.7580097248347016,0.6634777425015014,0.8752892222407638,PASS,FAIL,PASS
+True,higher_smooth_multimode,higher_smooth_nonlinear,True,0.16568472830956402,0.042222951044084155,0.2548391241297456,PASS,PASS,PASS
+True,low_mode_pair,low_k_nonlinear,True,0.04522161377787838,0.011352896069006194,0.2510502195868081,PASS,PASS,PASS
+True,phase6d_like_multimode,phase6d_like_low_k_nonlinear,True,0.03796150569555768,0.009549903183481676,0.2515680821532646,PASS,PASS,PASS
+True,single_mode_k2_2,near_null_reference,False,0.9549830085059615,1.2776448677170513,1.3378718326265127,FAIL,FAIL,FAIL
