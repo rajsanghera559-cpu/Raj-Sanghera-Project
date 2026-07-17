@@ -35,14 +35,14 @@ from typing import Any, Callable, Mapping
 import numpy as np
 
 
-RUNNER_VERSION = "PHASE13F_CONTROLLED_PILOT_RUNNER_V1"
+RUNNER_VERSION = "PHASE13F_CONTROLLED_PILOT_RUNNER_V2"
 
 EXECUTION_TOKEN = (
-    "PHASE13F_EXECUTE_AUTHORIZED_SINGLE_GRID_PILOT_V1"
+    "PHASE13F_EXECUTE_AUTHORIZED_SINGLE_GRID_PILOT_V2"
 )
 
 EXPECTED_BRANCH = "phase4_validation"
-EXPECTED_RUNNER_TAG_PREFIX = "v0.5.54-phase13F2"
+EXPECTED_RUNNER_TAG_PREFIX = "v0.5.56-phase13F3B"
 
 N = 16
 RE = 1000.0
@@ -388,12 +388,55 @@ def _sha256_file(
     )
 
 
+
+def _is_authorized_ignored_inventory_path(
+    path: str,
+) -> bool:
+    prefix = (
+        "experiments/verification/"
+        "phase13/"
+    )
+
+    if (
+        not path.startswith(prefix)
+        or not path.endswith("/")
+    ):
+        return False
+
+    run_id = path[
+        len(prefix):-1
+    ]
+
+    return (
+        RUN_ID_RE.fullmatch(
+            run_id
+        )
+        is not None
+    )
+
 def _git(
     *arguments: str,
 ) -> str:
     command = tuple(arguments)
 
-    if command not in ALLOWED_GIT_COMMANDS:
+    ignored_inventory_command = (
+        len(command) == 6
+        and command[:5] == (
+            "ls-files",
+            "--others",
+            "--ignored",
+            "--exclude-standard",
+            "--",
+        )
+        and _is_authorized_ignored_inventory_path(
+            command[5]
+        )
+    )
+
+    if (
+        command not in ALLOWED_GIT_COMMANDS
+        and not ignored_inventory_command
+    ):
         raise RuntimeError(
             "Unauthorized Git command: "
             f"{command!r}"
@@ -4275,36 +4318,79 @@ def _post_run_audit(
         "--untracked-files=all",
     )
 
-    expected_prefix = (
-        "?? experiments/verification/"
-        f"phase13/{context.run_id}/"
-    )
-
     status_lines = tuple(
         line
-        for line in (
-            status.splitlines()
-        )
+        for line in status.splitlines()
         if line
     )
 
-    if not status_lines:
-        raise RuntimeError(
-            "Git status does not "
-            "contain the authorized "
-            "result files"
-        )
-
-    if any(
-        not line.startswith(
-            expected_prefix
-        )
-        for line in status_lines
-    ):
+    if status_lines:
         raise RuntimeError(
             "Repository status contains "
-            "a path outside the "
-            "authorized run directory"
+            "visible changes after execution:\n"
+            f"{status}"
+        )
+
+    ignored_path = (
+        "experiments/verification/"
+        f"phase13/{context.run_id}/"
+    )
+
+    ignored_inventory = _git(
+        "ls-files",
+        "--others",
+        "--ignored",
+        "--exclude-standard",
+        "--",
+        ignored_path,
+    )
+
+    ignored_lines = tuple(
+        sorted(
+            line
+            for line in ignored_inventory.splitlines()
+            if line
+        )
+    )
+
+    physical_lines = tuple(
+        sorted(
+            path.relative_to(
+                REPO_ROOT
+            ).as_posix()
+            for path in run_directory.rglob("*")
+            if path.is_file()
+        )
+    )
+
+    if not ignored_lines:
+        raise RuntimeError(
+            "Git ignored-file inventory "
+            "does not contain the "
+            "authorized result files"
+        )
+
+    if ignored_lines != physical_lines:
+        missing = tuple(
+            sorted(
+                set(physical_lines)
+                - set(ignored_lines)
+            )
+        )
+
+        unexpected = tuple(
+            sorted(
+                set(ignored_lines)
+                - set(physical_lines)
+            )
+        )
+
+        raise RuntimeError(
+            "Git ignored-file inventory "
+            "does not match physical "
+            "result files: "
+            f"missing={missing!r}, "
+            f"unexpected={unexpected!r}"
         )
 
     return {
@@ -4327,7 +4413,7 @@ def _post_run_audit(
         (
             "status_entries"
         ): len(
-            status_lines
+            ignored_lines
         ),
         (
             "run_manifest_sha256"
