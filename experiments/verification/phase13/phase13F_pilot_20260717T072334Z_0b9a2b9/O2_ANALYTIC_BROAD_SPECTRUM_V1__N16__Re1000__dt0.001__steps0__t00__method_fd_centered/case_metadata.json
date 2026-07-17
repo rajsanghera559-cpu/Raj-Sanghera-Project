@@ -1,0 +1,89 @@
+{
+  "benchmark": {
+    "advection_method": "fd_centered",
+    "benchmark_id": "O2_ANALYTIC_BROAD_SPECTRUM_V1",
+    "compatibility_policy": "O2_DISCRETE_MEAN_SUBTRACTION_V1",
+    "post_step_mask_policy": "NO_POST_STEP_MASK_OPERATOR_ONLY_V1",
+    "product_dealiasing": false,
+    "reference_version": "PHASE13_REFERENCE_V1",
+    "source_policy": "OPERATOR_ONLY_NO_SOURCE_V1",
+    "track": "O2"
+  },
+  "environment": {
+    "floating_dtype": "float64",
+    "machine_epsilon": 2.220446049250313e-16,
+    "numpy_version": "2.4.4",
+    "operating_system": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.5",
+    "timestamp_utc": "2026-07-17T07:23:36Z"
+  },
+  "execution": {
+    "allowed_methods_called": [
+      "compute_advection"
+    ],
+    "forcing_call_count": 0,
+    "input_unchanged": true,
+    "mask_application_count": 0,
+    "prohibited_methods_called": [],
+    "solver_class": "SelectableAdvectionSolver",
+    "solver_state_unchanged": true
+  },
+  "numerical": {
+    "L": 6.283185307179586,
+    "N": 16,
+    "Re": 1000.0,
+    "constructor_steps": 0,
+    "dt": 0.001,
+    "dx": 0.39269908169872414,
+    "final_time_aligned": true,
+    "n_steps": 0,
+    "nu": 0.001,
+    "t_0": 0.0,
+    "t_final_actual": 0.0,
+    "t_final_requested": 0.0
+  },
+  "repository": {
+    "branch": "phase4_validation",
+    "commit": "0b9a2b9918630a9109e72d8bf71762915471fa5c",
+    "dirty": false,
+    "exact_reference_module_sha256": "6904C78E54948D07C92173C8B313844B28C92209B4F61CE447FFC29E15DA4EED",
+    "harness_module_sha256": "CDB6DBC249EA2DFF27E729AF0CF3D5C545C48BE57624CC59842B3222DAA752A2",
+    "name": "Raj-Sanghera-Project",
+    "output_schema_module_sha256": "6899C611C56E8154435BB6C042B520A13B466CD10042DE5325C7F9EF634FB11F",
+    "phase13b_specification_sha256": "6FC0685AC0225F542C181174ECC5940CE1C1163F2CE90B15301AEF46D5CE7875",
+    "phase13c_audit_report_sha256": "ABEF31DF4F67913EB418C816DBB665531C5F2C854EB4E300B68CF9F45CA5A306",
+    "protected_solver_sha256": {
+      "project/solver/advection_operators.py": "2C86465570DDF095D5B0A9B7F67E6E78A89D14F82933FA983D91156DD0F76409",
+      "project/solver/selectable_advection_solver.py": "5EDA93A2E9358D81927BD9EE247F305E6DBC94367B351801913FFEAA2D7C5891",
+      "project/solver/spectral_solver.py": "1195AF013057C31FC227FECD05DBCB277553D340096C0348F53DFE79A7A483C1"
+    }
+  },
+  "result": {
+    "case_id": "O2_ANALYTIC_BROAD_SPECTRUM_V1__N16__Re1000__dt0.001__steps0__t00__method_fd_centered",
+    "case_status": "PASS",
+    "error_summary": {
+      "L1_mean": 0.008828091053508104,
+      "L2_rms": 0.013991590444227953,
+      "Linf": 0.03893020836035124,
+      "exact_L2_rms": 0.06451045987546809,
+      "finite": true,
+      "numerical_L2_rms": 0.0513404272823156,
+      "relative_L2": 0.2168887103151569
+    },
+    "failure_messages": [],
+    "output_filenames": {
+      "case_metadata": "case_metadata.json",
+      "checks": "checks.json",
+      "error_summary": "error_summary.csv",
+      "field_manifest": "field_manifest.json",
+      "fields": "fields.npz"
+    },
+    "output_sha256": {
+      "checks": "DFF3C739020311EFA1FD68884ACD94E1A6332A9865422A62C03E1FF444B5B6ED",
+      "error_summary": "082298A920E7B9A137C33EF09D5483F0A51065C2305EDEF3FFC37F58EC6783EA",
+      "field_manifest": "4525D65F1655BD18BD931810CFE36DD2A16D0BF74CB7BD736037334C22E9EC06",
+      "fields": "EE6F87D11C11B0B370C87F466E74EE00D0F9C67C4230E05630CC5D007317C8BD"
+    }
+  },
+  "schema_id": "PHASE13_VERIFICATION_METADATA_V1"
+}

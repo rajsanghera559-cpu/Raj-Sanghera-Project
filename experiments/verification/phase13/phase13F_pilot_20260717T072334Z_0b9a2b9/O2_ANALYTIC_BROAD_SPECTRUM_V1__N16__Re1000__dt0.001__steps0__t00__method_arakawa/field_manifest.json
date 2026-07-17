@@ -1,0 +1,89 @@
+{
+  "archive_filename": "fields.npz",
+  "array_count": 5,
+  "arrays": {
+    "computed_adv": {
+      "L2_rms": 0.054471567975511254,
+      "dtype": "float64",
+      "finite": true,
+      "maximum": 0.1412596698170194,
+      "minimum": -0.14125966981701954,
+      "name": "computed_adv",
+      "nbytes": 2048,
+      "real_valued": true,
+      "sha256": "9645DE89118E9CF982B728FC83AF8D1A0E8FB3FFA331C72AD9801EA3AD842778",
+      "shape": [
+        16,
+        16
+      ],
+      "writeable": false
+    },
+    "error_adv": {
+      "L2_rms": 0.010531522048619802,
+      "dtype": "float64",
+      "finite": true,
+      "maximum": 0.029333011673377596,
+      "minimum": -0.02933301167337761,
+      "name": "error_adv",
+      "nbytes": 2048,
+      "real_valued": true,
+      "sha256": "929EF30F2DD9E3749B894D33FFEE0CE0D45E7AD973048FD6022D684FDC8A24FB",
+      "shape": [
+        16,
+        16
+      ],
+      "writeable": false
+    },
+    "exact_adv": {
+      "L2_rms": 0.06451045987546809,
+      "dtype": "float64",
+      "finite": true,
+      "maximum": 0.16900958180395606,
+      "minimum": -0.16900958180395606,
+      "name": "exact_adv",
+      "nbytes": 2048,
+      "real_valued": true,
+      "sha256": "7672016F5BD639E7F99B6C7C73E64A4065A8BBB06CCDE85D8FB4A6103251A693",
+      "shape": [
+        16,
+        16
+      ],
+      "writeable": false
+    },
+    "omega_input": {
+      "L2_rms": 0.5317677578078307,
+      "dtype": "float64",
+      "finite": true,
+      "maximum": 0.4558900903396982,
+      "minimum": -1.9174799090773538,
+      "name": "omega_input",
+      "nbytes": 2048,
+      "real_valued": true,
+      "sha256": "906E44AC635BD9085D82F816A6E58323A39F142E46BA56B4040F2CC29441F031",
+      "shape": [
+        16,
+        16
+      ],
+      "writeable": false
+    },
+    "omega_raw": {
+      "L2_rms": 0.5317677578078307,
+      "dtype": "float64",
+      "finite": true,
+      "maximum": 0.45589009033969824,
+      "minimum": -1.9174799090773538,
+      "name": "omega_raw",
+      "nbytes": 2048,
+      "real_valued": true,
+      "sha256": "A4B874C114CED9BEF83C89D9DE51B21C01AF640B237A1C0789008072944927B7",
+      "shape": [
+        16,
+        16
+      ],
+      "writeable": false
+    }
+  },
+  "case_id": "O2_ANALYTIC_BROAD_SPECTRUM_V1__N16__Re1000__dt0.001__steps0__t00__method_arakawa",
+  "schema_id": "PHASE13_FIELD_MANIFEST_V1",
+  "track": "O2"
+}

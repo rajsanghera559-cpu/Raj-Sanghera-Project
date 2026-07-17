@@ -1,0 +1,354 @@
+{
+  "case_count": 10,
+  "cases": [
+    {
+      "case_directory": "C:\\Users\\User\\Desktop\\Raj-Sanghera-Project\\experiments\\verification\\phase13\\phase13F_pilot_20260717T072334Z_0b9a2b9\\O1_BANDLIMITED_TWO_MODE_V1__N16__Re1000__dt0.001__steps0__t00__method_fd_centered",
+      "case_id": "O1_BANDLIMITED_TWO_MODE_V1__N16__Re1000__dt0.001__steps0__t00__method_fd_centered",
+      "case_status": "PASS",
+      "files": {
+        "case_metadata": {
+          "filename": "case_metadata.json",
+          "sha256": "73AAE38DB2555B279DCEDC30901A8A31F581F190DC41C849103FD5F71E2686BA",
+          "size_bytes": 3423
+        },
+        "checks": {
+          "filename": "checks.json",
+          "sha256": "D04FCBFE8A610788B21545DEA265E3FE7947955B629E2D570DD8046B0CDFCB3B",
+          "size_bytes": 1429
+        },
+        "error_summary": {
+          "filename": "error_summary.csv",
+          "sha256": "87A9D28E3C243B2A01777EFE75BDFBDE66B1BEAD054706A0BC413BEC31894639",
+          "size_bytes": 193
+        },
+        "field_manifest": {
+          "filename": "field_manifest.json",
+          "sha256": "8725872442EBE03CB907D639F913783E1DE34055968CA89BA84F197F58AE2BC9",
+          "size_bytes": 2341
+        },
+        "fields": {
+          "filename": "fields.npz",
+          "sha256": "3CD7B06B1B0889E5A54148C1AEF5863AB7FBE616158CEE117BC0169AD5F549A2",
+          "size_bytes": 5780
+        }
+      }
+    },
+    {
+      "case_directory": "C:\\Users\\User\\Desktop\\Raj-Sanghera-Project\\experiments\\verification\\phase13\\phase13F_pilot_20260717T072334Z_0b9a2b9\\O1_BANDLIMITED_TWO_MODE_V1__N16__Re1000__dt0.001__steps0__t00__method_pseudo_spectral",
+      "case_id": "O1_BANDLIMITED_TWO_MODE_V1__N16__Re1000__dt0.001__steps0__t00__method_pseudo_spectral",
+      "case_status": "PASS",
+      "files": {
+        "case_metadata": {
+          "filename": "case_metadata.json",
+          "sha256": "EE8B83B0E9ED0183B02778B8C37D2F262D60A300F92A494898EFBD908DAC06FC",
+          "size_bytes": 3439
+        },
+        "checks": {
+          "filename": "checks.json",
+          "sha256": "62EA9BC2BA6268F4455668BB65B0973ED0E934F823BED6D5A1326F8E341166FD",
+          "size_bytes": 1433
+        },
+        "error_summary": {
+          "filename": "error_summary.csv",
+          "sha256": "2713DFF727649684B87A9A68871363E948EC56199DCAE5382B6F25B0EBFD5460",
+          "size_bytes": 201
+        },
+        "field_manifest": {
+          "filename": "field_manifest.json",
+          "sha256": "5A3C2B8F592C6266F39B5AC460DCC4739BDD3E1793F590CC66CFE7F2B732AE4E",
+          "size_bytes": 2352
+        },
+        "fields": {
+          "filename": "fields.npz",
+          "sha256": "D28C053CEAA07C2EE5ED915E03893722FDB1E2C23C9E7A8D6FE345773A07E185",
+          "size_bytes": 5449
+        }
+      }
+    },
+    {
+      "case_directory": "C:\\Users\\User\\Desktop\\Raj-Sanghera-Project\\experiments\\verification\\phase13\\phase13F_pilot_20260717T072334Z_0b9a2b9\\O1_BANDLIMITED_TWO_MODE_V1__N16__Re1000__dt0.001__steps0__t00__method_arakawa",
+      "case_id": "O1_BANDLIMITED_TWO_MODE_V1__N16__Re1000__dt0.001__steps0__t00__method_arakawa",
+      "case_status": "PASS",
+      "files": {
+        "case_metadata": {
+          "filename": "case_metadata.json",
+          "sha256": "CEE419B1F743FBCFE1547F4C1953C2C162A48EB9CC5037A3E1BE5268C80E6256",
+          "size_bytes": 3414
+        },
+        "checks": {
+          "filename": "checks.json",
+          "sha256": "4D96D043BB24A792B29A47AFA7F1EE61D0A17EBFF6DAB54D5E78594661B8085F",
+          "size_bytes": 1425
+        },
+        "error_summary": {
+          "filename": "error_summary.csv",
+          "sha256": "2334240DAC4CD08D3DC0AE663DD4F2D4C4C819EE3CBBA1FCAAB78A0D5A493388",
+          "size_bytes": 192
+        },
+        "field_manifest": {
+          "filename": "field_manifest.json",
+          "sha256": "C19CC3E6097932207FF44B7E1F5745B72542F5F0DE11FA4351665B06A0C45DF8",
+          "size_bytes": 2336
+        },
+        "fields": {
+          "filename": "fields.npz",
+          "sha256": "B5091DB28C6820BE79966D2EB4249C32F8AD46A818C72DB06E4D54CA60292614",
+          "size_bytes": 5588
+        }
+      }
+    },
+    {
+      "case_directory": "C:\\Users\\User\\Desktop\\Raj-Sanghera-Project\\experiments\\verification\\phase13\\phase13F_pilot_20260717T072334Z_0b9a2b9\\O2_ANALYTIC_BROAD_SPECTRUM_V1__N16__Re1000__dt0.001__steps0__t00__method_fd_centered",
+      "case_id": "O2_ANALYTIC_BROAD_SPECTRUM_V1__N16__Re1000__dt0.001__steps0__t00__method_fd_centered",
+      "case_status": "PASS",
+      "files": {
+        "case_metadata": {
+          "filename": "case_metadata.json",
+          "sha256": "933250D45B7D10A10017EC274AB2107CFA68D005A1F8E61B3C26B2A0124A3631",
+          "size_bytes": 3457
+        },
+        "checks": {
+          "filename": "checks.json",
+          "sha256": "DFF3C739020311EFA1FD68884ACD94E1A6332A9865422A62C03E1FF444B5B6ED",
+          "size_bytes": 1432
+        },
+        "error_summary": {
+          "filename": "error_summary.csv",
+          "sha256": "082298A920E7B9A137C33EF09D5483F0A51065C2305EDEF3FFC37F58EC6783EA",
+          "size_bytes": 194
+        },
+        "field_manifest": {
+          "filename": "field_manifest.json",
+          "sha256": "4525D65F1655BD18BD931810CFE36DD2A16D0BF74CB7BD736037334C22E9EC06",
+          "size_bytes": 2354
+        },
+        "fields": {
+          "filename": "fields.npz",
+          "sha256": "EE6F87D11C11B0B370C87F466E74EE00D0F9C67C4230E05630CC5D007317C8BD",
+          "size_bytes": 7185
+        }
+      }
+    },
+    {
+      "case_directory": "C:\\Users\\User\\Desktop\\Raj-Sanghera-Project\\experiments\\verification\\phase13\\phase13F_pilot_20260717T072334Z_0b9a2b9\\O2_ANALYTIC_BROAD_SPECTRUM_V1__N16__Re1000__dt0.001__steps0__t00__method_pseudo_spectral",
+      "case_id": "O2_ANALYTIC_BROAD_SPECTRUM_V1__N16__Re1000__dt0.001__steps0__t00__method_pseudo_spectral",
+      "case_status": "PASS",
+      "files": {
+        "case_metadata": {
+          "filename": "case_metadata.json",
+          "sha256": "ED283EA1F51DC5105B3978ED16357D5B1A79F8E22BE7B52554D6FF0F1E013CC0",
+          "size_bytes": 3474
+        },
+        "checks": {
+          "filename": "checks.json",
+          "sha256": "EB3858852094B4D49DABCA7F95E7111F8708786982AD5546C6929CE91989D725",
+          "size_bytes": 1436
+        },
+        "error_summary": {
+          "filename": "error_summary.csv",
+          "sha256": "9C5AF77DE451FAFE9F66AEC4684BF83C6448AA7FA33EECC51B300BB718EE27F3",
+          "size_bytes": 203
+        },
+        "field_manifest": {
+          "filename": "field_manifest.json",
+          "sha256": "4733C9E3831C7DFEB5C4A2A9D25CB0677E029BAC24B75BF38A6E4B465D876C17",
+          "size_bytes": 2366
+        },
+        "fields": {
+          "filename": "fields.npz",
+          "sha256": "DB00E3A3A67F012A1E210EA785B244F51C5CB5D4E99D4AE2C7B2A1EDD24747CF",
+          "size_bytes": 7283
+        }
+      }
+    },
+    {
+      "case_directory": "C:\\Users\\User\\Desktop\\Raj-Sanghera-Project\\experiments\\verification\\phase13\\phase13F_pilot_20260717T072334Z_0b9a2b9\\O2_ANALYTIC_BROAD_SPECTRUM_V1__N16__Re1000__dt0.001__steps0__t00__method_arakawa",
+      "case_id": "O2_ANALYTIC_BROAD_SPECTRUM_V1__N16__Re1000__dt0.001__steps0__t00__method_arakawa",
+      "case_status": "PASS",
+      "files": {
+        "case_metadata": {
+          "filename": "case_metadata.json",
+          "sha256": "F341B1D548B6E04AC7CA888A8CE0BB2EA69D1743B3FDBC98B3F28433A9F3D10E",
+          "size_bytes": 3452
+        },
+        "checks": {
+          "filename": "checks.json",
+          "sha256": "61269569E4803634529D8970DD6A09BAB52594E523163D11B8AB8C4D0000AA75",
+          "size_bytes": 1428
+        },
+        "error_summary": {
+          "filename": "error_summary.csv",
+          "sha256": "C4E502F24A53FC139A21E594E439D7595580C6E2E7DD11D0F2F67832B950E447",
+          "size_bytes": 197
+        },
+        "field_manifest": {
+          "filename": "field_manifest.json",
+          "sha256": "73FCB66280D5B5C4E20E32A886A574D69267162148D073C34EA2376046D7AC1C",
+          "size_bytes": 2352
+        },
+        "fields": {
+          "filename": "fields.npz",
+          "sha256": "3BC2691970151FF470545AE3CDC7BF6350287DC7671285F94E2405AEBA37B7E6",
+          "size_bytes": 7135
+        }
+      }
+    },
+    {
+      "case_directory": "C:\\Users\\User\\Desktop\\Raj-Sanghera-Project\\experiments\\verification\\phase13\\phase13F_pilot_20260717T072334Z_0b9a2b9\\L_EQUAL_EIGENVALUE_DECAY_V1__N16__Re1000__dt0.001__steps2__t00__method_none",
+      "case_id": "L_EQUAL_EIGENVALUE_DECAY_V1__N16__Re1000__dt0.001__steps2__t00__method_none",
+      "case_status": "PASS",
+      "files": {
+        "case_metadata": {
+          "filename": "case_metadata.json",
+          "sha256": "D51BFFE1A759FDACBE3FED94F493A9BFF5BF32C31A4938324052D04188CEF58B",
+          "size_bytes": 3422
+        },
+        "checks": {
+          "filename": "checks.json",
+          "sha256": "54B594AC4892C9C23F0F40BF93F2612FEE09F6F0F43873FD66D93638702EBEBE",
+          "size_bytes": 1782
+        },
+        "error_summary": {
+          "filename": "error_summary.csv",
+          "sha256": "10AD8F5826A72728CE1C2C0BEA119B7D632F3BA48B9C089544225C5B59A8AE8E",
+          "size_bytes": 200
+        },
+        "field_manifest": {
+          "filename": "field_manifest.json",
+          "sha256": "321941F3D658260E0AC30CFDDAF9987C951AD652EF6155C7799503B5C58C82E7",
+          "size_bytes": 1895
+        },
+        "fields": {
+          "filename": "fields.npz",
+          "sha256": "6D1099541994A374A7DF4644BAE5FDD215021FE156941E41BB9D5790634317F4",
+          "size_bytes": 4008
+        }
+      }
+    },
+    {
+      "case_directory": "C:\\Users\\User\\Desktop\\Raj-Sanghera-Project\\experiments\\verification\\phase13\\phase13F_pilot_20260717T072334Z_0b9a2b9\\M_TWO_RATE_NONLINEAR_MMS_V1__N16__Re1000__dt0.001__steps2__t00__method_fd_centered",
+      "case_id": "M_TWO_RATE_NONLINEAR_MMS_V1__N16__Re1000__dt0.001__steps2__t00__method_fd_centered",
+      "case_status": "PASS",
+      "files": {
+        "case_metadata": {
+          "filename": "case_metadata.json",
+          "sha256": "54365B29466152A30CE4AF5BA661D58AAACBE4D6F06B1351293AF30CD3086C04",
+          "size_bytes": 3489
+        },
+        "checks": {
+          "filename": "checks.json",
+          "sha256": "C815828ADF67C448731DCF78465DE712487C5B26F73EF577B30C02C3B3E87F29",
+          "size_bytes": 2039
+        },
+        "error_summary": {
+          "filename": "error_summary.csv",
+          "sha256": "83371292BE972CA186768D3A0A5304D4AFFFC759DBECD82C32B9EF3983A69C3F",
+          "size_bytes": 202
+        },
+        "field_manifest": {
+          "filename": "field_manifest.json",
+          "sha256": "B0FDE0E07F0623E9A00EC9ABB97C34293DFCA1DB8D4B391938111D3AA387704D",
+          "size_bytes": 1944
+        },
+        "fields": {
+          "filename": "fields.npz",
+          "sha256": "B26AD05D3C32C70E45E462196DAD2DA6E8A8D814B07C62C9E20AFB466BD96438",
+          "size_bytes": 4989
+        }
+      }
+    },
+    {
+      "case_directory": "C:\\Users\\User\\Desktop\\Raj-Sanghera-Project\\experiments\\verification\\phase13\\phase13F_pilot_20260717T072334Z_0b9a2b9\\M_TWO_RATE_NONLINEAR_MMS_V1__N16__Re1000__dt0.001__steps2__t00__method_pseudo_spectral",
+      "case_id": "M_TWO_RATE_NONLINEAR_MMS_V1__N16__Re1000__dt0.001__steps2__t00__method_pseudo_spectral",
+      "case_status": "PASS",
+      "files": {
+        "case_metadata": {
+          "filename": "case_metadata.json",
+          "sha256": "94C9599AF93D6230A492EA34BCEC2B7C9B3087246D9A6F179FAFF7F3DC8C2912",
+          "size_bytes": 3498
+        },
+        "checks": {
+          "filename": "checks.json",
+          "sha256": "4B546418F034038482F4D1F329115FC0CDFC102A42E759F43ADEE257024DD932",
+          "size_bytes": 2043
+        },
+        "error_summary": {
+          "filename": "error_summary.csv",
+          "sha256": "DE9B30447ED4EA88C5BAF03BA647CEA0BD5A3306BCA4147F75D3B3DBC45685AC",
+          "size_bytes": 203
+        },
+        "field_manifest": {
+          "filename": "field_manifest.json",
+          "sha256": "8961CDA8E71F672708F9EB4CD930332AE509531786813BE6C24052669388E57B",
+          "size_bytes": 1949
+        },
+        "fields": {
+          "filename": "fields.npz",
+          "sha256": "F89858566A67A42F17B678F9809CE1B90F0D290AD7AFF7EBFCB82206FB5D4983",
+          "size_bytes": 4837
+        }
+      }
+    },
+    {
+      "case_directory": "C:\\Users\\User\\Desktop\\Raj-Sanghera-Project\\experiments\\verification\\phase13\\phase13F_pilot_20260717T072334Z_0b9a2b9\\M_TWO_RATE_NONLINEAR_MMS_V1__N16__Re1000__dt0.001__steps2__t00__method_arakawa",
+      "case_id": "M_TWO_RATE_NONLINEAR_MMS_V1__N16__Re1000__dt0.001__steps2__t00__method_arakawa",
+      "case_status": "PASS",
+      "files": {
+        "case_metadata": {
+          "filename": "case_metadata.json",
+          "sha256": "AD0E0EC2BB5EFCAA2C540E0215EE2CA882D3272EB2854C5DA87E915745A9E599",
+          "size_bytes": 3482
+        },
+        "checks": {
+          "filename": "checks.json",
+          "sha256": "DCFD58A3F00F1A83AE0101674FA44145AEECBFE00A023CEB7B73D3A1EF050CAC",
+          "size_bytes": 2035
+        },
+        "error_summary": {
+          "filename": "error_summary.csv",
+          "sha256": "AFA52D46644E5AD47916A7E5BEBB9F55E63B2E5DE30D8F21509CB25952C6798C",
+          "size_bytes": 203
+        },
+        "field_manifest": {
+          "filename": "field_manifest.json",
+          "sha256": "7532E97A5538041F5C54DA277B9E2920265F9C5557485E9B13358CB04403CE27",
+          "size_bytes": 1941
+        },
+        "fields": {
+          "filename": "fields.npz",
+          "sha256": "72F13700B441DB5B7C6517E4175999750930661378EB16DD95652B8BA7ADAC3E",
+          "size_bytes": 4976
+        }
+      }
+    }
+  ],
+  "created_utc": "2026-07-17T07:23:36Z",
+  "environment": {
+    "floating_dtype": "float64",
+    "machine_epsilon": 2.220446049250313e-16,
+    "numpy_version": "2.4.4",
+    "operating_system": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.5",
+    "timestamp_utc": "2026-07-17T07:23:36Z"
+  },
+  "output_schema_id": "PHASE13_VERIFICATION_OUTPUT_V1",
+  "repository": {
+    "branch": "phase4_validation",
+    "commit": "0b9a2b9918630a9109e72d8bf71762915471fa5c",
+    "dirty": false,
+    "exact_reference_module_sha256": "6904C78E54948D07C92173C8B313844B28C92209B4F61CE447FFC29E15DA4EED",
+    "harness_module_sha256": "CDB6DBC249EA2DFF27E729AF0CF3D5C545C48BE57624CC59842B3222DAA752A2",
+    "name": "Raj-Sanghera-Project",
+    "output_schema_module_sha256": "6899C611C56E8154435BB6C042B520A13B466CD10042DE5325C7F9EF634FB11F",
+    "phase13b_specification_sha256": "6FC0685AC0225F542C181174ECC5940CE1C1163F2CE90B15301AEF46D5CE7875",
+    "phase13c_audit_report_sha256": "ABEF31DF4F67913EB418C816DBB665531C5F2C854EB4E300B68CF9F45CA5A306",
+    "protected_solver_sha256": {
+      "project/solver/advection_operators.py": "2C86465570DDF095D5B0A9B7F67E6E78A89D14F82933FA983D91156DD0F76409",
+      "project/solver/selectable_advection_solver.py": "5EDA93A2E9358D81927BD9EE247F305E6DBC94367B351801913FFEAA2D7C5891",
+      "project/solver/spectral_solver.py": "1195AF013057C31FC227FECD05DBCB277553D340096C0348F53DFE79A7A483C1"
+    }
+  },
+  "run_id": "phase13F_pilot_20260717T072334Z_0b9a2b9",
+  "run_status": "PASS",
+  "schema_id": "PHASE13_RUN_MANIFEST_V1"
+}

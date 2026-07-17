@@ -1,0 +1,73 @@
+{
+  "archive_filename": "fields.npz",
+  "array_count": 4,
+  "arrays": {
+    "error_omega": {
+      "L2_rms": 7.861840858770107e-16,
+      "dtype": "float64",
+      "finite": true,
+      "maximum": 2.220446049250313e-15,
+      "minimum": -2.4424906541753444e-15,
+      "name": "error_omega",
+      "nbytes": 2048,
+      "real_valued": true,
+      "sha256": "EB2EDE2315D163413C344B94F7332AF0328B91C43332F6DBA66B1A16F7940907",
+      "shape": [
+        16,
+        16
+      ],
+      "writeable": false
+    },
+    "exact_omega": {
+      "L2_rms": 0.999982000161999,
+      "dtype": "float64",
+      "finite": true,
+      "maximum": 1.999964000323998,
+      "minimum": -1.999964000323998,
+      "name": "exact_omega",
+      "nbytes": 2048,
+      "real_valued": true,
+      "sha256": "860F33EF477E4BD28BAA0BA751B1E3612FC42F6EBB13CFDABEE65A1BCA7F4117",
+      "shape": [
+        16,
+        16
+      ],
+      "writeable": false
+    },
+    "initial_omega": {
+      "L2_rms": 1.0,
+      "dtype": "float64",
+      "finite": true,
+      "maximum": 2.0,
+      "minimum": -2.0,
+      "name": "initial_omega",
+      "nbytes": 2048,
+      "real_valued": true,
+      "sha256": "92DCF3A392792AFCCF610CAB64D4071C7ED95F9CA48E7C6C7D93A197704E9964",
+      "shape": [
+        16,
+        16
+      ],
+      "writeable": false
+    },
+    "numerical_omega": {
+      "L2_rms": 0.9999820001619993,
+      "dtype": "float64",
+      "finite": true,
+      "maximum": 1.9999640003239971,
+      "minimum": -1.9999640003239987,
+      "name": "numerical_omega",
+      "nbytes": 2048,
+      "real_valued": true,
+      "sha256": "2BD7A2E22ED20DB17C7DBA20CA8BCD115762FE6527F303A5FD2B7E201C8F94E2",
+      "shape": [
+        16,
+        16
+      ],
+      "writeable": false
+    }
+  },
+  "case_id": "L_EQUAL_EIGENVALUE_DECAY_V1__N16__Re1000__dt0.001__steps2__t00__method_none",
+  "schema_id": "PHASE13_FIELD_MANIFEST_V1",
+  "track": "L"
+}

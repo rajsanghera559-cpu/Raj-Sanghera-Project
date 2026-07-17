@@ -1,0 +1,89 @@
+{
+  "archive_filename": "fields.npz",
+  "array_count": 5,
+  "arrays": {
+    "computed_adv": {
+      "L2_rms": 0.45036042278266586,
+      "dtype": "float64",
+      "finite": true,
+      "maximum": 0.9024771547563643,
+      "minimum": -0.9024771547563649,
+      "name": "computed_adv",
+      "nbytes": 2048,
+      "real_valued": true,
+      "sha256": "C48DF3CA4C3B69A6B25266045459E35C46872BCE81202F8D86214CAFF88C41AB",
+      "shape": [
+        16,
+        16
+      ],
+      "writeable": false
+    },
+    "error_adv": {
+      "L2_rms": 0.06898904138010331,
+      "dtype": "float64",
+      "finite": true,
+      "maximum": 0.15818301702345827,
+      "minimum": -0.15818301702345894,
+      "name": "error_adv",
+      "nbytes": 2048,
+      "real_valued": true,
+      "sha256": "D5860094F922D157468471B90427D035003E91BDE2882B5A9135ED903C22490E",
+      "shape": [
+        16,
+        16
+      ],
+      "writeable": false
+    },
+    "exact_adv": {
+      "L2_rms": 0.5134898976610932,
+      "dtype": "float64",
+      "finite": true,
+      "maximum": 1.0606601717798212,
+      "minimum": -1.0606601717798214,
+      "name": "exact_adv",
+      "nbytes": 2048,
+      "real_valued": true,
+      "sha256": "F9F68BCEFA831DDDD948E2969A797472E986251BDFC2B4E9E174AE690655AD6B",
+      "shape": [
+        16,
+        16
+      ],
+      "writeable": false
+    },
+    "omega_input": {
+      "L2_rms": 1.1792476415070754,
+      "dtype": "float64",
+      "finite": true,
+      "maximum": 2.326113355478936,
+      "minimum": -2.326113355478936,
+      "name": "omega_input",
+      "nbytes": 2048,
+      "real_valued": true,
+      "sha256": "08A9A7E6B6463F6BFEF0444D36249273A5314189A06F9BC643AF83A99625AA85",
+      "shape": [
+        16,
+        16
+      ],
+      "writeable": false
+    },
+    "omega_raw": {
+      "L2_rms": 1.1792476415070754,
+      "dtype": "float64",
+      "finite": true,
+      "maximum": 2.326113355478936,
+      "minimum": -2.326113355478936,
+      "name": "omega_raw",
+      "nbytes": 2048,
+      "real_valued": true,
+      "sha256": "08A9A7E6B6463F6BFEF0444D36249273A5314189A06F9BC643AF83A99625AA85",
+      "shape": [
+        16,
+        16
+      ],
+      "writeable": false
+    }
+  },
+  "case_id": "O1_BANDLIMITED_TWO_MODE_V1__N16__Re1000__dt0.001__steps0__t00__method_fd_centered",
+  "schema_id": "PHASE13_FIELD_MANIFEST_V1",
+  "track": "O1"
+}
