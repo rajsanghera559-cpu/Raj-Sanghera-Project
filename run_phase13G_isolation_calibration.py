@@ -28,7 +28,7 @@ import numpy as np
 RUNNER_VERSION = "PHASE13G_ISOLATION_CALIBRATION_RUNNER_V1"
 EXECUTION_TOKEN = "PHASE13G_EXECUTE_AUTHORIZED_ISOLATION_CALIBRATION_V1"
 EXPECTED_BRANCH = "phase4_validation"
-EXPECTED_TAG_PREFIX = "v0.5.60-phase13G2-calibration-runner"
+EXPECTED_TAG_PREFIX = "v0.5.61-phase13G3A-calibration-runner-remediation"
 
 REPO_ROOT = Path(__file__).resolve().parent
 RUNNER_PATH = REPO_ROOT / "run_phase13G_isolation_calibration.py"
@@ -942,7 +942,7 @@ def main() -> int:
 
         configuration_rejections = _configuration_rejection_smoke(modules)
         mutation_tests = modules.base._mutation_guard_tests(modules)
-        schema_rejections = modules.base._output_schema_rejection_tests(modules)
+        schema_rejections = modules.base._schema_rejection_tests(modules)
         atomic_smoke = modules.base._atomic_writer_smoke(modules)
         construction_smoke = _solver_construction_smoke(modules)
 
