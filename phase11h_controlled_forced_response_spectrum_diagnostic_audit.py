@@ -323,7 +323,10 @@ def summarize_spectrum(N, method, solver, w, method_checks):
         dominant_shell = np.nan
         dominant_energy = np.nan
 
-    forced_shell_k2_energy = shell_energy(k_bins, Ek, 2)
+    # The default forcing modes have component wave numbers (2, 2).
+    # Their radial magnitude sqrt(8) is binned at shell 3.
+    # This variable records radial-shell-2 energy only.
+    k2_energy = shell_energy(k_bins, Ek, 2)
     k3_energy = shell_energy(k_bins, Ek, 3)
     k4_energy = shell_energy(k_bins, Ek, 4)
 
@@ -369,7 +372,7 @@ def summarize_spectrum(N, method, solver, w, method_checks):
         "enstrophy": enstrophy,
         "dominant_shell": dominant_shell,
         "dominant_shell_energy": dominant_energy,
-        "forced_shell_k2_energy": forced_shell_k2_energy,
+        "k2_energy": k2_energy,
         "k3_energy": k3_energy,
         "k4_energy": k4_energy,
         "low_k_fraction_k_le_4": low_k_fraction,
@@ -628,7 +631,7 @@ for N in RESOLUTIONS:
         print(f"energy_consistency_ok: {audit_row['energy_consistency_ok']}")
         print(f"dominant_shell: {audit_row['dominant_shell']}")
         print(f"dominant_shell_energy: {audit_row['dominant_shell_energy']:.12e}")
-        print(f"forced_shell_k2_energy: {audit_row['forced_shell_k2_energy']:.12e}")
+        print(f"k2_energy: {audit_row['k2_energy']:.12e}")
         print(f"k3_energy: {audit_row['k3_energy']:.12e}")
         print(f"k4_energy: {audit_row['k4_energy']:.12e}")
         print(f"low_k_fraction_k_le_4: {audit_row['low_k_fraction_k_le_4']:.12e}")
