@@ -1,0 +1,366 @@
+{
+  "classification": "NOT STATIONARY WITHIN TESTED DURATION",
+  "configuration": {
+    "Re": 1000,
+    "budget_output_interval_loop_indices": 100,
+    "budget_sampling_interval_time": 0.5,
+    "dealiasing": "inherited protected two-thirds mask",
+    "dt": 0.005,
+    "final_physical_time": 100.005,
+    "grid": [
+      64,
+      64
+    ],
+    "initial_vorticity": "exact_zero",
+    "nu": 0.001,
+    "protected_solver_run_called": false,
+    "spectrum_output_interval_loop_indices": 500,
+    "spectrum_sampling_interval_time": 2.5,
+    "stationarity_window": {
+      "duration": 20.0,
+      "end_time": 100.005,
+      "start_time": 80.005,
+      "subwindows": [
+        {
+          "id": 1,
+          "lower": 80.005,
+          "lower_inclusive": true,
+          "upper": 85.005,
+          "upper_inclusive": true
+        },
+        {
+          "id": 2,
+          "lower": 85.005,
+          "lower_inclusive": false,
+          "upper": 90.005,
+          "upper_inclusive": true
+        },
+        {
+          "id": 3,
+          "lower": 90.005,
+          "lower_inclusive": false,
+          "upper": 95.005,
+          "upper_inclusive": true
+        },
+        {
+          "id": 4,
+          "lower": 95.005,
+          "lower_inclusive": false,
+          "upper": 100.005,
+          "upper_inclusive": true
+        }
+      ]
+    },
+    "steps": 20001,
+    "time_integrator": "external mirror of protected RK2"
+  },
+  "counts": {
+    "budget_snapshots": 201,
+    "spectrum_rows": 1845,
+    "spectrum_snapshots": 41,
+    "stationarity_window_snapshots": 41
+  },
+  "final_budget_snapshot": {
+    "completed_steps": 20001,
+    "continuous_energy_rhs": 2.0807273100647205e-06,
+    "continuous_enstrophy_rhs": -0.0001736481880319588,
+    "energy": 0.003062956683543696,
+    "energy_budget_residual": -4.677879221732843e-07,
+    "energy_injection_rate": 4.345137804267879e-05,
+    "enstrophy": 0.020685325366307034,
+    "enstrophy_budget_residual": 2.4432751114479762e-05,
+    "enstrophy_injection_rate": 0.0003884831864491168,
+    "forcing_identity_matches": true,
+    "forcing_rms": 0.005,
+    "forcing_sha256": "504574DB2F92E127BAA6F699C7B21A4051435479A9B16A731501C6555F2FE6BB",
+    "interval_duration": 0.5,
+    "loop_index": 20000,
+    "mask_removal_rms": 2.7705828452027027e-06,
+    "maximum_absolute_vorticity": 0.6634938829443502,
+    "mean_continuous_energy_rhs": 1.9039803333874748e-06,
+    "mean_continuous_enstrophy_rhs": -0.00017559846546462996,
+    "mean_energy_injection_rate": 4.3350213923176614e-05,
+    "mean_enstrophy_injection_rate": 0.0003878526059680445,
+    "mean_viscous_energy_dissipation_rate": 4.144623358978914e-05,
+    "mean_viscous_enstrophy_dissipation_rate": 0.0005634510714326744,
+    "normalized_energy_budget_residual": 0.010790902277951337,
+    "normalized_enstrophy_budget_residual": 0.04336268462912876,
+    "observed_energy_rate": 1.4361924112141905e-06,
+    "observed_enstrophy_rate": -0.0001511657143501502,
+    "physical_time": 100.005,
+    "stage1_advection_rms": 0.017217945155243646,
+    "stage2_advection_rms": 0.017217871797427807,
+    "viscous_energy_dissipation_rate": 4.1370650732614066e-05,
+    "viscous_enstrophy_dissipation_rate": 0.0005621313744810756,
+    "vorticity_rms": 0.20339776481715346
+  },
+  "final_spectrum_summary": {
+    "completed_steps": 20001,
+    "direct_energy": 0.003062956683543696,
+    "dominant_shell": 2,
+    "dominant_shell_energy": 0.0012914123374708456,
+    "finite_shell_count": 45,
+    "high_k_fraction_k_ge_10": 0.0004501943569360326,
+    "k1_energy": 0.0006001522876401624,
+    "k2_energy": 0.0012914123374708456,
+    "k3_energy": 0.000815429895322484,
+    "k4_energy": 0.0002825248990834166,
+    "loop_index": 20000,
+    "low_k_fraction_k_le_4": 0.9760240605355792,
+    "maximum_spectral_value": 0.0012914123374708456,
+    "middle_k_fraction_5_le_k_le_9": 0.023525745107484806,
+    "minimum_spectral_value": 1.5053547387786452e-40,
+    "nonzero_shell_count": 45,
+    "physical_time": 100.005,
+    "relative_energy_consistency_error": 2.8317793152233123e-16,
+    "spectrum_energy_sum": 0.003062956683543695,
+    "tail_fraction_k_gt_4": 0.02397593946442084
+  },
+  "forcing": {
+    "base_single_mode_rms": 0.005,
+    "forcing_array_dtype": "float64",
+    "forcing_array_shape": [
+      64,
+      64
+    ],
+    "forcing_is_finite": true,
+    "forcing_is_real": true,
+    "forcing_is_writeable": false,
+    "forcing_max_abs": 0.015914546647182223,
+    "forcing_mean": -3.5507761769604404e-21,
+    "forcing_sha256": "504574DB2F92E127BAA6F699C7B21A4051435479A9B16A731501C6555F2FE6BB",
+    "forcing_terms": [
+      "sin(2X)cos(2Y)",
+      "0.75*sin(3X)cos(Y)",
+      "0.50*sin(X)cos(4Y)",
+      "0.35*cos(4X-2Y)"
+    ],
+    "normalization_coefficient": 0.006971561743757498,
+    "normalized_multimode_rms": 0.005,
+    "raw_multimode_rms": 0.7171994143890527
+  },
+  "global_integrity_metrics": {
+    "forcing_identity_matches_at_all_outputs": true,
+    "max_advection_rms_all_steps": 0.017223401076415394,
+    "max_mask_removal_rms_all_steps": 5.5143894587390165e-06,
+    "maximum_spectrum_energy_consistency_error": 5.810850255710926e-16
+  },
+  "repository": {
+    "authorized_design_commit": "3af047b12429bb75f2b4d8eb4d9437cdca4c3a82",
+    "authorized_execution_commit": "9a9f2e0618cf290e0b658a3dc565e5ca42f26f38",
+    "branch": "phase4_validation",
+    "design_path": "FORCING_BUDGET_LONGER_STATIONARITY_TEST_DESIGN.md",
+    "design_sha256": "91C0ACFDF526CF5C86309ACCB5033892644A36326DA3D3D7F4A01DA6565A46C6",
+    "forcing_budget_diagnostic_sha256": "A9A98C605DBB2E0289A1299008B39B08B72746FDE2EEAABE8344B2FB7D9E323B",
+    "name": "Raj-Sanghera-Project",
+    "runner_path": "run_forcing_budget_stationarity_test.py",
+    "runner_sha256": "95EF84BDF29564BD5AB404481844113CC3F92CF6CC579D4419A13BD81644EDAA",
+    "spectral_solver_sha256": "1195AF013057C31FC227FECD05DBCB277553D340096C0348F53DFE79A7A483C1"
+  },
+  "run_id": "forcing_budget_stationarity_20260719T083403Z_9a9f2e0",
+  "schema_id": "FORCING_BUDGET_STATIONARITY_SUMMARY_V1",
+  "scientific_boundary": {
+    "cascade": false,
+    "convergence": false,
+    "inertial_range": false,
+    "k_minus_3": false,
+    "method_superiority": false,
+    "physical_validation": false,
+    "production_readiness": false,
+    "spectral_slope_fitted": false,
+    "stationarity_candidate_limited_to_tested_configuration": false,
+    "stationarity_screening_only": true,
+    "turbulence": false
+  },
+  "stationarity_analysis": {
+    "balance": {
+      "energy_balance_metric": 0.004718866187377041,
+      "enstrophy_balance_metric": 0.3580633279251752,
+      "mean_energy_injection_to_dissipation_ratio": 1.0047412394619604,
+      "mean_enstrophy_injection_to_dissipation_ratio": 0.6419366720748247
+    },
+    "budget_residuals": {
+      "interval_count": 40,
+      "maximum_normalized_energy_residual": 0.010790902277951337,
+      "maximum_normalized_enstrophy_residual": 0.05843424054745961,
+      "median_normalized_energy_residual": 0.006975630021169467,
+      "median_normalized_enstrophy_residual": 0.05107587377269546
+    },
+    "classification": "NOT STATIONARY WITHIN TESTED DURATION",
+    "criteria": {
+      "all_energy_subwindow_deviations_pass": true,
+      "all_enstrophy_subwindow_deviations_pass": true,
+      "energy_injection_dissipation_balance_pass": true,
+      "energy_normalized_drift_pass": true,
+      "enstrophy_injection_dissipation_balance_pass": false,
+      "enstrophy_normalized_drift_pass": false,
+      "full_run_reached_t_100_005": true,
+      "maximum_normalized_energy_residual_pass": true,
+      "maximum_normalized_enstrophy_residual_pass": false,
+      "median_normalized_energy_residual_pass": true,
+      "median_normalized_enstrophy_residual_pass": false,
+      "numerical_integrity_gates_passed": true
+    },
+    "subwindows": [
+      {
+        "energy_deviation_from_full_window_mean": 0.0011575173027095942,
+        "energy_deviation_pass": true,
+        "energy_mean": 0.003074341562398693,
+        "enstrophy_deviation_from_full_window_mean": 0.06939793159750668,
+        "enstrophy_deviation_pass": true,
+        "enstrophy_mean": 0.024197330029039513,
+        "lower": 80.005,
+        "lower_inclusive": true,
+        "snapshot_count": 11,
+        "subwindow_id": 1,
+        "upper": 85.005,
+        "upper_inclusive": true
+      },
+      {
+        "energy_deviation_from_full_window_mean": 0.002763896446261833,
+        "energy_deviation_pass": true,
+        "energy_mean": 0.003079274410707417,
+        "enstrophy_deviation_from_full_window_mean": 0.021335977164428206,
+        "enstrophy_deviation_pass": true,
+        "enstrophy_mean": 0.02310982935328959,
+        "lower": 85.005,
+        "lower_inclusive": false,
+        "snapshot_count": 10,
+        "subwindow_id": 2,
+        "upper": 90.005,
+        "upper_inclusive": true
+      },
+      {
+        "energy_deviation_from_full_window_mean": 0.001048690785752632,
+        "energy_deviation_pass": true,
+        "energy_mean": 0.003067566767119791,
+        "enstrophy_deviation_from_full_window_mean": 0.027949572287305283,
+        "enstrophy_deviation_pass": true,
+        "enstrophy_mean": 0.021994642320933334,
+        "lower": 90.005,
+        "lower_inclusive": false,
+        "snapshot_count": 10,
+        "subwindow_id": 3,
+        "upper": 95.005,
+        "upper_inclusive": true
+      },
+      {
+        "energy_deviation_from_full_window_mean": 0.0029884746934901924,
+        "energy_deviation_pass": true,
+        "energy_mean": 0.003061610103771054,
+        "enstrophy_deviation_from_full_window_mean": 0.06972412963438018,
+        "enstrophy_deviation_pass": true,
+        "enstrophy_mean": 0.021049406949630353,
+        "lower": 95.005,
+        "lower_inclusive": false,
+        "snapshot_count": 10,
+        "subwindow_id": 4,
+        "upper": 100.005,
+        "upper_inclusive": true
+      }
+    ],
+    "thresholds": {
+      "energy_balance_limit": 0.1,
+      "energy_normalized_drift_limit": 0.05,
+      "enstrophy_balance_limit": 0.1,
+      "enstrophy_normalized_drift_limit": 0.05,
+      "maximum_normalized_energy_residual_limit": 0.05,
+      "maximum_normalized_enstrophy_residual_limit": 0.05,
+      "median_normalized_energy_residual_limit": 0.01,
+      "median_normalized_enstrophy_residual_limit": 0.01,
+      "residual_denominator_floor": 1e-30,
+      "subwindow_deviation_limit": 0.1
+    },
+    "trends": {
+      "energy": {
+        "normalized_window_drift": 0.0056531886689457364,
+        "slope": -8.679869343560182e-07,
+        "window_mean": 0.003070787073228494
+      },
+      "energy_injection_rate": {
+        "normalized_window_drift": 0.28401436613055825,
+        "slope": -6.456878950121058e-07,
+        "window_mean": 4.546867849038948e-05
+      },
+      "enstrophy": {
+        "normalized_window_drift": 0.18316303915302523,
+        "slope": -0.00020722204413126485,
+        "window_mean": 0.02262705894043823
+      },
+      "enstrophy_injection_rate": {
+        "normalized_window_drift": 0.25972446736026794,
+        "slope": -5.267290798877497e-06,
+        "window_mean": 0.0004056060526304712
+      },
+      "viscous_energy_dissipation_rate": {
+        "normalized_window_drift": 0.18316303915302526,
+        "slope": -4.1444408826252977e-07,
+        "window_mean": 4.5254117880876465e-05
+      },
+      "viscous_enstrophy_dissipation_rate": {
+        "normalized_window_drift": 0.2034742916968052,
+        "slope": -6.428235670052387e-06,
+        "window_mean": 0.0006318474551695239
+      }
+    },
+    "window": {
+      "duration": 20.0,
+      "end_time": 100.005,
+      "residual_interval_count": 40,
+      "snapshot_count": 41,
+      "start_time": 80.005,
+      "subwindows": [
+        {
+          "id": 1,
+          "lower": 80.005,
+          "lower_inclusive": true,
+          "upper": 85.005,
+          "upper_inclusive": true
+        },
+        {
+          "id": 2,
+          "lower": 85.005,
+          "lower_inclusive": false,
+          "upper": 90.005,
+          "upper_inclusive": true
+        },
+        {
+          "id": 3,
+          "lower": 90.005,
+          "lower_inclusive": false,
+          "upper": 95.005,
+          "upper_inclusive": true
+        },
+        {
+          "id": 4,
+          "lower": 95.005,
+          "lower_inclusive": false,
+          "upper": 100.005,
+          "upper_inclusive": true
+        }
+      ]
+    },
+    "window_means": {
+      "energy": 0.003070787073228494,
+      "energy_injection_rate": 4.546867849038948e-05,
+      "enstrophy": 0.02262705894043823,
+      "enstrophy_injection_rate": 0.0004056060526304712,
+      "viscous_energy_dissipation_rate": 4.5254117880876465e-05,
+      "viscous_enstrophy_dissipation_rate": 0.0006318474551695239
+    }
+  },
+  "thresholds": {
+    "energy_balance_limit": 0.1,
+    "energy_normalized_drift_limit": 0.05,
+    "energy_spectrum_consistency_tolerance": 1e-08,
+    "enstrophy_balance_limit": 0.1,
+    "enstrophy_normalized_drift_limit": 0.05,
+    "forcing_rms_tolerance": 1e-14,
+    "maximum_normalized_energy_residual_limit": 0.05,
+    "maximum_normalized_enstrophy_residual_limit": 0.05,
+    "median_normalized_energy_residual_limit": 0.01,
+    "median_normalized_enstrophy_residual_limit": 0.01,
+    "residual_denominator_floor": 1e-30,
+    "subwindow_deviation_limit": 0.1
+  }
+}

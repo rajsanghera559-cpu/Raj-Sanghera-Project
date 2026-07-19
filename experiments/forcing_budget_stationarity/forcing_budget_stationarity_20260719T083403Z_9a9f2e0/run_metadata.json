@@ -1,0 +1,142 @@
+{
+  "claims": {
+    "cascade": false,
+    "convergence": false,
+    "inertial_range": false,
+    "k_minus_3": false,
+    "method_superiority": false,
+    "physical_validation": false,
+    "production_readiness": false,
+    "stationarity_candidate_limited_to_tested_configuration": false,
+    "turbulence": false
+  },
+  "classification": "NOT STATIONARY WITHIN TESTED DURATION",
+  "completed_utc": "2026-07-19T08:34:24+00:00",
+  "configuration": {
+    "Re": 1000,
+    "budget_output_interval_loop_indices": 100,
+    "budget_sampling_interval_time": 0.5,
+    "dealiasing": "inherited protected two-thirds mask",
+    "dt": 0.005,
+    "final_physical_time": 100.005,
+    "grid": [
+      64,
+      64
+    ],
+    "initial_vorticity": "exact_zero",
+    "nu": 0.001,
+    "protected_solver_run_called": false,
+    "spectrum_output_interval_loop_indices": 500,
+    "spectrum_sampling_interval_time": 2.5,
+    "stationarity_window": {
+      "duration": 20.0,
+      "end_time": 100.005,
+      "start_time": 80.005,
+      "subwindows": [
+        {
+          "id": 1,
+          "lower": 80.005,
+          "lower_inclusive": true,
+          "upper": 85.005,
+          "upper_inclusive": true
+        },
+        {
+          "id": 2,
+          "lower": 85.005,
+          "lower_inclusive": false,
+          "upper": 90.005,
+          "upper_inclusive": true
+        },
+        {
+          "id": 3,
+          "lower": 90.005,
+          "lower_inclusive": false,
+          "upper": 95.005,
+          "upper_inclusive": true
+        },
+        {
+          "id": 4,
+          "lower": 95.005,
+          "lower_inclusive": false,
+          "upper": 100.005,
+          "upper_inclusive": true
+        }
+      ]
+    },
+    "steps": 20001,
+    "time_integrator": "external mirror of protected RK2"
+  },
+  "created_utc": "2026-07-19T08:34:03+00:00",
+  "environment": {
+    "floating_dtype": "float64",
+    "machine_epsilon": 2.220446049250313e-16,
+    "numpy_version": "2.4.4",
+    "operating_system": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "forcing": {
+    "base_single_mode_rms": 0.005,
+    "forcing_array_dtype": "float64",
+    "forcing_array_shape": [
+      64,
+      64
+    ],
+    "forcing_is_finite": true,
+    "forcing_is_real": true,
+    "forcing_is_writeable": false,
+    "forcing_max_abs": 0.015914546647182223,
+    "forcing_mean": -3.5507761769604404e-21,
+    "forcing_sha256": "504574DB2F92E127BAA6F699C7B21A4051435479A9B16A731501C6555F2FE6BB",
+    "forcing_terms": [
+      "sin(2X)cos(2Y)",
+      "0.75*sin(3X)cos(Y)",
+      "0.50*sin(X)cos(4Y)",
+      "0.35*cos(4X-2Y)"
+    ],
+    "normalization_coefficient": 0.006971561743757498,
+    "normalized_multimode_rms": 0.005,
+    "raw_multimode_rms": 0.7171994143890527
+  },
+  "inventory_policy": {
+    "all_non_inventory_outputs_hashed": true,
+    "inventory_self_hash_in_manifest": false,
+    "reason": "a manifest cannot include its own final hash without circular self-reference"
+  },
+  "output_files": {
+    "file_inventory": "file_inventory.csv",
+    "forcing_budget": "forcing_budget.csv",
+    "forcing_spectra": "forcing_spectra.csv",
+    "run_metadata": "run_metadata.json",
+    "stationarity_summary": "stationarity_summary.json",
+    "stationarity_window": "stationarity_window.csv"
+  },
+  "repository": {
+    "authorized_design_commit": "3af047b12429bb75f2b4d8eb4d9437cdca4c3a82",
+    "authorized_execution_commit": "9a9f2e0618cf290e0b658a3dc565e5ca42f26f38",
+    "branch": "phase4_validation",
+    "design_path": "FORCING_BUDGET_LONGER_STATIONARITY_TEST_DESIGN.md",
+    "design_sha256": "91C0ACFDF526CF5C86309ACCB5033892644A36326DA3D3D7F4A01DA6565A46C6",
+    "forcing_budget_diagnostic_sha256": "A9A98C605DBB2E0289A1299008B39B08B72746FDE2EEAABE8344B2FB7D9E323B",
+    "name": "Raj-Sanghera-Project",
+    "runner_path": "run_forcing_budget_stationarity_test.py",
+    "runner_sha256": "95EF84BDF29564BD5AB404481844113CC3F92CF6CC579D4419A13BD81644EDAA",
+    "spectral_solver_sha256": "1195AF013057C31FC227FECD05DBCB277553D340096C0348F53DFE79A7A483C1"
+  },
+  "run_id": "forcing_budget_stationarity_20260719T083403Z_9a9f2e0",
+  "schema_id": "FORCING_BUDGET_STATIONARITY_TEST_V1",
+  "status": "completed",
+  "thresholds": {
+    "energy_balance_limit": 0.1,
+    "energy_normalized_drift_limit": 0.05,
+    "energy_spectrum_consistency_tolerance": 1e-08,
+    "enstrophy_balance_limit": 0.1,
+    "enstrophy_normalized_drift_limit": 0.05,
+    "forcing_rms_tolerance": 1e-14,
+    "maximum_normalized_energy_residual_limit": 0.05,
+    "maximum_normalized_enstrophy_residual_limit": 0.05,
+    "median_normalized_energy_residual_limit": 0.01,
+    "median_normalized_enstrophy_residual_limit": 0.01,
+    "residual_denominator_floor": 1e-30,
+    "subwindow_deviation_limit": 0.1
+  }
+}
