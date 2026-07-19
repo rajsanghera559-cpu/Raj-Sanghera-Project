@@ -1,0 +1,54 @@
+{
+  "claims": {
+    "cascade": false,
+    "convergence": false,
+    "k_minus_3": false,
+    "method_superiority": false,
+    "physical_validation": false,
+    "stationarity": false,
+    "turbulence": false
+  },
+  "completed_utc": "2026-07-19T07:21:58+00:00",
+  "configuration": {
+    "Re": 1000,
+    "dt": 0.005,
+    "forcing_statistics": {
+      "base_single_mode_rms": 0.005,
+      "forcing_max_abs": 0.015914546647182223,
+      "forcing_mean": -3.5507761769604404e-21,
+      "forcing_terms": [
+        "sin(2X)cos(2Y)",
+        "0.75*sin(3X)cos(Y)",
+        "0.50*sin(X)cos(4Y)",
+        "0.35*cos(4X-2Y)"
+      ],
+      "matched_multimode_rms": 0.005,
+      "raw_multimode_rms": 0.7171994143890527
+    },
+    "forcing_terms": [
+      "sin(2X)cos(2Y)",
+      "0.75*sin(3X)cos(Y)",
+      "0.50*sin(X)cos(4Y)",
+      "0.35*cos(4X-2Y)"
+    ],
+    "forcing_type": "rms_matched_deterministic_low_k_multimode",
+    "grid": 64,
+    "initial_vorticity": "zero",
+    "nu": 0.001,
+    "output_interval": 100,
+    "solver_run_called": false,
+    "steps": 1001,
+    "target_forcing_rms": 0.005,
+    "time_integrator": "external mirror of protected RK2"
+  },
+  "created_utc": "2026-07-19T07:21:57+00:00",
+  "repository": {
+    "branch": "phase4_validation",
+    "commit": "5193d15ed410da9317e4389987301c07c1fb3b31",
+    "forcing_budget_diagnostic_sha256": "A9A98C605DBB2E0289A1299008B39B08B72746FDE2EEAABE8344B2FB7D9E323B",
+    "runner_sha256": "1BF1874A68ABBA281B73DC8A99444B771BB4BDAE9AA87CB21B948AD2294AD98A",
+    "spectral_solver_sha256": "1195AF013057C31FC227FECD05DBCB277553D340096C0348F53DFE79A7A483C1"
+  },
+  "run_id": "forcing_budget_multimode_20260719T072157Z_5193d15",
+  "status": "passed"
+}
