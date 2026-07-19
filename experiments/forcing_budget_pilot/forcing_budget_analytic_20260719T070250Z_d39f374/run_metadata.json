@@ -1,0 +1,34 @@
+{
+  "claims": {
+    "cascade": false,
+    "convergence": false,
+    "k_minus_3": false,
+    "method_superiority": false,
+    "physical_validation": false,
+    "turbulence": false
+  },
+  "completed_utc": "2026-07-19T07:02:51+00:00",
+  "configuration": {
+    "Re": 1000,
+    "dt": 0.005,
+    "forcing": "0.01*sin(2X)*cos(2Y)",
+    "forcing_rms": 0.005,
+    "grid": 64,
+    "initial_vorticity": "zero",
+    "nu": 0.001,
+    "output_interval": 100,
+    "solver_run_called": false,
+    "steps": 1001,
+    "time_integrator": "external mirror of protected RK2"
+  },
+  "created_utc": "2026-07-19T07:02:50+00:00",
+  "repository": {
+    "branch": "phase4_validation",
+    "commit": "d39f374f31efbcc3f5768456c177fe391db9a3f5",
+    "forcing_budget_diagnostic_sha256": "A9A98C605DBB2E0289A1299008B39B08B72746FDE2EEAABE8344B2FB7D9E323B",
+    "runner_sha256": "520D1BC1C44BD9F5277CDB1D621288EB03D32EAB40008844C6234DBB23ED11AF",
+    "spectral_solver_sha256": "1195AF013057C31FC227FECD05DBCB277553D340096C0348F53DFE79A7A483C1"
+  },
+  "run_id": "forcing_budget_analytic_20260719T070250Z_d39f374",
+  "status": "passed"
+}
