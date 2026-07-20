@@ -1,0 +1,98 @@
+{
+  "cadence_support": {
+    "cadences": [
+      0.5,
+      1.0,
+      2.0,
+      2.5,
+      5.0
+    ],
+    "coarsest_to_base_median_factor": 0.8807821713267525,
+    "final_window_median_normalized_enstrophy_residuals": [
+      0.05107587377269546,
+      0.050867057740764464,
+      0.05004046448508341,
+      0.04942944963443678,
+      0.04498671900392583
+    ],
+    "required_factor": 1.25,
+    "required_successive_increases": 3,
+    "successive_increase_count": 0,
+    "supported": false
+  },
+  "classification": "ARCHIVED DATA SUPPORTS OPERATOR CORRELATION",
+  "classification_logic": {
+    "cadence_factor_threshold": 1.25,
+    "cadence_required_successive_increases": 3,
+    "correlation_support_threshold": 0.6
+  },
+  "completed_utc": "2026-07-19T09:58:07+00:00",
+  "counts": {
+    "budget_intervals": 200,
+    "budget_snapshots": 201,
+    "coarsening_rows": 10,
+    "correlation_rows": 40,
+    "spectrum_rows": 1845,
+    "spectrum_snapshots": 41,
+    "stationarity_window_rows": 41,
+    "time_blocks": 5
+  },
+  "created_utc": "2026-07-19T09:58:07+00:00",
+  "limitations": {
+    "archived_evidence_modified": false,
+    "causal_attribution_authorized": false,
+    "exact_advection_enstrophy_work_available": false,
+    "exact_mask_enstrophy_loss_available": false,
+    "rk2_shadow_tests_available": false,
+    "solver_executed": false,
+    "sub_0_5_cadence_available": false
+  },
+  "operator_correlation_support": {
+    "strongest": {
+      "maximum_absolute_coefficient": 0.9871896797419936,
+      "pearson": 0.977142593249602,
+      "predictor": "mask_removal_rms",
+      "sample_count": 200,
+      "scope": "all_budget_intervals",
+      "spearman": 0.9871896797419936,
+      "strength": "very strong",
+      "support_threshold": 0.6,
+      "support_threshold_met": true,
+      "target": "normalized_enstrophy_budget_residual"
+    },
+    "support_threshold": 0.6,
+    "supported": true
+  },
+  "outputs": {
+    "coarsening": "stage_a_coarsening.csv",
+    "correlations": "stage_a_correlations.csv",
+    "inventory": "file_inventory.csv",
+    "report": "STAGE_A_ENSTROPHY_RESIDUAL_ATTRIBUTION_REPORT.md",
+    "residual_timeseries": "stage_a_residual_timeseries.csv",
+    "summary": "stage_a_summary.json",
+    "time_block_statistics": "stage_a_time_block_statistics.csv"
+  },
+  "repository": {
+    "branch": "phase4_validation",
+    "design_commit": "f3f517578b0c9541d56dfb6968681f5884cc09a5",
+    "design_path": "ENSTROPHY_RESIDUAL_DIAGNOSTIC_SEPARATION_DESIGN.md",
+    "design_sha256": "9F1A2CE658545E601ADE0072C0FBBC738754F9D53B2B190BCD71B85CCC529DAA",
+    "execution_commit": "9a7fea8441f6e3fcdb63dcfc578e3008359f1ecc",
+    "runner_path": "run_stage_a_enstrophy_residual_analysis.py",
+    "runner_sha256": "865177856EF1F6D0C62CCEA02DF45C8D81BC5C4527269ECBAB9D0DF8E5A3EADB"
+  },
+  "run_id": "stage_a_enstrophy_residual_20260719T095807Z_9a7fea8",
+  "schema_id": "STAGE_A_ENSTROPHY_RESIDUAL_ANALYSIS_V1",
+  "source_run": {
+    "archived_classification": "NOT STATIONARY WITHIN TESTED DURATION",
+    "file_hashes": {
+      "file_inventory.csv": "3745C4E279E304A1A04CA14CEFE04BAA0FABD1A6072BB2E4C407FAB78CA1A028",
+      "forcing_budget.csv": "38D01CE7278979EB4D7433414C849F65820C729DC5928A964FFED1EB3E4F482F",
+      "forcing_spectra.csv": "62235ED6A5C9BD17D4FF21D22A1F830EE637FC22F26ABD43B483359B5873275A",
+      "run_metadata.json": "57640568F657C26E47F495B1BE7C4C23F54EF0ACB882250ECB596A426F504ED9",
+      "stationarity_summary.json": "3573F19100A4BD817B97C603B3C13D0137AD56D1F52FD05D602DFFC6400DBE1E",
+      "stationarity_window.csv": "FD1C5017DC24C6BF9F12F3BB56E44631491BA8178B174968743175976C06ED9A"
+    },
+    "path": "experiments/forcing_budget_stationarity/forcing_budget_stationarity_20260719T083403Z_9a9f2e0"
+  }
+}
