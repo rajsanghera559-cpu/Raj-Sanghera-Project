@@ -1,0 +1,138 @@
+{
+  "attribution_thresholds": {
+    "cancellation_ratio_limit": 0.2,
+    "dominance_minimum_n90_steps": 5,
+    "dominance_reduction_limit": 0.7,
+    "dominance_share_limit": 0.7,
+    "multiple_share_limit": 0.2
+  },
+  "claims": {
+    "cascade": false,
+    "formal_spatial_convergence": false,
+    "formal_temporal_convergence": false,
+    "inertial_range": false,
+    "k_minus_3": false,
+    "method_superiority": false,
+    "physical_validation": false,
+    "production_readiness": false,
+    "turbulence": false,
+    "unique_physical_causation": false
+  },
+  "classification": "LEADING LEDGER CONTRIBUTOR: DISCRETE ADVECTION",
+  "completed_utc": "2026-07-20T06:35:07+00:00",
+  "configuration": {
+    "Re": 1000,
+    "archive_match_interval_steps": 100,
+    "dt": 0.005,
+    "final_physical_time": 100.005,
+    "final_window_end": 100.005,
+    "final_window_start": 80.005,
+    "grid": [
+      64,
+      64
+    ],
+    "high_cadence_interval_steps": 10,
+    "high_cadence_interval_time": 0.05,
+    "initial_vorticity": "exact_zero",
+    "ledger_interval_steps": 1,
+    "nu": 0.001,
+    "progress_interval_steps": 500,
+    "protected_solver_run_called": false,
+    "steps": 20001,
+    "time_integrator": "external mirror of protected RK2"
+  },
+  "created_utc": "2026-07-20T06:34:20+00:00",
+  "environment": {
+    "floating_dtype": "float64",
+    "machine_epsilon": 2.220446049250313e-16,
+    "numpy_version": "2.4.4",
+    "operating_system": "Windows-11-10.0.26200-SP0",
+    "python_version": "3.14.5 (tags/v3.14.5:5607950, May 10 2026, 10:43:50) [MSC v.1944 64 bit (AMD64)]"
+  },
+  "expected_counts": {
+    "archive_matches": 201,
+    "final_window_rows": 4001,
+    "high_cadence_rows": 2001,
+    "ledger_rows": 20001,
+    "time_block_rows": 6
+  },
+  "forcing": {
+    "base_single_mode_rms": 0.005,
+    "forcing_array_dtype": "float64",
+    "forcing_array_shape": [
+      64,
+      64
+    ],
+    "forcing_is_finite": true,
+    "forcing_is_real": true,
+    "forcing_is_writeable": false,
+    "forcing_max_abs": 0.015914546647182223,
+    "forcing_mean": -3.5507761769604404e-21,
+    "forcing_sha256": "504574DB2F92E127BAA6F699C7B21A4051435479A9B16A731501C6555F2FE6BB",
+    "forcing_terms": [
+      "sin(2X)cos(2Y)",
+      "0.75*sin(3X)cos(Y)",
+      "0.50*sin(X)cos(4Y)",
+      "0.35*cos(4X-2Y)"
+    ],
+    "normalization_coefficient": 0.006971561743757498,
+    "normalized_multimode_rms": 0.005,
+    "raw_multimode_rms": 0.7171994143890527
+  },
+  "integrity_tolerances": {
+    "archive_absolute_floor": 1e-14,
+    "archive_forcing_rms_absolute_tolerance": 1e-14,
+    "archive_relative_tolerance": 1e-11,
+    "archive_time_absolute_tolerance": 1e-14,
+    "filter_bookkeeping_limit": 1e-10,
+    "forcing_identity_limit": 1e-12,
+    "imaginary_ratio_limit": 1e-13,
+    "ledger_closure_limit": 1e-10,
+    "mask_crosscheck_limit": 1e-10,
+    "sign_tolerance_factor": 1e-14,
+    "state_reconstruction_limit": 1e-13,
+    "viscous_identity_limit": 1e-10
+  },
+  "output_files": {
+    "file_inventory": "file_inventory.csv",
+    "high_cadence_budget": "high_cadence_budget.csv",
+    "operator_ledger_final_window": "operator_ledger_final_window.csv",
+    "operator_ledger_per_step": "operator_ledger_per_step.csv",
+    "operator_ledger_summary": "operator_ledger_summary.json",
+    "operator_ledger_time_blocks": "operator_ledger_time_blocks.csv",
+    "run_metadata": "run_metadata.json"
+  },
+  "progress": {
+    "final_window_rows": 4001,
+    "high_cadence_rows": 2001,
+    "last_completed_loop_index": 20000,
+    "ledger_rows": 20001
+  },
+  "repository": {
+    "branch": "phase4_validation",
+    "exact_ledger_design_path": "STAGE_B_EXACT_OPERATOR_LEDGER_DESIGN_REVIEW.md",
+    "exact_ledger_design_sha256": "584A94C8A857D4869A95CC01BE31108CDFBC201C0BF56C03A0A8F9860D083B4C",
+    "execution_commit": "5c464c21f61e917f26e00c73c5ec691fadc2bed9",
+    "name": "Raj-Sanghera-Project",
+    "runner_design_commit": "2109b2d6046302085b47cb2219e61231432b1b03",
+    "runner_design_path": "STAGE_B_STANDALONE_REPLAY_RUNNER_DESIGN.md",
+    "runner_design_sha256": "A0E039CAFF9A71BBB8CA33C9043169C24CDC0E1B1F330F829752BE11F45C4710",
+    "runner_path": "run_stage_b_exact_operator_ledger_replay.py",
+    "runner_sha256": "970AE47D4DF69819FA6D831557FC2679D843B860D901CF367361A3A34126E246",
+    "source_hashes": {
+      "archive/file_inventory.csv": "3745C4E279E304A1A04CA14CEFE04BAA0FABD1A6072BB2E4C407FAB78CA1A028",
+      "archive/forcing_budget.csv": "38D01CE7278979EB4D7433414C849F65820C729DC5928A964FFED1EB3E4F482F",
+      "archive/forcing_spectra.csv": "62235ED6A5C9BD17D4FF21D22A1F830EE637FC22F26ABD43B483359B5873275A",
+      "archive/run_metadata.json": "57640568F657C26E47F495B1BE7C4C23F54EF0ACB882250ECB596A426F504ED9",
+      "archive/stationarity_summary.json": "3573F19100A4BD817B97C603B3C13D0137AD56D1F52FD05D602DFFC6400DBE1E",
+      "archive/stationarity_window.csv": "FD1C5017DC24C6BF9F12F3BB56E44631491BA8178B174968743175976C06ED9A",
+      "exact_ledger_design": "584A94C8A857D4869A95CC01BE31108CDFBC201C0BF56C03A0A8F9860D083B4C",
+      "forcing_budget_diagnostic": "A9A98C605DBB2E0289A1299008B39B08B72746FDE2EEAABE8344B2FB7D9E323B",
+      "runner_design": "A0E039CAFF9A71BBB8CA33C9043169C24CDC0E1B1F330F829752BE11F45C4710",
+      "spectral_solver": "1195AF013057C31FC227FECD05DBCB277553D340096C0348F53DFE79A7A483C1"
+    }
+  },
+  "run_id": "stage_b_exact_operator_ledger_20260720T063420Z_5c464c2",
+  "schema_id": "STAGE_B_EXACT_OPERATOR_LEDGER_METADATA_V1",
+  "status": "completed"
+}
