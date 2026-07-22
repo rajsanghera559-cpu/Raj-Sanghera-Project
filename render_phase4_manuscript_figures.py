@@ -27,7 +27,7 @@ DEFAULT_STAGE_E = Path(
     "experiments/focused_refinement_study/"
     "stage_e_focused_refinement_20260721T074126Z_8ab70dc"
 )
-DEFAULT_OUTPUT = Path("manuscript_figures/phase4_checkpoint_9b1b4eb")
+DEFAULT_OUTPUT = Path("manuscript_figures/phase4_checkpoint_9b1b4eb_qa_revision1")
 
 ROOT_INPUTS = {
     "residual_signal_floor_spectrum.png":
@@ -92,7 +92,8 @@ establish stationarity, an inertial range, or an enstrophy cascade.
 comparison.** (a) Independently normalized Run 004 total and masked peak-band
 energies continue to grow through the selected analysis window, while the
 residual decreases slightly. The annotation, rather than vertical separation
-of the normalized curves, records the near-unity final peak-band fraction. (b)
+of the normalized curves, records the near-unity peak-band fraction at step
+43,000. (b)
 Across the five documented cases, stronger low-wavenumber control reduces
 selected-window growth but generally increases compensated-spectrum
 variation. Run 011 has the lowest selected-window growth among the listed
@@ -320,7 +321,7 @@ def pair_key(trajectory_a: str, trajectory_b: str) -> tuple[str, str]:
 
 def pair_label(key: tuple[str, str]) -> str:
     try:
-        return f"{TRAJECTORY_LABELS[key[0]]}–{TRAJECTORY_LABELS[key[1]]}"
+        return f"{TRAJECTORY_LABELS[key[0]]}-{TRAJECTORY_LABELS[key[1]]}"
     except KeyError as exc:
         raise FigureAssemblyError(f"unknown trajectory identifier: {exc.args[0]}")
 
@@ -439,12 +440,12 @@ def configure_matplotlib() -> Any:
 
     plt.rcParams.update({
         "font.family": "DejaVu Sans",
-        "font.size": 10.0,
-        "axes.labelsize": 10.5,
-        "axes.titlesize": 11.0,
-        "legend.fontsize": 8.5,
-        "xtick.labelsize": 9.0,
-        "ytick.labelsize": 9.0,
+        "font.size": 12.0,
+        "axes.labelsize": 13.0,
+        "axes.titlesize": 14.0,
+        "legend.fontsize": 10.5,
+        "xtick.labelsize": 11.5,
+        "ytick.labelsize": 11.5,
         "axes.spines.top": False,
         "axes.spines.right": False,
         "pdf.fonttype": 42,
@@ -472,10 +473,10 @@ def save_figure(fig: Any, png: Path, pdf: Path) -> None:
 
 def add_panel_label(ax: Any, label: str) -> None:
     ax.text(
-        -0.10, 1.04, label,
+        -0.16, 1.04, label,
         transform=ax.transAxes,
         ha="left", va="bottom",
-        fontsize=12, fontweight="bold",
+        fontsize=15, fontweight="bold",
     )
 
 
@@ -489,6 +490,23 @@ def render_figure_1(repo: Path, output: Path) -> None:
         raise FigureAssemblyError(
             f"Figure 1 source dimensions changed: {first.size}, {second.size}"
         )
+    regular_font_path = font_manager.findfont(
+        font_manager.FontProperties(family="DejaVu Sans"),
+        fallback_to_default=True,
+    )
+    title_font = ImageFont.truetype(regular_font_path, 30)
+    legend_font = ImageFont.truetype(regular_font_path, 22)
+    second_draw = ImageDraw.Draw(second)
+    second_draw.rectangle((0, 0, second.width, 58), fill="white")
+    replacement_title = "Selected analysis window: compensated spectrum"
+    title_box = second_draw.textbbox((0, 0), replacement_title, font=title_font)
+    title_x = (second.width - (title_box[2] - title_box[0])) // 2
+    second_draw.text((title_x, 12), replacement_title, fill="black", font=title_font)
+    second_draw.rectangle((208, 748, 630, 784), fill="white")
+    second_draw.text(
+        (214, 749), "Run 004, indices 38:43", fill="black", font=legend_font
+    )
+
     gap = 28
     width = max(first.width, second.width)
     height = first.height + gap + second.height
@@ -514,7 +532,23 @@ def render_figure_1(repo: Path, output: Path) -> None:
 
     base = output / FIGURE_BASENAMES[0]
     canvas.save(base.with_suffix(".png"), format="PNG", optimize=True, dpi=(300, 300))
-    canvas.save(base.with_suffix(".pdf"), format="PDF", resolution=300.0)
+    plt = configure_matplotlib()
+    fig = plt.figure(figsize=(width / 300.0, height / 300.0), dpi=300)
+    ax = fig.add_axes((0.0, 0.0, 1.0, 1.0))
+    ax.imshow(canvas)
+    ax.axis("off")
+    fig.savefig(
+        base.with_suffix(".pdf"),
+        dpi=300,
+        facecolor="white",
+        metadata={
+            "Title": base.name,
+            "Author": "Phase 4 evidence renderer",
+            "Subject": f"Archived evidence at checkpoint {CHECKPOINT}",
+            "Creator": "render_phase4_manuscript_figures.py",
+        },
+    )
+    plt.close(fig)
 
 
 def render_figure_2(
@@ -534,51 +568,41 @@ def render_figure_2(
     ax_a.plot(
         steps, [row["total"] / total0 for row in budget],
         color=palette[0], linewidth=2.8, marker="o", markersize=5,
-        label="Total energy",
+        label="Total",
     )
     ax_a.plot(
         steps, [row["peak"] / peak0 for row in budget],
         color=palette[1], linewidth=1.8, linestyle="--", marker="s",
         markersize=4, markerfacecolor="white",
-        label="Masked peak-band energy (k=2:4)",
+        label="Peak band (k=2:4)",
     )
     ax_a.plot(
         steps, [row["residual"] / residual0 for row in budget],
         color=palette[2], linewidth=2.0, marker="^", markersize=5,
-        label="Residual energy",
+        label="Residual",
     )
     ax_a.axhline(1.0, color="0.65", linewidth=0.9, linestyle=":")
     total_growth = (budget[-1]["total"] / total0 - 1.0) * 100.0
     residual_growth = (budget[-1]["residual"] / residual0 - 1.0) * 100.0
     peak_fraction = budget[-1]["peak"] / budget[-1]["total"]
-    ax_a.annotate(
-        f"total: +{total_growth:.2f}%",
-        xy=(steps[-1], budget[-1]["total"] / total0),
-        xytext=(-8, 13), textcoords="offset points", ha="right",
-        color=palette[0], fontsize=9,
-    )
-    ax_a.annotate(
-        f"residual: {residual_growth:.2f}%",
-        xy=(steps[-1], budget[-1]["residual"] / residual0),
-        xytext=(-8, -17), textcoords="offset points", ha="right",
-        color=palette[2], fontsize=9,
-    )
     ax_a.text(
-        0.03, 0.07,
-        f"Final peak-band / total = {peak_fraction:.9f}",
-        transform=ax_a.transAxes, fontsize=8.5,
+        0.03, 0.74,
+        f"Window: total +{total_growth:.2f}%; residual {residual_growth:.2f}%\n"
+        f"Peak/total at step 43,000: {peak_fraction:.9f}",
+        transform=ax_a.transAxes, fontsize=9.0, va="top",
         bbox={"boxstyle": "round,pad=0.3", "facecolor": "white", "edgecolor": "0.8"},
     )
     ax_a.set_xlabel("Step (thousands)")
     ax_a.set_ylabel("Energy / value at step 38,000")
     ax_a.set_title("Run 004 selected analysis window")
+    ax_a.set_ylim(0.94, 1.30)
     ax_a.grid(True, linewidth=0.5, alpha=0.25)
-    ax_a.legend(loc="upper left", frameon=False)
+    ax_a.legend(loc="upper left", frameon=False, fontsize=10.0)
     add_panel_label(ax_a, "(a)")
 
     offsets = {
         "Run 004": (-30, 8),
-        "Run 009": (7, -13),
+        "Run 009": (7, 8),
         "Run 011": (7, 6),
         "Run 012": (7, -13),
         "Run 013": (7, 6),
@@ -593,17 +617,18 @@ def render_figure_2(
         )
         ax_b.annotate(
             run, (growth, cv), xytext=offsets[run], textcoords="offset points",
-            fontsize=9,
+            fontsize=10.5,
         )
     ax_b.annotate(
         "lower growth and lower variation",
         xy=(7.2, 0.239), xytext=(14.0, 0.264),
         arrowprops={"arrowstyle": "->", "color": "0.35", "linewidth": 1.0},
-        color="0.30", fontsize=8.5, ha="center",
+        color="0.30", fontsize=10.0, ha="center",
     )
     ax_b.set_xlabel("Selected-window total-energy growth (%)")
     ax_b.set_ylabel("Compensated-spectrum CV")
-    ax_b.set_title("Five-case growth–shape tradeoff")
+    ax_b.set_title("Five-case growth-shape tradeoff")
+    ax_b.set_ylim(0.232, 0.306)
     ax_b.grid(True, linewidth=0.5, alpha=0.25)
     add_panel_label(ax_b, "(b)")
 
@@ -642,9 +667,10 @@ def render_figure_3(
     ax_a.set_title("Final-time pairwise grid contraction (T = 15.3)")
     ax_a.set_ylim(0.14, 1.06)
     ax_a.grid(True, linewidth=0.5, alpha=0.25)
-    ax_a.legend(
-        loc="upper center", bbox_to_anchor=(0.5, -0.22), ncol=2,
-        frameon=False, columnspacing=1.2, handlelength=2.0,
+    ax_a.text(
+        0.98, 0.91, "All 10 pair sequences shown",
+        transform=ax_a.transAxes, ha="right", va="top", fontsize=10.5,
+        bbox={"boxstyle": "round,pad=0.25", "facecolor": "white", "edgecolor": "0.8"},
     )
     add_panel_label(ax_a, "(a)")
 
@@ -662,7 +688,7 @@ def render_figure_3(
         label=f"Resolution threshold = {criterion:.2f}",
     )
     for y, value in zip(positions, ratio_values):
-        ax_b.text(value + 0.07, y, f"{value:.3f}", va="center", fontsize=8.2)
+        ax_b.text(value + 0.07, y, f"{value:.3f}", va="center", fontsize=10.0)
     ax_b.set_yticks(positions, labels)
     ax_b.invert_yaxis()
     ax_b.set_xlim(0.0, max(ratio_values) * 1.14)
@@ -672,7 +698,7 @@ def render_figure_3(
     ax_b.legend(loc="lower right", frameon=False)
     add_panel_label(ax_b, "(b)")
 
-    fig.subplots_adjust(wspace=0.38, bottom=0.28)
+    fig.subplots_adjust(wspace=0.40, bottom=0.15)
     base = output / FIGURE_BASENAMES[2]
     save_figure(fig, base.with_suffix(".png"), base.with_suffix(".pdf"))
     plt.close(fig)
