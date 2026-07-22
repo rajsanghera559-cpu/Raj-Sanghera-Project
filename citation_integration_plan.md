@@ -92,7 +92,7 @@ Integration note:
 | Reference | May support | Must not be used for | Support type | Priority |
 |---|---|---|---|---|
 | Sukoriansky, Galperin & Chekhlov 1999 | Large-scale energy condensation and coherent-vortex formation are known issues; large-scale drag representation matters. | Claiming this project's peak domination has been solved. | Background / methodological context | High |
-| Tsang 2010 | Large-scale dissipation choices, including scale-selective drag, can materially change forced 2D turbulence statistics. | Claiming Run 013 is physically optimal. | Methodological / limitation | High |
+| Tsang & Young 2009 | Large-scale dissipation choices, including scale-selective drag, can materially change forced 2D turbulence statistics. | Claiming Run 013 is physically optimal. | Methodological / limitation | High |
 | Blackbourn & Tran 2011 | Friction affects forced 2D Navier-Stokes dynamics and is not a neutral intervention. | Claiming drag validates stationarity or a cascade. | Limitation | High |
 | Vallgren & Lindborg 2011 | Large-scale drag and forcing scale affect coherent structures and enstrophy-cascade behavior. | Directly validating the combined strategy. | Background / limitation | Medium |
 | Eyink 1996 | Infrared dissipation and energy balance matter for stationarity. | Certifying low-k drag cases as stationary. | Limitation/future-work | Medium |
@@ -190,7 +190,7 @@ Medium priority:
 - Tran 2007
 - Eyink 1996
 - Rivera et al. 2003
-- Tsang 2010
+- Tsang & Young 2009
 - Sukoriansky, Galperin & Chekhlov 1999
 - Patterson & Orszag 1971
 - Orszag 1971

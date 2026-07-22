@@ -1,3 +1,8 @@
+---
+bibliography: references.bib
+link-citations: true
+---
+
 # Residual `k^-3`-Like Spectral Structure, Stationarity Tradeoffs, and Numerical Sensitivity in a Forced Two-Dimensional Vorticity Solver
 
 ## Document status
@@ -15,8 +20,9 @@ It integrates two related but distinct evidence streams:
 The configurations and scientific questions differ between those streams.
 Stage E is therefore numerical-method sensitivity evidence for its frozen
 smooth problem, not a direct refinement or convergence test of Runs 004–013.
-Primary-literature citations and final manuscript-figure selection remain to be
-completed. No new numerical result is introduced here.
+The primary-literature citation pass is integrated through `references.bib`;
+final manuscript-figure selection remains to be completed. No new numerical
+result is introduced here.
 
 ## Abstract
 
@@ -71,6 +77,17 @@ The later numerical-verification campaign asks:
 The first is a spectral-diagnostic question. The second is a code-verification
 and numerical-sensitivity question. Neither alone establishes turbulence, a
 cascade, an inertial range, or a physical scaling law.
+
+The `-3` reference originates in classical two-dimensional turbulence theory.
+Conservation of kinetic energy and mean-square vorticity constrains inviscid
+spectral redistribution [@Fjortoft1953], while the Kraichnan--Batchelor
+phenomenology associates a direct enstrophy-transfer range with
+$E(k) \propto k^{-3}$ [@Kraichnan1967; @Batchelor1969]. The nominal
+`k^-3` range is marginally nonlocal and admits a logarithmic correction
+[@Kraichnan1971]; limited scale separation therefore complicates asymptotic
+interpretation [@Bowman1996]. These theoretical results make `-3` a meaningful
+comparison exponent, but they do not turn agreement with that exponent into
+evidence of a cascade.
 
 Throughout this report:
 
@@ -139,7 +156,13 @@ fit alone.
 | Leave-one-shell-out analysis | Test whether one shell controls the fit. |
 
 This chain supports cautious residual-shape wording. It cannot replace
-stationary budgets or spectral-flux evidence for a cascade claim.
+stationary budgets or spectral-flux evidence for a cascade claim. More
+generally, apparent power-law fits are sensitive to range selection and require
+goodness-of-fit and competing-explanation checks [@ClausetEtAl2009]. In forced
+two-dimensional turbulence, stronger cascade demonstrations combine
+stationarity with signed energy and enstrophy flux diagnostics
+[@Boffetta2007; @VallgrenLindborg2011]. The present diagnostic chain does not
+claim to reproduce either paper's physical regime or flux analysis.
 
 ## 4. Archived production spectral results
 
@@ -181,6 +204,14 @@ total/peak growth but generally weakens residual-shape metrics. Run 013 is not
 universally “best”; it is a balanced descriptive case within this limited set.
 Further alpha-only tuning was not justified by the archived comparison.
 
+This tradeoff is physically plausible rather than a neutral post-processing
+effect. In finite periodic domains, inverse transfer can accumulate energy in
+the lowest modes [@SmithYakhot1994], and the representation and strength of
+large-scale drag can alter coherent structures, budgets, and spectral slopes
+[@SukorianskyEtAl1999; @TsangYoung2009]. Those prior results motivate the drag
+comparison; they do not establish that any drag choice here is physically
+optimal or stationary.
+
 ## 5. Numerical-verification methodology
 
 The verification campaign progressively separated implementation correctness,
@@ -203,10 +234,11 @@ than being advanced as four additional production paths.
 
 Phase 13 completed an independently audited 10-case pilot followed by 77 finite
 exploratory benchmark cases. The matrix separated floating-point-floor,
-spatial-error-dominated, and timestep-error-dominated regimes. It closed at the
-exploratory verification and calibration-evidence level. The deferred full
-390-file audit and formal Phase 13H convergence program were not completed and
-are not silently implied here.
+spatial-error-dominated, and timestep-error-dominated regimes. Manufactured
+solutions are a code-verification device rather than physical validation
+[@Roache2002]. Accordingly, Phase 13 closed at the exploratory verification and
+calibration-evidence level. The deferred full 390-file audit and formal Phase
+13H convergence program were not completed and are not silently implied here.
 
 ### 6.2 Stage B exact ledger
 
@@ -227,6 +259,11 @@ retained the baseline magnitude with opposite sign. Centered skew,
 real-compatible pseudo-spectral, and Arakawa work were near-neutral. This
 established mixed form dependence on the frozen baseline states, not accuracy
 or alternate-trajectory behavior.
+
+The Arakawa position is historically motivated by a conservation-designed
+discrete Jacobian [@Arakawa1966]. That construction does not imply conservation
+for the present forced, viscous, filtered RK2 trajectory, and the Stage C result
+is therefore reported only for the implemented same-state comparison.
 
 ### 6.4 Stage D1R independent trajectories
 
@@ -279,6 +316,12 @@ The finite-grid differences are measurable and are not called zero. Their grid
 decay and unresolved status support a truncation-error explanation within the
 tested range rather than resolved persistent continuum separation.
 
+Systematic grid-refinement reporting normally distinguishes observed order,
+estimated discretization uncertainty, and the assumptions behind an
+asymptotic-range interpretation [@CelikEtAl2008]. Stage E followed its own
+predeclared conservative uncertainty rule; it was not a formal Grid Convergence
+Index calculation and does not claim compliance with that procedure.
+
 All 60 sampled post-filter accepted-update projection previews passed, with a
 maximum normalized effect of `2.16405e-13`. Raw same-state transport projection
 was not uniformly negligible: 22 of 70 rows failed the descriptive rule. The
@@ -295,6 +338,12 @@ signal-floor, shell-support, and leave-one-shell-out checks. Run 004 remains the
 cleanest residual-shape case, Run 011 the strongest stationarity-control case
 among the listed combined configurations, and Run 013 a balanced compromise
 within that parameter comparison.
+
+Prior stationary high-resolution studies demonstrate why this distinction
+matters: cascade evidence is materially stronger when spectral shape is paired
+with signed fluxes and controlled forcing--dissipation balances
+[@Boffetta2007; @VallgrenLindborg2011]. Those diagnostics were not established
+for Runs 004--013.
 
 Second, the separate verification campaign shows that discrete advection work
 is operator-form dependent at fixed resolution, but that the independently
@@ -354,6 +403,14 @@ The canonical numerical-evidence chain is:
 Generated run directories and inventories are preserved as immutable evidence.
 The synthesis and completion reports contain their controlling repository and
 file identities; this manuscript does not duplicate those hash inventories.
+This artifact-centered reporting follows the general reproducibility principle
+that computational results should retain traceable inputs, code, intermediate
+evidence, and versioned provenance [@SandveEtAl2013]. The citation supports the
+reporting practice, not the scientific validity of the solver or spectra.
+
+The manuscript bibliography is maintained in `references.bib`. Project-specific
+numerical values remain sourced to the repository artifacts listed above, not
+to external literature.
 
 ## 10. Phase 4 closure and future scope
 
@@ -363,9 +420,9 @@ gate is required for the present operator-persistence question.
 
 Remaining Phase 4 work is documentary:
 
-1. verify and integrate primary-literature citations;
-2. select or re-render manuscript-grade figures from existing evidence;
-3. complete the full prose manuscript and reproducibility section; and
+1. select or re-render manuscript-grade figures from existing evidence;
+2. complete the full prose manuscript and reproducibility section;
+3. perform one final editorial and reference check; and
 4. prepare the documentation-aligned Phase 4 release or tag under the
    repository's established convention.
 
@@ -375,19 +432,22 @@ would require a production-configuration refinement study, stationary budget
 and flux evidence, and appropriate long-time or ensemble analysis. Neither is
 part of the closed Phase 4 numerical scope.
 
-## Literature and figure work remaining
+## Manuscript work remaining
 
-The final manuscript should add verified primary sources for:
-
-- two-dimensional turbulence and enstrophy-cascade theory;
-- Kraichnan–Batchelor `k^-3` context;
-- forced-dissipative vorticity simulations and large-scale drag;
-- spectral shell averaging and compensated spectra;
-- finite-time, finite-resolution, and stationarity limitations; and
-- numerical verification and uncertainty reporting.
+The primary-literature pass now covers two-dimensional cascade theory,
+finite-range limitations, finite-box accumulation, large-scale drag, flux and
+stationarity standards, manufactured-solution verification, the Arakawa
+Jacobian, discretization-uncertainty reporting, and reproducible computational
+practice. Citations are scoped as context, methodology, or limitations; none is
+used as external validation of a project-specific numerical value.
 
 Figure selection should prioritize existing evidence that communicates the
 scientific tradeoffs directly: the Run 004 peak-masked and compensated spectra,
 stationarity-window diagnostics, the validated-run tradeoff plot, and one
 compact Stage E refinement/uncertainty figure generated only from archived
 evidence.
+
+## References
+
+::: {#refs}
+:::

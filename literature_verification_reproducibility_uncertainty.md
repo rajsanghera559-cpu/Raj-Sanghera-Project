@@ -31,8 +31,8 @@ These references do not support the physical spectral result directly. They shou
 ### 3. Verification and Validation in Computational Fluid Dynamics
 
 - Full citation metadata: William L. Oberkampf and Timothy G. Trucano, "Verification and validation in computational fluid dynamics," Progress in Aerospace Sciences, volume 38, issue 3, pages 209-272, 2002.
-- DOI / stable URL: DOI listed in Sandia record as `10.2172/793406`; Sandia publication record: `https://www.sandia.gov/research/publications/details/verification-and-validation-in-computational-fluid-dynamics-2002-03-01/`
-- Source type: peer-reviewed review / technical report record
+- DOI / stable URL: journal DOI `10.1016/S0376-0421(02)00005-2`; the related Sandia report record uses `10.2172/793406`: `https://www.sandia.gov/research/publications/details/verification-and-validation-in-computational-fluid-dynamics-2002-03-01/`
+- Source type: peer-reviewed review, with a related Sandia technical-report record
 - What claim it supports: Verification and validation require explicit attention to numerical error, uncertainty, model assumptions, and the distinction between code verification, solution verification, and validation.
 - What claim it does NOT support: It does not validate this project's solver or physical result; it only supports the need for careful V&V framing.
 - Relevance to this project: Supports caution that solver implementation, resolution, stationarity, and diagnostic limitations should be documented before strong CFD claims are made.
