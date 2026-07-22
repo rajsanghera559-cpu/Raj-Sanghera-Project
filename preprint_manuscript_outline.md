@@ -1,5 +1,11 @@
 # Preprint Manuscript Outline
 
+> **Figure-plan update:** The older figure placeholders retained in this
+> planning document are superseded by `MANUSCRIPT_FIGURE_SELECTION.md`, which
+> freezes three main figures after the Phase 4 numerical closure and primary-
+> literature pass. The updated plan combines redundant production panels and
+> adds one Stage E grid-contraction/resolution figure from archived evidence.
+
 ## 1. Proposed Title
 
 Primary title:

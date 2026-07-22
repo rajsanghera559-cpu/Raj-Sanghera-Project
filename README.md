@@ -97,6 +97,7 @@ interpretation but is not a direct convergence proof for Runs 004–013.
 | [Phase 13 exploratory numerical results and closure](PHASE13_EXPLORATORY_NUMERICAL_RESULTS_AND_CLOSURE.md) | Verification and calibration foundation |
 | [Technical report draft](technical_report_draft.md) | Canonical manuscript source |
 | [Primary-literature bibliography](references.bib) | Verified bibliography used by the canonical manuscript |
+| [Manuscript figure selection](MANUSCRIPT_FIGURE_SELECTION.md) | Frozen three-figure main-text plan and supplementary disposition |
 | [Preprint manuscript outline](preprint_manuscript_outline.md) | Manuscript structure and figure plan |
 | [Analysis README](README_analysis.md) | Existing read-only comparison workflow |
 
@@ -119,10 +120,11 @@ treated as immutable evidence.
 
 No new simulation is required before documentation and publication work.
 
-The manuscript is synchronized with the final numerical synthesis, and its
-primary-literature citation pass is complete. The next step is to select
-manuscript-grade figures from existing evidence, complete the prose and
-reproducibility section, and perform one final editorial/reference check before
-preparing a conservative technical report or preprint. Any future
-reference-ranking, stationarity/flux, or physical validation study should begin
-as a new explicitly scoped scientific objective.
+The manuscript is synchronized with the final numerical synthesis, its
+primary-literature citation pass is complete, and a three-figure main-text plan
+is frozen in `MANUSCRIPT_FIGURE_SELECTION.md`. The next step is to render those
+figures from existing evidence, complete the prose and reproducibility section,
+and perform one final editorial/reference check before preparing a conservative
+technical report or preprint. Any future reference-ranking, stationarity/flux,
+or physical validation study should begin as a new explicitly scoped
+scientific objective.
