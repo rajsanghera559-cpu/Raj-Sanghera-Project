@@ -3,14 +3,15 @@ bibliography: references.bib
 link-citations: true
 ---
 
-# Residual `k^-3`-Like Spectral Structure, Stationarity Tradeoffs, and Numerical Sensitivity in a Forced Two-Dimensional Vorticity Solver
+# Residual `k^-3`-Like Spectral Structure, Growth--Shape Tradeoffs, and Numerical Sensitivity in a Forced Two-Dimensional Vorticity Solver
 
 ## Document status
 
-This is the canonical technical-report manuscript source synchronized to the
-Phase 4 numerical-closure checkpoint:
-`8fbe94541cf57ef7c2b519ca080f4288207e6c95` on branch
-`phase4_validation`.
+This is the canonical technical-report manuscript source synchronized through
+the Phase 4 manuscript-artwork checkpoint
+`098ba417f504a273ff5e0420446be81c181c302e` on branch
+`phase4_validation`. The numerical investigation itself closed earlier at
+`8fbe94541cf57ef7c2b519ca080f4288207e6c95`.
 
 It integrates two related but distinct evidence streams:
 
@@ -20,9 +21,9 @@ It integrates two related but distinct evidence streams:
 The configurations and scientific questions differ between those streams.
 Stage E is therefore numerical-method sensitivity evidence for its frozen
 smooth problem, not a direct refinement or convergence test of Runs 004–013.
-The primary-literature citation pass is integrated through `references.bib`;
-final manuscript-figure selection remains to be completed. No new numerical
-result is introduced here.
+The primary-literature citation pass is integrated through `references.bib`,
+and the frozen three-figure set is embedded from the archived manuscript
+artwork. No new numerical result is introduced here.
 
 ## Abstract
 
@@ -33,9 +34,9 @@ interpret such results show controlled benchmark and refinement behavior.
 
 In the archived production comparison, Run 004 provides the cleanest residual
 spectral-shape case over steps `38,000–43,000`. Runs 009, 011, and 013 expose a
-tradeoff between residual-shape quality and improved stationarity control. The
-reported shape survives time-window, fit-range, signal-floor, shell-support,
-and leave-one-shell-out checks. Nevertheless, the spectra remain strongly
+tradeoff between residual-shape quality and reduced selected-window energy
+growth. The reported shape survives time-window, fit-range, signal-floor,
+shell-support, and leave-one-shell-out checks. Nevertheless, the spectra remain strongly
 low-wavenumber dominated and the strongest results are peak-masked and
 window-local. They do not establish a stationary enstrophy cascade or a
 physical `k^-3` law.
@@ -53,12 +54,13 @@ finite-difference and Arakawa positions showed approximately second-order
 spatial self-refinement; and all ten operator-pair separations decreased under
 grid refinement, with none resolved against the declared uncertainty rule.
 
-The combined evidence supports a reproducible residual spectral resemblance in
+The combined evidence supports a documented residual spectral resemblance in
 selected production windows and a truncation-error explanation for the
 operator-form separations measured in the separate smooth refinement problem.
 It does not provide a validated numerical reference, method ranking, formal
 universal convergence result, or physical cascade validation. The numerical
-investigation closes at Phase 4 checkpoint `8fbe945`.
+investigation closes at numerical checkpoint `8fbe945`; literature,
+manuscript, and artwork integration are synchronized through `098ba41`.
 
 ## 1. Research questions and claim boundaries
 
@@ -100,9 +102,47 @@ Throughout this report:
 - refinement behavior is reported only for its declared frozen problem and
   measured range.
 
-## 2. Numerical configurations
+## 2. Governing equation and numerical configurations
 
-### 2.1 Archived production spectral cases
+### 2.1 Solver formulation
+
+The solver advances scalar vorticity on a periodic square domain,
+$(x,y) \in [0,2\pi)^2$, using
+
+$$
+\frac{\partial \omega}{\partial t}
+= -\left(u\,\partial_x\omega + v\,\partial_y\omega\right)
+  + \nu\nabla^2\omega + f + D_L,
+$$
+
+where $D_L$ denotes the optional large-scale drag used only in the listed drag
+cases. The implemented streamfunction and velocity sign conventions are
+
+$$
+\nabla^2\psi=\omega, \qquad
+u=\partial_y\psi, \qquad v=-\partial_x\psi.
+$$
+
+Thus the stored scalar uses the sign opposite to the usual
+$z$-component curl convention; all reported diagnostics follow the implemented
+definition consistently.
+
+The Poisson solve, velocity derivatives, and viscous Laplacian are evaluated
+with Fourier transforms. The production baseline evaluates vorticity gradients
+with centered finite differences, advances with an explicit two-stage RK2
+update, and applies the solver's rectangular two-thirds Fourier mask after the
+accepted update. Stage C--E retain this time integration and filtering contract
+while substituting the declared nonlinear-advection forms. Discrete kinetic
+energy and enstrophy are recorded as
+$E=\tfrac12\langle u^2+v^2\rangle$ and
+$Z=\tfrac12\langle\omega^2\rangle$; kinetic-energy spectra are radial
+shell sums derived from vorticity.
+
+These are implemented numerical definitions rather than a claim that every
+discrete form preserves the inviscid continuum invariants. Stage B--E test the
+consequences of the actual RK2, forcing, viscosity, and post-step mask.
+
+### 2.2 Archived production spectral cases
 
 The spectral comparison cases used:
 
@@ -117,7 +157,7 @@ The spectral comparison cases used:
 The controlled variations were forcing mode, forcing amplitude, and low-k
 selective drag.
 
-### 2.2 Focused Stage E refinement problem
+### 2.3 Focused Stage E refinement problem
 
 Stage E used a different frozen problem:
 
@@ -164,6 +204,36 @@ stationarity with signed energy and enstrophy flux diagnostics
 [@Boffetta2007; @VallgrenLindborg2011]. The present diagnostic chain does not
 claim to reproduce either paper's physical regime or flux analysis.
 
+For each saved shell-summed spectrum $E_n(k)$, the forcing-scale band was set
+to missing and the remaining spectrum was normalized by its sum,
+
+$$
+E_{n,\mathrm{norm}}(k)
+=\frac{M(k)E_n(k)}{\sum_q M(q)E_n(q)},
+$$
+
+where $M(k)=0$ in the declared peak mask and $M(k)=1$ elsewhere. Over the
+declared fitted shells, ordinary least squares was applied in log--log space,
+
+$$
+\log_{10}\overline{E}_{\mathrm{norm}}(k)=a+p\log_{10}k,
+$$
+
+with $p$ reported as the residual exponent and the usual coefficient of
+determination reported as $R^2$. The compensated diagnostic was
+$C(k)=k^3\overline{E}_{\mathrm{norm}}(k)$, and its coefficient of variation was
+$\operatorname{sd}(C)/\operatorname{mean}(C)$ over the same fitted shells.
+These quantities assess shape only; normalization removes amplitude
+information, which was therefore tracked separately through total, peak-band,
+and residual-energy histories.
+
+The quoted exponent uncertainty is the empirical spread across the frozen
+time-window and fit-range ensemble, not a probabilistic confidence interval.
+Signal-floor checks compared fitted-shell values with both the high-wavenumber
+tail and machine-epsilon-scaled maximum energy. Shell counts and
+leave-one-shell-out fits then tested sampling support and single-bin influence.
+No one of these gates independently validates a power law.
+
 ## 4. Archived production spectral results
 
 ### 4.1 Run 004 residual-shape result
@@ -188,21 +258,49 @@ The residual shape is well above the recorded numerical floor and is not
 controlled by one radial shell. Its key limitation is physical: total and peak
 energy continued growing, the residual amplitude was small relative to the
 forcing-scale peak, and the full spectrum remained severely low-k dominated.
+Figure 1 summarizes both the fitted residual and its compensated form.
+
+![Run 004 selected-window residual spectrum and compensation.](manuscript_figures/phase4_checkpoint_9b1b4eb_qa_revision1/figure_1_run004_residual_spectral_diagnostics.png)
+
+*Figure 1. Selected-window residual spectral diagnostics for Run 004.* (a)
+Peak-masked window-mean spectrum over saved indices 38--43 (steps
+38,000--43,000). Markers identify the fitted shells `k=9:41`, the reference
+line shows the fitted exponent near `-3`, and the recorded floor estimates
+remain well below the fitted values. The forcing-scale band `k=2:4` is
+excluded. (b) The corresponding normalized compensation,
+`k^3 E_norm(k)`, shows limited plateau-like behavior over the same interval.
+These panels establish a residual spectral resemblance in a selected window;
+they do not establish stationarity, an inertial range, or an enstrophy cascade.
 
 ### 4.2 Forcing and drag comparisons
 
 | Case | Configuration | Slope | `R^2` | Compensated CV | Window growth | Descriptive interpretation |
 |---|---|---:|---:|---:|---:|---|
-| Run 004 | mode `2`, no drag | `-3.0036` | `0.9650` | `0.2433` | `+27.92%` | Cleanest residual-shape case; weakest stationarity control. |
+| Run 004 | mode `2`, no drag | `-3.0036` | `0.9650` | `0.2433` | `+27.92%` | Cleanest residual-shape case; largest selected-window growth. |
 | Run 009 | mode `3`, no drag | `-3.0116` | `0.9619` | `0.2366` | `+20.78%` | Cleanest mode-3 no-drag residual shape. |
-| Run 011 | mode `3`, `alpha=0.10`, `kmax=5` | `-3.0004` | `0.9448` | `0.3022` | `+6.80%` | Strongest stationarity control among the listed combined cases; weaker residual quality. |
+| Run 011 | mode `3`, `alpha=0.10`, `kmax=5` | `-3.0004` | `0.9448` | `0.3022` | `+6.80%` | Lowest selected-window growth among the listed combined cases; weaker residual quality. |
 | Run 012 | mode `3`, `alpha=0.05`, `kmax=5` | `-3.0217` | `0.9504` | `0.2860` | `+12.23%` | Intermediate combined case. |
 | Run 013 | mode `3`, `alpha=0.075`, `kmax=5` | `-2.9916` | `0.9466` | `0.2962` | `+9.38%` | Representative balanced compromise within the archived set. |
 
-The comparison exposes a tradeoff: stronger low-k stationarity control reduces
+The comparison exposes a tradeoff: stronger low-k control reduces
 total/peak growth but generally weakens residual-shape metrics. Run 013 is not
 universally “best”; it is a balanced descriptive case within this limited set.
 Further alpha-only tuning was not justified by the archived comparison.
+Figure 2 places the growth limitation and the cross-case tradeoff together.
+
+![Production growth limitation and growth--shape tradeoff.](manuscript_figures/phase4_checkpoint_9b1b4eb_qa_revision1/figure_2_production_limitation_and_tradeoff.png)
+
+*Figure 2. Physical limitation and growth--shape tradeoff in the archived
+production comparison.* (a) Independently normalized Run 004 total and masked
+peak-band energies continue to grow through the selected analysis window,
+while the residual decreases slightly. The annotation, rather than vertical
+separation of the normalized curves, records the near-unity peak-band fraction
+at step 43,000. (b) Across the five documented cases, stronger
+low-wavenumber control reduces selected-window growth but generally increases
+compensated-spectrum variation. Run 011 has the lowest selected-window growth
+among the listed combined cases, while Run 013 is a descriptive compromise.
+The comparison identifies neither a stationary case nor a universally optimal
+configuration.
 
 This tradeoff is physically plausible rather than a neutral post-processing
 effect. In finite periodic domains, inverse transfer can accumulate energy in
@@ -227,6 +325,38 @@ same-state operator behavior, independent-trajectory behavior, and refinement.
 
 Projected variants were reduced to sparse same-state controls in Stage E rather
 than being advanced as four additional production paths.
+
+Stage E retained full fields at seven anchors from $t=0$ to $15.3$. For a
+field $\omega$, comparisons used the mean-free RMS norm
+
+$$
+\lVert\omega\rVert_{\mathrm{mf}}
+=\left\langle(\omega-\langle\omega\rangle)^2\right\rangle^{1/2}.
+$$
+
+Temporal increments were same-operator differences on the common `N=64` grid,
+with
+
+$$
+p_t=\frac{\log(E_{t,\mathrm{coarse}}/E_{t,\mathrm{fine}})}{\log 2}.
+$$
+
+For spatial comparisons, the `N=96` and `N=144` fields were Fourier-restricted
+to a common `N=64` representation using explicit FFT normalization, integer
+wavenumber mapping, and zeroed ambiguous even-grid Nyquist axes. The reported
+order was
+
+$$
+p_x=\frac{\log(E_{x,\mathrm{coarse}}/E_{x,\mathrm{fine}})}{\log 1.5}.
+$$
+
+An order was reportable only when both increments exceeded 100 times the
+measured numerical floor. For operator pair $i,j$, the conservative
+discretization uncertainty was the sum of both operators' fine temporal and
+fine spatial increments. A pair was called resolved only when that sum was at
+most 20% of the finest-grid common-band mean-free separation at the final
+anchor and at least four of the final five anchors. This rule is a declared
+resolution test, not a confidence interval or an accuracy ranking.
 
 ## 6. Verification and numerical-sensitivity results
 
@@ -273,19 +403,18 @@ rows and recorded zero integrity, shared-memory, or order-invariance failures.
 The result established implementation integrity; it did not rank trajectories
 or establish convergence.
 
-The original D1 implementation stopped before its first accepted update because
-its discarded-field Parseval definition did not reproduce the Stage B ledger.
-It supplied no scientific result. D1R corrected that bookkeeping definition
-without relaxing the thresholds.
+An earlier D1 implementation stopped before its first accepted update because
+of a bookkeeping-definition mismatch and supplied no scientific result; the
+archived diagnosis records its remediation without threshold relaxation.
 
 ### 6.5 Stage E focused refinement
 
-Stage E completed five cases, 25 primary trajectories, and 229,500 accepted
+Stage E completed five cases, 25 case--trajectory realizations, and 229,500 accepted
 updates. Its independent evidence audit verified the expected row counts, 175
 checkpoint arrays, and zero integrity, ownership, mutation, aliasing, or
 finite-value failures.
 
-All five trajectories showed essentially second-order temporal self-refinement
+All five primary operator families showed essentially second-order temporal self-refinement
 at every positive-time anchor. At `T=15.3`, observed temporal orders ranged
 from `1.997998` to `2.000092`.
 
@@ -312,6 +441,24 @@ frozen resolution condition:
 - final uncertainty/separation ranged from `1.239` to `5.154`, versus the
   required maximum of `0.20`.
 
+Figure 3 shows the contraction and the unresolved final comparison together.
+
+![Stage E grid contraction and pair-resolution test.](manuscript_figures/phase4_checkpoint_9b1b4eb_qa_revision1/figure_3_stage_e_grid_contraction_and_resolution.png)
+
+*Figure 3. Grid contraction and unresolved operator-pair differences in the
+separate Stage E smooth problem.* (a) Every final-time pairwise separation
+decreases with grid refinement; at `N=144`, the ten separations are
+approximately `0.1987--0.2015` of their `N=64` values. (b) Nevertheless, all
+final uncertainty-to-separation ratios exceed the frozen resolution threshold
+of `0.20` (`1.239--5.154` observed), so none of the ten pairs is resolved. The
+finite-grid differences are measurable, but these results establish neither
+distinct nor identical continuum limits and do not rank the methods. Stage E
+uses a separate smooth, L-shaped refinement problem and is not a refinement
+test of Runs 004--013. Trajectory abbreviations: FD-A, finite-difference
+advective; FD-C, finite-difference conservative; FD-S, finite-difference
+skew-symmetric; PS-A, pseudo-spectral advective; Arakawa, Arakawa Jacobian
+trajectory.
+
 The finite-grid differences are measurable and are not called zero. Their grid
 decay and unresolved status support a truncation-error explanation within the
 tested range rather than resolved persistent continuum separation.
@@ -335,7 +482,7 @@ Two findings coexist without being conflated.
 First, selected production runs contain a peak-masked residual spectral shape
 that remains close to `k^-3` across the documented window-sensitivity,
 signal-floor, shell-support, and leave-one-shell-out checks. Run 004 remains the
-cleanest residual-shape case, Run 011 the strongest stationarity-control case
+cleanest residual-shape case, Run 011 the lowest selected-window-growth case
 among the listed combined configurations, and Run 013 a balanced compromise
 within that parameter comparison.
 
@@ -366,6 +513,11 @@ spectral law remain unestablished.
   in Stage E.
 - Stage E used a smooth forced problem at `Re=1000` through `T=15.3` and an
   L-shaped refinement matrix, not a complete space–time interaction study.
+- Stage E measured self-refinement increments rather than error against an
+  exact or independently validated reference solution.
+- Its summed discretization-uncertainty rule is a conservative project-specific
+  resolution criterion, not a statistical confidence interval or a formal
+  Grid Convergence Index.
 - Phase 13 closed at the exploratory verification level rather than producing
   formal solver-wide convergence or physical validation.
 - No validated reference solution or accuracy ranking exists.
@@ -382,70 +534,106 @@ for the Stage E trajectories over the measured range. It does not prove that
 the methods converge to the same exact solution, that their differences vanish,
 or that any method is superior.
 
-## 9. Reproducibility and artifact index
+## 9. Reproducibility, provenance, and availability
 
-The current read-only production comparison is consolidated by:
+### 9.1 Versioned evidence
 
-- `compare_validated_runs.py`;
-- `validated_run_comparison.csv`;
-- `validated_run_comparison.md`; and
-- `validated_run_tradeoff_plot.png`.
+The public repository is
+<https://github.com/rajsanghera559-cpu/Raj-Sanghera-Project> on branch
+`phase4_validation`. No numerical solve was performed during manuscript
+preparation. Numerical conclusions close at commit
+`8fbe94541cf57ef7c2b519ca080f4288207e6c95`; figure selection is bound to
+`9b1b4eb981982178815bf6387e9edd2e8a1182b5`; and the approved eight-file artwork
+set is present at manuscript-artwork checkpoint
+`098ba417f504a273ff5e0420446be81c181c302e`.
 
-The canonical numerical-evidence chain is:
+The canonical numerical-evidence chain comprises
+`PHASE13_EXPLORATORY_NUMERICAL_RESULTS_AND_CLOSURE.md`,
+`STAGE_B_EXACT_OPERATOR_LEDGER_EVIDENCE_REPORT.md`,
+`STAGE_C_REMEDIATED_FULL_SAME_STATE_SHADOW_AUDIT_COMPLETION_REPORT.md`,
+`STAGE_D1_REMEDIATED_SEPARATE_TRAJECTORY_PILOT_COMPLETION_REPORT.md`,
+`STAGE_E_FOCUSED_REFINEMENT_STUDY_COMPLETION_REPORT.md`, and
+`FINAL_NUMERICAL_INVESTIGATION_SCIENTIFIC_SYNTHESIS_AND_CLOSURE.md`. The D1R
+and Stage E completion reports identify, respectively, inventory SHA-256 values
+`B71EF5D9313B1C3FAE007726C92F77F7C0CD17B26D2A27F7841F073BECD8BE20` and
+`D5DA8930A9F16FE444C49C7186F15F54531076DD0376D1696140490D93CF181A`.
+The Stage E evidence-package SHA-256 is
+`BD8203EE98B752D74657D20FF7938E28367828D7AE4047B1BDDE29E45C64BCEA`.
+The reports retain the corresponding runner commits, run identifiers, row
+contracts, and claim boundaries rather than duplicating full inventories here.
 
-- `PHASE13_EXPLORATORY_NUMERICAL_RESULTS_AND_CLOSURE.md`;
-- `STAGE_B_EXACT_OPERATOR_LEDGER_EVIDENCE_REPORT.md`;
-- `STAGE_C_REMEDIATED_FULL_SAME_STATE_SHADOW_AUDIT_COMPLETION_REPORT.md`;
-- `STAGE_D1_REMEDIATED_SEPARATE_TRAJECTORY_PILOT_COMPLETION_REPORT.md`;
-- `STAGE_E_FOCUSED_REFINEMENT_STUDY_COMPLETION_REPORT.md`; and
-- `FINAL_NUMERICAL_INVESTIGATION_SCIENTIFIC_SYNTHESIS_AND_CLOSURE.md`.
+### 9.2 Figure regeneration
 
-Generated run directories and inventories are preserved as immutable evidence.
-The synthesis and completion reports contain their controlling repository and
-file identities; this manuscript does not duplicate those hash inventories.
-This artifact-centered reporting follows the general reproducibility principle
-that computational results should retain traceable inputs, code, intermediate
-evidence, and versioned provenance [@SandveEtAl2013]. The citation supports the
-reporting practice, not the scientific validity of the solver or spectra.
+The frozen selection is recorded in `MANUSCRIPT_FIGURE_SELECTION.md`. The
+renderer is `render_phase4_manuscript_figures.py`, and the approved output is
+`manuscript_figures/phase4_checkpoint_9b1b4eb_qa_revision1`. After restoring
+the archived Stage E bundle at the path named in its completion report, the
+read-only check and presentation-only render commands are:
 
-The manuscript bibliography is maintained in `references.bib`. Project-specific
-numerical values remain sourced to the repository artifacts listed above, not
-to external literature.
+```text
+python -B render_phase4_manuscript_figures.py inspect
+python -B render_phase4_manuscript_figures.py render --output-dir <new-directory>
+```
 
-## 10. Phase 4 closure and future scope
+The renderer imports no project solver code and advances no numerical state.
+Figure 1 recomposes two immutable diagnostic PNGs because the corresponding
+raw Run 004 spectral arrays and a dedicated original generator are not present
+in the current checkout; it does not reconstruct or refit curves. Figures 2
+and 3 are rendered from archived tabular evidence. Binary artwork identities
+are raw-byte SHA-256 values; tracked text identities are normalized to LF in
+the portable figure inventory.
 
-The numerical investigation is closed at checkpoint `8fbe945`. No longer
-same-grid Stage D2 run, automatic `N=216` escalation, or additional provenance
-gate is required for the present operator-persistence question.
+### 9.3 Reproduction boundary and data availability
 
-Remaining Phase 4 work is documentary:
+Stage B and Stage C raw evidence is tracked in the repository. Several older
+production inputs and the D1R and Stage E evidence bundles are excluded by the
+repository's generated-data policy and are not present in a clean clone.
+Consequently, the current repository supports inspection of the completion
+reports and committed artwork, but a complete independent row-level audit or
+figure regeneration additionally requires the hash-identified companion
+evidence packages. A permanent public locator for those packages should be
+added before external release.
 
-1. select or re-render manuscript-grade figures from existing evidence;
-2. complete the full prose manuscript and reproducibility section;
-3. perform one final editorial and reference check; and
-4. prepare the documentation-aligned Phase 4 release or tag under the
-   repository's established convention.
+Archived Stage B and Stage C metadata record Windows 11, CPython 3.14.5,
+NumPy 2.4.4, and `float64`. The later D1R and Stage E metadata do not preserve a
+complete software environment, and the repository has no pinned environment
+manifest. The historical numerical runners are repository-state-bound and
+should be used only at their recorded execution checkpoints with their
+prerequisite evidence. Exact cross-platform rerun equivalence is therefore not
+claimed. A release-quality companion archive should include the missing data
+bundles, a pinned environment, and a portable artifact verifier.
 
-Any future method-ranking study must be treated as a new objective requiring a
-separately validated reference candidate. Any future physical cascade claim
-would require a production-configuration refinement study, stationary budget
-and flux evidence, and appropriate long-time or ensemble analysis. Neither is
-part of the closed Phase 4 numerical scope.
+This artifact-centered reporting follows the principle that computational
+results should retain traceable inputs, code, intermediate evidence, and
+versioned provenance [@SandveEtAl2013]. The citation supports the reporting
+practice, not the scientific validity of the solver or spectra. External
+literature supplies context and methodology; every project-specific numerical
+value is sourced to the repository evidence chain.
 
-## Manuscript work remaining
+## 10. Conclusions and future scope
 
-The primary-literature pass now covers two-dimensional cascade theory,
-finite-range limitations, finite-box accumulation, large-scale drag, flux and
-stationarity standards, manufactured-solution verification, the Arakawa
-Jacobian, discretization-uncertainty reporting, and reproducible computational
-practice. Citations are scoped as context, methodology, or limitations; none is
-used as external validation of a project-specific numerical value.
+The production evidence supports a peak-masked residual spectral resemblance
+near `k^-3` in selected windows, most cleanly for Run 004. Growth of the total
+and forcing-scale energy, severe peak domination, limited scale separation,
+and absent flux evidence preclude a claim of full stationarity, an inertial
+range, or an enstrophy cascade.
 
-Figure selection should prioritize existing evidence that communicates the
-scientific tradeoffs directly: the Run 004 peak-masked and compensated spectra,
-stationarity-window diagnostics, the validated-run tradeoff plot, and one
-compact Stage E refinement/uncertainty figure generated only from archived
-evidence.
+The separate Stage E smooth problem shows essentially second-order temporal
+self-refinement for all five operator families, approximately second-order
+spatial self-refinement for the finite-difference and Arakawa families, and
+near-floor pseudo-spectral spatial increments. Every operator-pair separation
+contracts under grid refinement, but none is resolved against the frozen
+uncertainty rule. This supports a truncation-error explanation over the tested
+range without proving a common exact limit or ranking methods.
+
+The numerical investigation is closed at checkpoint `8fbe945`; manuscript and
+artwork integration is current through `098ba41`. No same-grid Stage D2 run,
+automatic `N=216` escalation, or further numerical audit is warranted for the
+closed operator-persistence question. A future accuracy-ranking study would
+require a separately validated reference candidate. A future physical-cascade
+claim would instead require production-configuration refinement, stationary
+budgets and signed fluxes, and suitable long-time or ensemble analysis. These
+are distinct new objectives, not unfinished Phase 4 work.
 
 ## References
 

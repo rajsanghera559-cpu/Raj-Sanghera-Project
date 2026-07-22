@@ -1,4 +1,11 @@
-# Preprint Manuscript Outline
+# Historical Preprint Manuscript Outline (Superseded)
+
+> **Status:** This file is retained only as a planning record. The canonical
+> submission prose is `technical_report_draft.md`; the frozen figure plan is
+> `MANUSCRIPT_FIGURE_SELECTION.md`; and the approved artwork is
+> `manuscript_figures/phase4_checkpoint_9b1b4eb_qa_revision1`. Do not maintain
+> this outline as a parallel manuscript or use its older placeholders as
+> current scientific claims.
 
 > **Figure-plan update:** The older figure placeholders retained in this
 > planning document are superseded by `MANUSCRIPT_FIGURE_SELECTION.md`, which

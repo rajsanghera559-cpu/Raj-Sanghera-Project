@@ -47,6 +47,12 @@ STAGE_E_INPUTS = {
         "EA3DBD9B0A8406ED2AD44E926139CC06895FDFC42155A4E98B1102DB3F47A93E",
 }
 
+CANONICAL_TEXT_INPUTS = {
+    MANIFEST,
+    "window_local_residual_budget.csv",
+    "validated_run_comparison.csv",
+}
+
 FIGURE_BASENAMES = (
     "figure_1_run004_residual_spectral_diagnostics",
     "figure_2_production_limitation_and_tradeoff",
@@ -131,10 +137,21 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest().upper()
 
 
+def canonical_text_bytes(path: Path) -> bytes:
+    """Return text bytes with Git-style LF normalization."""
+    return path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+
+
 def sha256_canonical_text(path: Path) -> str:
     """Hash text with Git-style LF normalization for Windows portability."""
-    content = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
-    return hashlib.sha256(content).hexdigest().upper()
+    return hashlib.sha256(canonical_text_bytes(path)).hexdigest().upper()
+
+
+def source_identity(path: Path) -> str:
+    """Use the same identity policy recorded by frozen-input verification."""
+    if path.name in CANONICAL_TEXT_INPUTS:
+        return sha256_canonical_text(path)
+    return sha256_file(path)
 
 
 def require_file(path: Path, expected_sha256: str) -> None:
@@ -706,20 +723,30 @@ def render_figure_3(
 
 def write_inventory(output: Path, sources: Iterable[Path]) -> None:
     source_summary = ";".join(
-        f"{path.name}:{sha256_file(path)}" for path in sources
+        f"{path.name}:{source_identity(path)}" for path in sources
     )
     inventory_path = output / "manuscript_figure_inventory.csv"
     with inventory_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle, lineterminator="\n")
         writer.writerow((
-            "file", "bytes", "sha256", "source_checkpoint", "source_identities"
+            "file", "bytes", "sha256", "source_checkpoint", "source_identities",
+            "identity_mode",
         ))
         for name in OUTPUT_NAMES:
             if name == inventory_path.name:
                 continue
             path = output / name
+            if path.name == "manuscript_figure_captions.md":
+                identity_bytes = canonical_text_bytes(path)
+                byte_count = len(identity_bytes)
+                identity = hashlib.sha256(identity_bytes).hexdigest().upper()
+                identity_mode = "canonical-lf-text"
+            else:
+                byte_count = path.stat().st_size
+                identity = sha256_file(path)
+                identity_mode = "raw-bytes"
             writer.writerow((
-                name, path.stat().st_size, sha256_file(path), CHECKPOINT, source_summary
+                name, byte_count, identity, CHECKPOINT, source_summary, identity_mode
             ))
 
 
