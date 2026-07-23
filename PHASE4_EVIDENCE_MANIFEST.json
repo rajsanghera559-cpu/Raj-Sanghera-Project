@@ -9,7 +9,11 @@
   "release_candidate_tag": "v0.5.63-phase4-manuscript-release-candidate-1",
   "publication_route": "preprint_first_journal_undecided",
   "planned_archive": "Zenodo",
-  "permanent_locator": null,
+  "doi": "10.5281/zenodo.21505468",
+  "permanent_locator": "https://doi.org/10.5281/zenodo.21505468",
+  "zenodo_record_id": "21505468",
+  "doi_reservation_confirmed": true,
+  "doi_registration_event": "Zenodo registers the reserved DOI when the record is published.",
   "evidence_license": "CC-BY-4.0",
   "historical_d1r_stage_e_environment_recorded": false,
   "present_day_inspection_environment_recorded": true,
@@ -63,7 +67,6 @@
     }
   ],
   "known_release_gaps": [
-    "The permanent Zenodo DOI or URL has not yet been assigned.",
     "Several older production inputs required for complete clean-clone regeneration remain outside this companion pair."
   ]
 }

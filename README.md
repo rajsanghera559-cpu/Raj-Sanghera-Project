@@ -107,7 +107,7 @@ interpretation but is not a direct convergence proof for Runs 004–013.
 | [Manuscript figure selection](MANUSCRIPT_FIGURE_SELECTION.md) | Frozen three-figure main-text plan and supplementary disposition |
 | [Approved Phase 4 manuscript artwork](manuscript_figures/phase4_checkpoint_9b1b4eb_qa_revision1) | Three PNG/PDF figures, captions, and portable inventory |
 | [Manuscript figure renderer](render_phase4_manuscript_figures.py) | Presentation-only assembly from archived evidence; no numerical stepping |
-| [Phase 4 evidence manifest](PHASE4_EVIDENCE_MANIFEST.json) | Checksums, run identities, completion reports, and pending permanent locator for the D1R and Stage E companion archives |
+| [Phase 4 evidence manifest](PHASE4_EVIDENCE_MANIFEST.json) | Checksums, run identities, completion reports, and Zenodo DOI for the D1R and Stage E companion archives |
 | [Reproduction environment record](REPRODUCTION_ENVIRONMENT.md) | Recorded historical facts, captured present-day inspection environment, and known limitations |
 | [Publication environment pin](requirements-publication.txt) | Exact present-day package versions used for publication-artifact inspection and figure regeneration |
 | [Software license](LICENSE) | MIT License for project-authored software |
@@ -139,14 +139,15 @@ manuscript artwork. Some older production inputs and the D1R and Stage E
 evidence bundles are generated-data artifacts and are not present in a clean
 clone. The [Phase 4 evidence manifest](PHASE4_EVIDENCE_MANIFEST.json) records
 the controlling package hashes, run identities, inventories, and completion
-reports for the two companion bundles. A Zenodo archive is planned, but its
-permanent locator is not yet assigned. The
+reports for the two companion bundles. The companion evidence record is
+identified by Zenodo DOI
+[`10.5281/zenodo.21505468`](https://doi.org/10.5281/zenodo.21505468). The
 [environment record](REPRODUCTION_ENVIRONMENT.md) distinguishes recorded
 historical execution facts from the captured present-day publication
 workstation environment; `requirements-publication.txt` pins the corresponding
-package versions. Until the permanent evidence locator is supplied, the
-repository supports report and artwork inspection but not complete independent
-row-level regeneration from a clean clone.
+package versions. Complete independent row-level inspection of D1R and Stage E
+from a clean clone requires downloading those DOI-identified companion
+archives.
 
 ## Next project step
 
@@ -154,9 +155,9 @@ No new simulation or numerical audit is warranted for the closed Phase 4
 question. The primary-literature citations, canonical prose, reproducibility
 boundary, approved three-figure set, publication metadata, release-candidate
 tag, and present-day publication environment are integrated. The
-remaining release work is to publish the two evidence bundles and their
-completion reports with the manifest to Zenodo, insert the assigned permanent
-locator, and perform one venue-specific editorial/reference/layout pass before
-a final release tag. Any future reference-ranking, stationarity/flux, or
-physical-validation study should begin as a new, explicitly scoped scientific
-objective.
+remaining release work is to upload the two evidence bundles, their completion
+reports, and the manifest to the reserved Zenodo record, preview and publish
+that record, and perform one venue-specific editorial/reference/layout pass
+before a final release tag. Any future reference-ranking, stationarity/flux,
+or physical-validation study should begin as a new, explicitly scoped
+scientific objective.

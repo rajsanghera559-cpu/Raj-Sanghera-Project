@@ -576,8 +576,9 @@ The D1R evidence-package SHA-256 is
 The reports retain the corresponding runner commits, run identifiers, row
 contracts, and claim boundaries rather than duplicating full inventories here.
 `PHASE4_EVIDENCE_MANIFEST.json` binds these archive identities to their
-internal inventories and completion reports while the planned Zenodo locator
-remains pending.
+internal inventories and completion reports. The companion record is
+identified by Zenodo DOI
+[`10.5281/zenodo.21505468`](https://doi.org/10.5281/zenodo.21505468).
 
 ### 9.2 Figure regeneration
 
@@ -608,8 +609,8 @@ repository's generated-data policy and are not present in a clean clone.
 Consequently, the current repository supports inspection of the completion
 reports and committed artwork, but a complete independent row-level audit or
 figure regeneration additionally requires the hash-identified companion
-evidence packages. A permanent public locator for those packages should be
-added before external release.
+evidence packages available through Zenodo DOI
+[`10.5281/zenodo.21505468`](https://doi.org/10.5281/zenodo.21505468).
 
 Archived Stage B and Stage C metadata record Windows 11, CPython 3.14.5,
 NumPy 2.4.4, and `float64`. The later D1R and Stage E metadata do not preserve a
