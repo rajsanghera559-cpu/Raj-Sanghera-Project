@@ -1,0 +1,55 @@
+{
+  "schema_id": "PHASE4_COMPANION_EVIDENCE_MANIFEST_V1",
+  "status": "release_candidate",
+  "project": "Raj-Sanghera-Project",
+  "repository": "https://github.com/rajsanghera559-cpu/Raj-Sanghera-Project",
+  "branch": "phase4_validation",
+  "numerical_closure_commit": "8fbe94541cf57ef7c2b519ca080f4288207e6c95",
+  "manuscript_release_candidate_commit": "b6b0e52378352d579dac59306a1fa3ac737b8239",
+  "release_candidate_tag": "v0.5.63-phase4-manuscript-release-candidate-1",
+  "publication_route": "preprint_first_journal_undecided",
+  "planned_archive": "Zenodo",
+  "permanent_locator": null,
+  "evidence_license": "CC-BY-4.0",
+  "historical_d1r_stage_e_environment_recorded": false,
+  "numerical_execution_during_publication_preparation": false,
+  "assets": [
+    {
+      "filename": "PHASE4_D1R_EVIDENCE_b3612a0.zip",
+      "media_type": "application/zip",
+      "bytes": 2878001,
+      "sha256": "703A7E012ED32A3286E5D75B37B437954A33C811B088CA7CF8D0B746543C1357",
+      "members": 8,
+      "run_id": "stage_d_separate_trajectory_pilot_remediated_20260721T055827Z_b3612a0",
+      "execution_commit": "b3612a031c4b34885dd85b3a14cae58bb879a54b",
+      "internal_inventory_sha256": "B71EF5D9313B1C3FAE007726C92F77F7C0CD17B26D2A27F7841F073BECD8BE20",
+      "completion_report": {
+        "filename": "STAGE_D1_REMEDIATED_SEPARATE_TRAJECTORY_PILOT_COMPLETION_REPORT.md",
+        "bytes": 3905,
+        "sha256": "C5BDCDE3D97EDB1568B2A6C959CF98A94DE0207415772DAAE181144C0E2850BA",
+        "commit": "6ee8cfb9a6011355771659350fec314b44e15f38"
+      }
+    },
+    {
+      "filename": "PHASE4_STAGE_E_EVIDENCE_8ab70dc.zip",
+      "media_type": "application/zip",
+      "bytes": 13430467,
+      "sha256": "BD8203EE98B752D74657D20FF7938E28367828D7AE4047B1BDDE29E45C64BCEA",
+      "members": 10,
+      "run_id": "stage_e_focused_refinement_20260721T074126Z_8ab70dc",
+      "execution_commit": "8ab70dc74f76996fe054d578e292459b020a3b02",
+      "internal_inventory_sha256": "D5DA8930A9F16FE444C49C7186F15F54531076DD0376D1696140490D93CF181A",
+      "completion_report": {
+        "filename": "STAGE_E_FOCUSED_REFINEMENT_STUDY_COMPLETION_REPORT.md",
+        "bytes": 7417,
+        "sha256": "CF1DADE9E99C7EB235AE482F2BD09491E1EE55810D4CFD2928914FB11D5FAE93",
+        "commit": "ecd979d832e635fc81461c08955e4609f4127c20"
+      }
+    }
+  ],
+  "known_release_gaps": [
+    "The permanent Zenodo DOI or URL has not yet been assigned.",
+    "The present-day artifact-inspection environment has not yet been captured.",
+    "Several older production inputs required for complete clean-clone regeneration remain outside this companion pair."
+  ]
+}

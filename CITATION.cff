@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software or its associated Phase 4 materials, please cite the preferred citation below. Software is MIT-licensed; project-authored manuscript content and released evidence are CC BY 4.0."
+title: "Residual k^-3-Like Spectral Structure, Growth--Shape Tradeoffs, and Numerical Sensitivity in a Forced Two-Dimensional Vorticity Solver"
+type: software
+authors:
+  - family-names: Sanghera
+    given-names: Raj
+    affiliation: Independent Researcher
+repository-code: "https://github.com/rajsanghera559-cpu/Raj-Sanghera-Project"
+url: "https://github.com/rajsanghera559-cpu/Raj-Sanghera-Project"
+version: "0.5.63-rc1"
+date-released: "2026-07-22"
+license: MIT
+keywords:
+  - two-dimensional vorticity
+  - spectral diagnostics
+  - enstrophy
+  - numerical verification
+  - grid refinement
+  - advection discretization
+preferred-citation:
+  type: article
+  title: "Residual k^-3-Like Spectral Structure, Growth--Shape Tradeoffs, and Numerical Sensitivity in a Forced Two-Dimensional Vorticity Solver"
+  authors:
+    - family-names: Sanghera
+      given-names: Raj
+      affiliation: Independent Researcher
+  year: 2026

@@ -22,6 +22,10 @@ The project has two related evidence streams:
   `8fbe94541cf57ef7c2b519ca080f4288207e6c95`
 - Manuscript-artwork checkpoint:
   `098ba417f504a273ff5e0420446be81c181c302e`
+- Scientific-manuscript release-candidate checkpoint:
+  `b6b0e52378352d579dac59306a1fa3ac737b8239`
+- Annotated release-candidate tag:
+  `v0.5.63-phase4-manuscript-release-candidate-1`
 - Canonical closure document: [Final numerical investigation scientific
   synthesis and closure](FINAL_NUMERICAL_INVESTIGATION_SCIENTIFIC_SYNTHESIS_AND_CLOSURE.md)
 - Additional numerical execution required for the closed advection-form
@@ -99,9 +103,14 @@ interpretation but is not a direct convergence proof for Runs 004–013.
 | [Phase 13 exploratory numerical results and closure](PHASE13_EXPLORATORY_NUMERICAL_RESULTS_AND_CLOSURE.md) | Verification and calibration foundation |
 | [Technical report draft](technical_report_draft.md) | Canonical manuscript source |
 | [Primary-literature bibliography](references.bib) | Verified bibliography used by the canonical manuscript |
+| [Citation metadata](CITATION.cff) | Release-candidate author, title, version, and preferred-citation metadata |
 | [Manuscript figure selection](MANUSCRIPT_FIGURE_SELECTION.md) | Frozen three-figure main-text plan and supplementary disposition |
 | [Approved Phase 4 manuscript artwork](manuscript_figures/phase4_checkpoint_9b1b4eb_qa_revision1) | Three PNG/PDF figures, captions, and portable inventory |
 | [Manuscript figure renderer](render_phase4_manuscript_figures.py) | Presentation-only assembly from archived evidence; no numerical stepping |
+| [Phase 4 evidence manifest](PHASE4_EVIDENCE_MANIFEST.json) | Checksums, run identities, completion reports, and pending permanent locator for the D1R and Stage E companion archives |
+| [Reproduction environment record](REPRODUCTION_ENVIRONMENT.md) | Recorded historical facts, present-day capture boundary, and known environment limitations |
+| [Software license](LICENSE) | MIT License for project-authored software |
+| [Content and evidence license](LICENSE-CONTENT.md) | CC BY 4.0 terms for project-authored manuscript content, figures, documentation, and released evidence |
 | [Preprint manuscript outline](preprint_manuscript_outline.md) | Superseded historical planning artifact |
 | [Analysis README](README_analysis.md) | Existing read-only comparison workflow |
 
@@ -127,19 +136,25 @@ treated as immutable evidence.
 The repository contains the Stage B and Stage C raw evidence and the approved
 manuscript artwork. Some older production inputs and the D1R and Stage E
 evidence bundles are generated-data artifacts and are not present in a clean
-clone. Their completion reports retain the controlling inventory and package
-hashes. Before public release, those bundles should receive a permanent
-companion-archive locator and the Python environment should be pinned. Until
-then, the repository supports report and artwork inspection but not complete
-independent row-level regeneration from a clean clone.
+clone. The [Phase 4 evidence manifest](PHASE4_EVIDENCE_MANIFEST.json) records
+the controlling package hashes, run identities, inventories, and completion
+reports for the two companion bundles. A Zenodo archive is planned, but its
+permanent locator is not yet assigned. The
+[environment record](REPRODUCTION_ENVIRONMENT.md) distinguishes recorded
+historical execution facts from the still-pending present-day publication
+workstation capture. Until those release fields are completed, the repository
+supports report and artwork inspection but not complete independent row-level
+regeneration from a clean clone.
 
 ## Next project step
 
 No new simulation or numerical audit is warranted for the closed Phase 4
 question. The primary-literature citations, canonical prose, reproducibility
-boundary, and approved three-figure set are integrated. The only remaining
-current-scope action is one final editorial/reference check, followed
-optionally by a conservative tag or release after the companion evidence
-locator and publication metadata are supplied. Any future reference-ranking,
-stationarity/flux, or physical-validation study should begin as a new,
-explicitly scoped scientific objective.
+boundary, approved three-figure set, publication metadata, and release-
+candidate tag are integrated. The remaining release work is to capture the
+present-day inspection environment, publish the two evidence bundles and their
+completion reports with the manifest to Zenodo, insert the assigned permanent
+locator, and perform one venue-specific editorial/reference/layout pass before
+a final release tag. Any future reference-ranking, stationarity/flux, or
+physical-validation study should begin as a new, explicitly scoped scientific
+objective.

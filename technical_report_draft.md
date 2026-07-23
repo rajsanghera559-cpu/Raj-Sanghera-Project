@@ -5,6 +5,13 @@ link-citations: true
 
 # Residual `k^-3`-Like Spectral Structure, Growth--Shape Tradeoffs, and Numerical Sensitivity in a Forced Two-Dimensional Vorticity Solver
 
+**Raj Sanghera**
+
+Independent Researcher
+
+*Keywords:* two-dimensional vorticity; spectral diagnostics; enstrophy;
+numerical verification; grid refinement; advection discretization
+
 ## Document status
 
 This is the canonical technical-report manuscript source synchronized through
@@ -12,6 +19,11 @@ the Phase 4 manuscript-artwork checkpoint
 `098ba417f504a273ff5e0420446be81c181c302e` on branch
 `phase4_validation`. The numerical investigation itself closed earlier at
 `8fbe94541cf57ef7c2b519ca080f4288207e6c95`.
+The completed scientific-manuscript release candidate is preserved at
+`b6b0e52378352d579dac59306a1fa3ac737b8239` under annotated tag
+`v0.5.63-phase4-manuscript-release-candidate-1`.
+The intended publication route is a preprint first; journal selection remains
+open.
 
 It integrates two related but distinct evidence streams:
 
@@ -49,7 +61,7 @@ RK2-plus-mask enstrophy ledger. Stage C found mixed, operator-form-dependent
 same-state enstrophy work. Stage D1R demonstrated independently owned,
 internally consistent alternate trajectories. Stage E then completed 229,500
 accepted primary updates across five refinement cases. All five primary
-trajectories showed essentially second-order temporal self-refinement; the
+operator families showed essentially second-order temporal self-refinement; the
 finite-difference and Arakawa positions showed approximately second-order
 spatial self-refinement; and all ten operator-pair separations decreased under
 grid refinement, with none resolved against the declared uncertainty rule.
@@ -559,8 +571,13 @@ and Stage E completion reports identify, respectively, inventory SHA-256 values
 `D5DA8930A9F16FE444C49C7186F15F54531076DD0376D1696140490D93CF181A`.
 The Stage E evidence-package SHA-256 is
 `BD8203EE98B752D74657D20FF7938E28367828D7AE4047B1BDDE29E45C64BCEA`.
+The D1R evidence-package SHA-256 is
+`703A7E012ED32A3286E5D75B37B437954A33C811B088CA7CF8D0B746543C1357`.
 The reports retain the corresponding runner commits, run identifiers, row
 contracts, and claim boundaries rather than duplicating full inventories here.
+`PHASE4_EVIDENCE_MANIFEST.json` binds these archive identities to their
+internal inventories and completion reports while the planned Zenodo locator
+remains pending.
 
 ### 9.2 Figure regeneration
 
@@ -596,8 +613,9 @@ added before external release.
 
 Archived Stage B and Stage C metadata record Windows 11, CPython 3.14.5,
 NumPy 2.4.4, and `float64`. The later D1R and Stage E metadata do not preserve a
-complete software environment, and the repository has no pinned environment
-manifest. The historical numerical runners are repository-state-bound and
+complete software environment. `REPRODUCTION_ENVIRONMENT.md` separates those
+historical facts from the pending present-day inspection-environment capture.
+The historical numerical runners are repository-state-bound and
 should be used only at their recorded execution checkpoints with their
 prerequisite evidence. Exact cross-platform rerun equivalence is therefore not
 claimed. A release-quality companion archive should include the missing data
@@ -634,6 +652,40 @@ require a separately validated reference candidate. A future physical-cascade
 claim would instead require production-configuration refinement, stationary
 budgets and signed fluxes, and suitable long-time or ensemble analysis. These
 are distinct new objectives, not unfinished Phase 4 work.
+
+## Author declarations
+
+### Funding
+
+This research received no external funding.
+
+### Acknowledgments
+
+The author has no additional acknowledgments.
+
+### Competing interests
+
+The author declares no competing interests.
+
+### Author contributions
+
+Raj Sanghera: Conceptualization, Methodology, Software, Validation, Formal
+analysis, Investigation, Data curation, Visualization, Writing--original
+draft, Writing--review and editing, and Project administration.
+
+### AI-assisted work
+
+Generative AI tools assisted with software development, documentation,
+evidence organization, and editorial preparation. The author reviewed and
+verified the analysis, citations, numerical evidence, and final text and
+accepts full responsibility for the work.
+
+### Licensing
+
+Repository code authored for this project is licensed under the MIT License.
+The manuscript, project-authored figures and documentation, and released
+evidence datasets are licensed under the Creative Commons Attribution 4.0
+International License, except where third-party rights are identified.
 
 ## References
 
