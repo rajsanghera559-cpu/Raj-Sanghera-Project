@@ -613,13 +613,17 @@ added before external release.
 
 Archived Stage B and Stage C metadata record Windows 11, CPython 3.14.5,
 NumPy 2.4.4, and `float64`. The later D1R and Stage E metadata do not preserve a
-complete software environment. `REPRODUCTION_ENVIRONMENT.md` separates those
-historical facts from the pending present-day inspection-environment capture.
-The historical numerical runners are repository-state-bound and
-should be used only at their recorded execution checkpoints with their
-prerequisite evidence. Exact cross-platform rerun equivalence is therefore not
-claimed. A release-quality companion archive should include the missing data
-bundles, a pinned environment, and a portable artifact verifier.
+complete software environment. The present-day publication and artifact-
+inspection environment was captured as Windows 11, CPython 3.14.5, NumPy
+2.4.4, pandas 3.0.3, Matplotlib 3.10.9, and Pillow 12.2.0, with package versions
+pinned in `requirements-publication.txt`. `REPRODUCTION_ENVIRONMENT.md`
+separates this present-day record from the unavailable historical D1R and
+Stage E environments. The historical numerical runners are repository-state-
+bound and should be used only at their recorded execution checkpoints with
+their prerequisite evidence. Exact cross-platform rerun equivalence is
+therefore not claimed. A release-quality companion archive should include the
+missing data bundles, the environment record and pin, and a portable artifact
+verifier.
 
 This artifact-centered reporting follows the principle that computational
 results should retain traceable inputs, code, intermediate evidence, and

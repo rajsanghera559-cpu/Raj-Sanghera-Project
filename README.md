@@ -108,7 +108,8 @@ interpretation but is not a direct convergence proof for Runs 004–013.
 | [Approved Phase 4 manuscript artwork](manuscript_figures/phase4_checkpoint_9b1b4eb_qa_revision1) | Three PNG/PDF figures, captions, and portable inventory |
 | [Manuscript figure renderer](render_phase4_manuscript_figures.py) | Presentation-only assembly from archived evidence; no numerical stepping |
 | [Phase 4 evidence manifest](PHASE4_EVIDENCE_MANIFEST.json) | Checksums, run identities, completion reports, and pending permanent locator for the D1R and Stage E companion archives |
-| [Reproduction environment record](REPRODUCTION_ENVIRONMENT.md) | Recorded historical facts, present-day capture boundary, and known environment limitations |
+| [Reproduction environment record](REPRODUCTION_ENVIRONMENT.md) | Recorded historical facts, captured present-day inspection environment, and known limitations |
+| [Publication environment pin](requirements-publication.txt) | Exact present-day package versions used for publication-artifact inspection and figure regeneration |
 | [Software license](LICENSE) | MIT License for project-authored software |
 | [Content and evidence license](LICENSE-CONTENT.md) | CC BY 4.0 terms for project-authored manuscript content, figures, documentation, and released evidence |
 | [Preprint manuscript outline](preprint_manuscript_outline.md) | Superseded historical planning artifact |
@@ -141,18 +142,19 @@ the controlling package hashes, run identities, inventories, and completion
 reports for the two companion bundles. A Zenodo archive is planned, but its
 permanent locator is not yet assigned. The
 [environment record](REPRODUCTION_ENVIRONMENT.md) distinguishes recorded
-historical execution facts from the still-pending present-day publication
-workstation capture. Until those release fields are completed, the repository
-supports report and artwork inspection but not complete independent row-level
-regeneration from a clean clone.
+historical execution facts from the captured present-day publication
+workstation environment; `requirements-publication.txt` pins the corresponding
+package versions. Until the permanent evidence locator is supplied, the
+repository supports report and artwork inspection but not complete independent
+row-level regeneration from a clean clone.
 
 ## Next project step
 
 No new simulation or numerical audit is warranted for the closed Phase 4
 question. The primary-literature citations, canonical prose, reproducibility
-boundary, approved three-figure set, publication metadata, and release-
-candidate tag are integrated. The remaining release work is to capture the
-present-day inspection environment, publish the two evidence bundles and their
+boundary, approved three-figure set, publication metadata, release-candidate
+tag, and present-day publication environment are integrated. The
+remaining release work is to publish the two evidence bundles and their
 completion reports with the manifest to Zenodo, insert the assigned permanent
 locator, and perform one venue-specific editorial/reference/layout pass before
 a final release tag. Any future reference-ranking, stationarity/flux, or

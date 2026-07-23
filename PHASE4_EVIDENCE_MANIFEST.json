@@ -12,6 +12,21 @@
   "permanent_locator": null,
   "evidence_license": "CC-BY-4.0",
   "historical_d1r_stage_e_environment_recorded": false,
+  "present_day_inspection_environment_recorded": true,
+  "present_day_inspection_environment": {
+    "capture_date": "2026-07-22",
+    "purpose": "publication_and_artifact_inspection",
+    "historical_d1r_stage_e_runtime": false,
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.14.5",
+    "python_build": "tags/v3.14.5:5607950, May 10 2026, 10:43:50; MSC v.1944 64 bit (AMD64)",
+    "numpy": "2.4.4",
+    "pandas": "3.0.3",
+    "matplotlib": "3.10.9",
+    "pillow": "12.2.0",
+    "requirements_file": "requirements-publication.txt",
+    "numerical_timesteps_executed_during_capture": false
+  },
   "numerical_execution_during_publication_preparation": false,
   "assets": [
     {
@@ -49,7 +64,6 @@
   ],
   "known_release_gaps": [
     "The permanent Zenodo DOI or URL has not yet been assigned.",
-    "The present-day artifact-inspection environment has not yet been captured.",
     "Several older production inputs required for complete clean-clone regeneration remain outside this companion pair."
   ]
 }
