@@ -22,6 +22,13 @@ the Phase 4 manuscript-artwork checkpoint
 The completed scientific-manuscript release candidate is preserved at
 `b6b0e52378352d579dac59306a1fa3ac737b8239` under annotated tag
 `v0.5.63-phase4-manuscript-release-candidate-1`.
+The companion numerical evidence was published on Zenodo on July 23, 2026.
+The exact deposited version is identified by DOI
+[`10.5281/zenodo.21505468`](https://doi.org/10.5281/zenodo.21505468), while
+[`10.5281/zenodo.21505467`](https://doi.org/10.5281/zenodo.21505467)
+identifies all Zenodo versions. The final repository publication closure is
+marked by annotated tag
+`v0.5.63-phase4-manuscript-and-evidence-release`.
 The intended publication route is a preprint first; journal selection remains
 open.
 
@@ -576,9 +583,12 @@ The D1R evidence-package SHA-256 is
 The reports retain the corresponding runner commits, run identifiers, row
 contracts, and claim boundaries rather than duplicating full inventories here.
 `PHASE4_EVIDENCE_MANIFEST.json` binds these archive identities to their
-internal inventories and completion reports. The companion record is
-identified by Zenodo DOI
+internal inventories and completion reports. The exact published companion
+record is identified by Zenodo DOI
 [`10.5281/zenodo.21505468`](https://doi.org/10.5281/zenodo.21505468).
+The all-versions DOI
+[`10.5281/zenodo.21505467`](https://doi.org/10.5281/zenodo.21505467)
+resolves to the latest Zenodo version.
 
 ### 9.2 Figure regeneration
 
@@ -609,7 +619,7 @@ repository's generated-data policy and are not present in a clean clone.
 Consequently, the current repository supports inspection of the completion
 reports and committed artwork, but a complete independent row-level audit or
 figure regeneration additionally requires the hash-identified companion
-evidence packages available through Zenodo DOI
+evidence packages published as the exact Zenodo version
 [`10.5281/zenodo.21505468`](https://doi.org/10.5281/zenodo.21505468).
 
 Archived Stage B and Stage C metadata record Windows 11, CPython 3.14.5,
@@ -622,9 +632,10 @@ separates this present-day record from the unavailable historical D1R and
 Stage E environments. The historical numerical runners are repository-state-
 bound and should be used only at their recorded execution checkpoints with
 their prerequisite evidence. Exact cross-platform rerun equivalence is
-therefore not claimed. A release-quality companion archive should include the
-missing data bundles, the environment record and pin, and a portable artifact
-verifier.
+therefore not claimed. The published Zenodo record supplies the two companion
+data bundles, their completion reports, and the machine-readable evidence
+manifest. The environment record, package pin, manuscript, and inspection
+tools remain versioned in the repository at the final release tag.
 
 This artifact-centered reporting follows the principle that computational
 results should retain traceable inputs, code, intermediate evidence, and
@@ -650,13 +661,16 @@ uncertainty rule. This supports a truncation-error explanation over the tested
 range without proving a common exact limit or ranking methods.
 
 The numerical investigation is closed at checkpoint `8fbe945`; manuscript and
-artwork integration is current through `098ba41`. No same-grid Stage D2 run,
-automatic `N=216` escalation, or further numerical audit is warranted for the
-closed operator-persistence question. A future accuracy-ranking study would
-require a separately validated reference candidate. A future physical-cascade
-claim would instead require production-configuration refinement, stationary
-budgets and signed fluxes, and suitable long-time or ensemble analysis. These
-are distinct new objectives, not unfinished Phase 4 work.
+artwork integration is current through `098ba41`; and the companion evidence
+is published at DOI
+[`10.5281/zenodo.21505468`](https://doi.org/10.5281/zenodo.21505468).
+No same-grid Stage D2 run, automatic `N=216` escalation, or further numerical
+audit is warranted for the closed operator-persistence question. A future
+accuracy-ranking study would require a separately validated reference
+candidate. A future physical-cascade claim would instead require
+production-configuration refinement, stationary budgets and signed fluxes,
+and suitable long-time or ensemble analysis. These are distinct new
+objectives, not unfinished Phase 4 work.
 
 ## Author declarations
 

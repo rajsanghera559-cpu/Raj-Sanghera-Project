@@ -1,19 +1,38 @@
 {
   "schema_id": "PHASE4_COMPANION_EVIDENCE_MANIFEST_V1",
-  "status": "release_candidate",
+  "status": "published_companion_evidence",
   "project": "Raj-Sanghera-Project",
   "repository": "https://github.com/rajsanghera559-cpu/Raj-Sanghera-Project",
   "branch": "phase4_validation",
   "numerical_closure_commit": "8fbe94541cf57ef7c2b519ca080f4288207e6c95",
   "manuscript_release_candidate_commit": "b6b0e52378352d579dac59306a1fa3ac737b8239",
   "release_candidate_tag": "v0.5.63-phase4-manuscript-release-candidate-1",
+  "final_release_tag": "v0.5.63-phase4-manuscript-and-evidence-release",
   "publication_route": "preprint_first_journal_undecided",
-  "planned_archive": "Zenodo",
+  "archive": "Zenodo",
+  "zenodo_publication_status": "published",
+  "zenodo_publication_date": "2026-07-23",
   "doi": "10.5281/zenodo.21505468",
   "permanent_locator": "https://doi.org/10.5281/zenodo.21505468",
   "zenodo_record_id": "21505468",
+  "doi_roles": {
+    "exact_phase4_evidence_release": {
+      "doi": "10.5281/zenodo.21505468",
+      "url": "https://doi.org/10.5281/zenodo.21505468",
+      "version": "0.5.63-rc1"
+    },
+    "all_zenodo_versions": {
+      "doi": "10.5281/zenodo.21505467",
+      "url": "https://doi.org/10.5281/zenodo.21505467"
+    }
+  },
   "doi_reservation_confirmed": true,
-  "doi_registration_event": "Zenodo registers the reserved DOI when the record is published.",
+  "doi_registration_confirmed": true,
+  "doi_registration_event": "Zenodo registered the exact-version DOI when the record was published on 2026-07-23.",
+  "deposited_manifest": {
+    "repository_commit": "13ed19b0dd98b236d4b12fbb7b898fec50277495",
+    "sha256": "A8689F2CF974434BFAE5C958698C5F1A196F937C28EC3EE8B6FE1D830230AABB"
+  },
   "evidence_license": "CC-BY-4.0",
   "historical_d1r_stage_e_environment_recorded": false,
   "present_day_inspection_environment_recorded": true,

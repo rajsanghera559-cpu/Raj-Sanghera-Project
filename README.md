@@ -26,6 +26,12 @@ The project has two related evidence streams:
   `b6b0e52378352d579dac59306a1fa3ac737b8239`
 - Annotated release-candidate tag:
   `v0.5.63-phase4-manuscript-release-candidate-1`
+- Final manuscript-and-evidence release tag:
+  `v0.5.63-phase4-manuscript-and-evidence-release`
+- Published exact-version evidence DOI:
+  [`10.5281/zenodo.21505468`](https://doi.org/10.5281/zenodo.21505468)
+- All-versions Zenodo DOI:
+  [`10.5281/zenodo.21505467`](https://doi.org/10.5281/zenodo.21505467)
 - Canonical closure document: [Final numerical investigation scientific
   synthesis and closure](FINAL_NUMERICAL_INVESTIGATION_SCIENTIFIC_SYNTHESIS_AND_CLOSURE.md)
 - Additional numerical execution required for the closed advection-form
@@ -103,7 +109,7 @@ interpretation but is not a direct convergence proof for Runs 004–013.
 | [Phase 13 exploratory numerical results and closure](PHASE13_EXPLORATORY_NUMERICAL_RESULTS_AND_CLOSURE.md) | Verification and calibration foundation |
 | [Technical report draft](technical_report_draft.md) | Canonical manuscript source |
 | [Primary-literature bibliography](references.bib) | Verified bibliography used by the canonical manuscript |
-| [Citation metadata](CITATION.cff) | Release-candidate author, title, version, and preferred-citation metadata |
+| [Citation metadata](CITATION.cff) | Author, title, version, license, and preferred-citation metadata |
 | [Manuscript figure selection](MANUSCRIPT_FIGURE_SELECTION.md) | Frozen three-figure main-text plan and supplementary disposition |
 | [Approved Phase 4 manuscript artwork](manuscript_figures/phase4_checkpoint_9b1b4eb_qa_revision1) | Three PNG/PDF figures, captions, and portable inventory |
 | [Manuscript figure renderer](render_phase4_manuscript_figures.py) | Presentation-only assembly from archived evidence; no numerical stepping |
@@ -139,9 +145,12 @@ manuscript artwork. Some older production inputs and the D1R and Stage E
 evidence bundles are generated-data artifacts and are not present in a clean
 clone. The [Phase 4 evidence manifest](PHASE4_EVIDENCE_MANIFEST.json) records
 the controlling package hashes, run identities, inventories, and completion
-reports for the two companion bundles. The companion evidence record is
-identified by Zenodo DOI
-[`10.5281/zenodo.21505468`](https://doi.org/10.5281/zenodo.21505468). The
+reports for the two companion bundles. The exact published Phase 4 evidence
+release is identified by Zenodo DOI
+[`10.5281/zenodo.21505468`](https://doi.org/10.5281/zenodo.21505468); the
+all-versions DOI
+[`10.5281/zenodo.21505467`](https://doi.org/10.5281/zenodo.21505467) resolves
+to the latest Zenodo version. The
 [environment record](REPRODUCTION_ENVIRONMENT.md) distinguishes recorded
 historical execution facts from the captured present-day publication
 workstation environment; `requirements-publication.txt` pins the corresponding
@@ -154,10 +163,10 @@ archives.
 No new simulation or numerical audit is warranted for the closed Phase 4
 question. The primary-literature citations, canonical prose, reproducibility
 boundary, approved three-figure set, publication metadata, release-candidate
-tag, and present-day publication environment are integrated. The
-remaining release work is to upload the two evidence bundles, their completion
-reports, and the manifest to the reserved Zenodo record, preview and publish
-that record, and perform one venue-specific editorial/reference/layout pass
-before a final release tag. Any future reference-ranking, stationarity/flux,
-or physical-validation study should begin as a new, explicitly scoped
-scientific objective.
+tag, final release tag, and present-day publication environment are
+integrated. The companion evidence was published on Zenodo on July 23, 2026,
+under the exact-version DOI above. No Phase 4 numerical or provenance work
+remains open. A venue-specific editorial/reference/layout pass may be performed
+if the manuscript is submitted to a selected venue. Any future
+reference-ranking, stationarity/flux, or physical-validation study should
+begin as a new, explicitly scoped scientific objective.
